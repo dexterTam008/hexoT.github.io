@@ -4,12 +4,37 @@
   
     
     <entry>
+      <title>Metamask中文版安装</title>
+      <link href="/hexoT.github.io/posts/9027.html"/>
+      <url>/hexoT.github.io/posts/9027.html</url>
+      
+        <content type="html"><![CDATA[<p>在一个理想的去中心化环境中，每个想要跟DApp交互的人，都需要在他们的计算机或手机上面运行 一个的完整区块链节点 —— 简言之，每个人都运行一个全节点。这意味着，在能够真正使用一个 去中心化应用之前，用户不得不下载整个区块链。期待每个用户都先运行一个全节点，然后再使用你的应用是不现实的。 但是去中心化背后的核心思想，就是不依赖于中心化的服务器。所以，区块链社区已经出现了 一些解决方案，例如提供公共区块链节点的Infura, 以及浏览器插件Metamask等。</p><p>MetaMask是一个浏览器插件，可作为MetaMask Chrome扩展或Firefox附加组件使用。它的核心是它作为以太坊钱包：通过安装它，您将可以访问一个独特的以太坊钱包地址，您可以使用它开始发送和接收以太币或ERC20通证。</p><h2 id="MetaMask安装"><a href="#MetaMask安装" class="headerlink" title="MetaMask安装"></a>MetaMask安装</h2><h3 id="官网安装"><a href="#官网安装" class="headerlink" title="官网安装"></a>官网安装</h3><p>直接进入官网 ！<a href="https://metamask.io/" target="_blank" rel="noopener">MetaMask官网</a>，点击添加即可。其实没有科学上网是搞不了的。</p><h3 id="下载文件后通过浏览器安装"><a href="#下载文件后通过浏览器安装" class="headerlink" title="下载文件后通过浏览器安装"></a>下载文件后通过浏览器安装</h3><p>百度网盘下载安装文件地址：<a href="https://pan.baidu.com/s/1DpnGo5KXePIVv6hRN2gGlw" target="_blank" rel="noopener">https://pan.baidu.com/s/1DpnGo5KXePIVv6hRN2gGlw</a><br>下载后解压，在浏览器输入chrome://extensions/，将安装文件拖拽进浏览器，即可安装。<br>！<a href="https://note.youdao.com/yws/public/resource/df98b0701a6f81d62bd11d03d38994e2/xmlnote/WEBRESOURCEd2d05b9ee940501b4add1812a09ce6e5/78" target="_blank" rel="noopener"></a></p><p>然后就是一步一步按提示安装就可以了，注册进入后的界面：<br>！<a href="https://note.youdao.com/yws/public/resource/ad34ddefa8dca9e133438847f3a4761e/xmlnote/WEBRESOURCEc5a99bbfceb8b51f960ae438c1f3a6f0/83" target="_blank" rel="noopener"></a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> solidity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ETH的JavaScript项目和工具</title>
       <link href="/hexoT.github.io/posts/51414.html"/>
       <url>/hexoT.github.io/posts/51414.html</url>
       
-        <content type="html"><![CDATA[<h2 id="Solidity"><a href="#Solidity" class="headerlink" title="Solidity"></a>Solidity</h2><p>Solidity 是一门面向合约的、为实现智能合约而创建的高级编程语言。这门语言受到了 C++，Python 和 Javascript 语言的影响，设计的目的是能在以太坊虚拟机（EVM）上运行。<br>！<a href="https://solidity-cn.readthedocs.io/zh/develop/" target="_blank" rel="noopener">相关文档</a><br>！<a href="https://github.com/ethereum/solidity/" target="_blank" rel="noopener">GitHub</a><br>！<a href="https://github.com/ethereum/solidity/" target="_blank" rel="noopener">应用例子：Solidity Gitter 聊天室</a></p><h2 id="Truffle"><a href="#Truffle" class="headerlink" title="Truffle"></a>Truffle</h2><p>使用节点构建的开发环境和测试框架。其本身基于Javascript。<br>！<a href="https://github.com/ethereum/solidity/" target="_blank" rel="noopener">GitHub</a><br>！<a href="https://www.trufflesuite.com/" target="_blank" rel="noopener">trufflesuite.com</a></p><h2 id="Web3-js"><a href="#Web3-js" class="headerlink" title="Web3.js"></a>Web3.js</h2><p>web3.js是一个库集合，你可以使用HTTP或IPC连接本地或远程以太它节点进行交互。 web3的JavaScript库能够与以太坊区块链交互。 它可以检索用户帐户，发送交易，与智能合约交互等。<br>！<a href="https://web3.tryblockchain.org/" target="_blank" rel="noopener">相关文档</a><br>！<a href="https://github.com/ethereum/web3.js/" target="_blank" rel="noopener">GitHub</a></p><h2 id="Ethers-js"><a href="#Ethers-js" class="headerlink" title="Ethers.js"></a>Ethers.js</h2><p>JavaScript 和 TypeScript 中完整的以太坊钱包实现和实用工具。<br>！<a href="https://docs.ethers.io/v5/" target="_blank" rel="noopener">相关文档</a><br>！<a href="https://github.com/ethers-io/ethers.js/" target="_blank" rel="noopener">GitHub</a></p><h2 id="ethereumjs-vm"><a href="#ethereumjs-vm" class="headerlink" title="ethereumjs-vm"></a>ethereumjs-vm</h2><p>在 JavaScript 中实现以太坊虚拟机（VM）<br>！<a href="https://github.com/ethereumjs/ethereumjs-vm" target="_blank" rel="noopener">GitHub</a></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="Solidity"><a href="#Solidity" class="headerlink" title="Solidity"></a>Solidity</h2><p>Solidity 是一门面向合约的、为实现智能合约而创建的高级编程语言。这门语言受到了 C++，Python 和 Javascript 语言的影响，设计的目的是能在以太坊虚拟机（EVM）上运行。<br>！<a href="https://solidity-cn.readthedocs.io/zh/develop/" target="_blank" rel="noopener">相关文档</a><br>！<a href="https://github.com/ethereum/solidity/" target="_blank" rel="noopener">GitHub</a><br>！<a href="https://github.com/ethereum/solidity/" target="_blank" rel="noopener">应用例子：Solidity Gitter 聊天室</a></p><h2 id="Truffle"><a href="#Truffle" class="headerlink" title="Truffle"></a>Truffle</h2><p>使用节点构建的开发环境和测试框架。其本身基于Javascript。<br>！<a href="https://github.com/ethereum/solidity/" target="_blank" rel="noopener">GitHub</a><br>！<a href="https://www.trufflesuite.com/" target="_blank" rel="noopener">trufflesuite.com</a></p><h2 id="Web3-js"><a href="#Web3-js" class="headerlink" title="Web3.js"></a>Web3.js</h2><p>web3.js是一个库集合，你可以使用HTTP或IPC连接本地或远程以太它节点进行交互。 web3的JavaScript库能够与以太坊区块链交互。 我们可以在常用的JS框架 （比如 reactjs、angularjs 等)中直接引入该库来构建去中心化应用。<br>！<a href="https://web3.tryblockchain.org/" target="_blank" rel="noopener">相关文档</a><br>！<a href="https://github.com/ethereum/web3.js/" target="_blank" rel="noopener">GitHub</a></p><h2 id="Ethers-js"><a href="#Ethers-js" class="headerlink" title="Ethers.js"></a>Ethers.js</h2><p>JavaScript 和 TypeScript 中完整的以太坊钱包实现和实用工具。<br>！<a href="https://docs.ethers.io/v5/" target="_blank" rel="noopener">相关文档</a><br>！<a href="https://github.com/ethers-io/ethers.js/" target="_blank" rel="noopener">GitHub</a></p><h2 id="ethereumjs-vm"><a href="#ethereumjs-vm" class="headerlink" title="ethereumjs-vm"></a>ethereumjs-vm</h2><p>在 JavaScript 中实现以太坊虚拟机（VM）<br>！<a href="https://github.com/ethereumjs/ethereumjs-vm" target="_blank" rel="noopener">GitHub</a></p>]]></content>
       
+      
+      <categories>
+          
+          <category> uncategorized </category>
+          
+      </categories>
       
       
         <tags>
