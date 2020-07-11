@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="合约结构, DAPPS">
+    <meta name="keywords" content="合约部署, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>合约结构 | DAPPS</title>
+    <title>合约部署 | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">合约结构</h1>
+                    <h1 class="description center-align post-title">合约部署</h1>
                 </div>
             </div>
         </div>
@@ -462,24 +462,34 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="合约结构"><a href="#合约结构" class="headerlink" title="合约结构"></a>合约结构</h2><p>在 Solidity 语言中，合约类似于其他面向对象编程语言中的类。<br>每个合约中可以包含 状态变量、 函数、 函数修改器 、事件 Event、 结构体、 和 枚举类型 的声明，且合约可以从其他合约继承。<br>还有一些特殊的合约，如： 库 和 接口。</p>
-<h3 id="状态变量"><a href="#状态变量" class="headerlink" title="状态变量"></a>状态变量</h3><p>状态变量是永久地存储在合约存储中的值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity &gt;&#x3D;0.4.25 &lt;0.7.0;</span><br><span class="line"></span><br><span class="line">contract TinyStorage &#123;</span><br><span class="line">    uint storedData; &#x2F;&#x2F; 状态变量</span><br><span class="line">    &#x2F;&#x2F; ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>有效的状态变量类型：布尔类型bool、整型int / uint、地址类型 Address。</p>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>函数是合约中代码的可执行单元。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity &gt;&#x3D;0.4.25 &lt;0.7.0;</span><br><span class="line"></span><br><span class="line">function sendCoin(address receiver, uint amount) public returns(bool sufficient) &#123;</span><br><span class="line">		if (balances[msg.sender] &lt; amount) return false;</span><br><span class="line">		balances[msg.sender] -&#x3D; amount;</span><br><span class="line">		balances[receiver] +&#x3D; amount;</span><br><span class="line">		emit Transfer(msg.sender, receiver, amount);</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<p>函数调用 可发生在合约内部或外部，且函数对其他合约有不同程度的可见性。合约中的所有内容对外部观察者都是可见的。设置一些 private 类型只能阻止其他合约访问和修改这些信息， 但是对于区块链外的整个世界它仍然是可见的。<br>函数 可以接受 参数(address receiver, uint amount)和返回值returns(bool sufficient)。</p>
-<h3 id="函数修改器"><a href="#函数修改器" class="headerlink" title="函数修改器"></a>函数修改器</h3><p>使用 修改器modifier 可以轻松改变函数的行为。 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity &gt;&#x3D;0.5.0 &lt;0.7.0;</span><br><span class="line"></span><br><span class="line">contract owned &#123;</span><br><span class="line">    function owned() public &#123; owner &#x3D; msg.sender; &#125;</span><br><span class="line">    address owner;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 这个合约只定义一个修改器，但并未使用： 它将会在派生合约中用到。</span><br><span class="line">    &#x2F;&#x2F; 修改器所修饰的函数体会被插入到特殊符号 _; 的位置。</span><br><span class="line">    &#x2F;&#x2F; 这意味着如果是 owner 调用这个函数，则函数会被执行，否则会抛出异常。</span><br><span class="line">    modifier onlyOwner &#123;</span><br><span class="line">        require(</span><br><span class="line">            msg.sender &#x3D;&#x3D; owner,</span><br><span class="line">            &quot;Only owner can call this function.&quot;</span><br><span class="line">        );</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract destructible is owned &#123;</span><br><span class="line">    &#x2F;&#x2F; 这个合约从 &#96;owned&#96; 继承了 &#96;onlyOwner&#96; 修饰符，并将其应用于 &#96;destroy&#96; 函数，</span><br><span class="line">    &#x2F;&#x2F; 只有在合约里保存的 owner 调用 &#96;destroy&#96; 函数，才会生效。</span><br><span class="line">    function destroy() public onlyOwner &#123;</span><br><span class="line">        selfdestruct(owner);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>例如上面合约，它们可以在执行函数之前自动检查某个条件，只有在合约里保存的 owner 调用 <code>destroy</code> 函数，才会生效。</p>
-<h3 id="事件-Event"><a href="#事件-Event" class="headerlink" title="事件 Event"></a>事件 Event</h3><p>事件是能方便地调用以太坊虚拟机日志功能的接口。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity &gt;&#x3D;0.4.25 &lt;0.7.0;</span><br><span class="line"></span><br><span class="line">contract TinyAuction &#123;</span><br><span class="line"></span><br><span class="line">    event HighestBidIncreased(address bidder, uint amount); &#x2F;&#x2F; 事件</span><br><span class="line"></span><br><span class="line">    function bid() public payable &#123;</span><br><span class="line">        &#x2F;&#x2F; ...</span><br><span class="line">        emit HighestBidIncreased(msg.sender, msg.value); &#x2F;&#x2F; 触发事件</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <p>migrate，部署，将写好的合约部署到以太坊网络。</p>
+<h2 id="部署命令"><a href="#部署命令" class="headerlink" title="部署命令"></a>部署命令</h2><p>要部署合约到以太坊网络，运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle migrate</span><br></pre></td></tr></table></figure>
+<p>这将部署在项目 migrations 目录中的所有迁移文件。 最简单的迁移只是一组管理部署脚本。 如果我们的迁移先前已成功运行，则 truffle migrate 将从上次运行的迁移开始执行，仅运行新创建的迁移。 如果不存在新的迁移，truffle migrate 将不会执行任何操作。 我们可以使用 –reset 选项从头开始运行所有迁移。 对于本地测试，确保在执行 migrate 之前安装并运行了 Ganache等 测试区块链。<br>！<a href="https://note.youdao.com/yws/public/resource/3ba8726079648ae34cb158e719c8365d/xmlnote/WEBRESOURCE87d470bd269186e4b9cdbfaf569829a0/67" target="_blank" rel="noopener"></a></p>
+<p>项目 migrations 目录中的迁移文件</p>
+<h2 id="迁移文件"><a href="#迁移文件" class="headerlink" title="迁移文件"></a>迁移文件</h2><p>以 migrations 目录中的迁移文件1_initial_migration.js为例，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var Migrations = artifacts.require(<span class="string">"./Migrations.sol"</span>);</span><br><span class="line"></span><br><span class="line">module.exports = <span class="keyword">function</span>(deployer) &#123;</span><br><span class="line"> deployer.deploy(Migrations);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>要注意，文件名以数字为前缀，后缀为描述。 编号前缀是必需的，以便记录迁移是否成功运行。编号有记录 运行迁移文件顺序的作用。</p>
+<h3 id="artifacts-require（）"><a href="#artifacts-require（）" class="headerlink" title="artifacts.require（）"></a>artifacts.require（）</h3><p>在迁移开始时，我们通过 artifacts.require（）方法告诉 Truffle 我们想要与哪些合约进行交互。 这个方法类似于Node的 require。（）里放的就是合约文件的路径。</p>
+<h3 id="module-exports"><a href="#module-exports" class="headerlink" title="module.exports"></a>module.exports</h3><p>所有迁移都必须通过 module.exports 语法导出函数。 每次迁移导出的函数都应该接受 deployer 对象作为其第一个参数。 此对象通过为部署智能合约提供清晰的语法以及执行部署职责（例如保存已部署的 artifacts 供以后使用）。 deployer 对象是用于暂存部署任务最主要接口。</p>
+<h3 id="部署程序-Deployer"><a href="#部署程序-Deployer" class="headerlink" title="部署程序 Deployer"></a>部署程序 Deployer</h3><p>deployer 对象可以同步编写部署任务，它们将以正确的顺序执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 顺序部署AB</span><br><span class="line">deployer.deploy(A);</span><br><span class="line">deployer.deploy(B);</span><br></pre></td></tr></table></figure>
+<p>或者，部署程序上的每个函数可以使用 Promise，等待上一个任务执行的部署任务完成之后执行（进入一个部署队列）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 部署A完毕，执行B</span><br><span class="line"> deployer.deploy(A).<span class="keyword">then</span>(<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">  <span class="built_in">return</span> deployer.deploy(B, A.address);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<p>下面将介绍 deployer 对象的API</p>
+<h3 id="deployer-对象的API"><a href="#deployer-对象的API" class="headerlink" title="deployer 对象的API"></a>deployer 对象的API</h3><h4 id="deployer-deploy-contract-args…-options"><a href="#deployer-deploy-contract-args…-options" class="headerlink" title="deployer.deploy(contract, args…, options)"></a>deployer.deploy(contract, args…, options)</h4><p>deployer.deploy(contract, args…, options) (合约, 不定参数, 选项)部署合约可以通过使用指定合约对象和可选的合约构造函数的参数来进行合约部署。<br>下面通过示例更好理解 deploy 方法:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 部署没有构造函数的合约</span><br><span class="line">deployer.deploy(A);</span><br><span class="line"></span><br><span class="line">//  部署合约 并使用一些参数传递给合约的构造函数。</span><br><span class="line">deployer.deploy(A, arg1, arg2, ...);</span><br><span class="line"></span><br><span class="line">// 设置overwrite属性为<span class="literal">false</span>，如果合约部署过，不会覆盖</span><br><span class="line">deployer.deploy(A, &#123;overwrite: <span class="literal">false</span>&#125;);</span><br><span class="line"></span><br><span class="line">// 设置gasLimit 和部署合约的账号</span><br><span class="line">deployer.deploy(A, &#123;gas: 4612388, from: <span class="string">"0x...."</span>&#125;);</span><br><span class="line"></span><br><span class="line">// 部署多个合约，一些包含参数，另一些没有。</span><br><span class="line">// 这比编写三个`deployer.deploy（）`语句更快，因为部署者可以作为单个批处理请求执行部署。</span><br><span class="line">deployer.deploy([</span><br><span class="line">  [A, arg1, arg2, ...],</span><br><span class="line">  B,</span><br><span class="line">  [C, arg1]</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
 
-<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>Solidity 支持通过构造结构体的形式定义新的类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity &gt;&#x3D;0.4.25 &lt;0.7.0;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 定义的新类型包含两个属性。</span><br><span class="line">  &#x2F;&#x2F; 在合约外部声明结构体可以使其被多个合约共享。 在这里，这并不是真正需要的。</span><br><span class="line">  struct Funder &#123;</span><br><span class="line">      address addr;</span><br><span class="line">      uint amount;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"> contract CrowdFunding &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 也可以在合约内部定义结构体，这使得它们仅在此合约和衍生合约中可见。</span><br><span class="line">    struct Campaign &#123;</span><br><span class="line">        address beneficiary;</span><br><span class="line">        uint fundingGoal;</span><br><span class="line">        uint numFunders;</span><br><span class="line">        uint amount;</span><br><span class="line">        mapping (uint &#x3D;&gt; Funder) funders;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>当然，结构体可以在合约的里面，也可以在合约外面。</p>
-<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity &gt;&#x3D;0.4.25 &lt;0.7.0;</span><br><span class="line"></span><br><span class="line">contract test &#123;</span><br><span class="line">    enum ActionChoices &#123; GoLeft, GoRight, GoStraight, SitStill &#125;</span><br><span class="line">    ActionChoices choice;</span><br><span class="line">    ActionChoices constant defaultChoice &#x3D; ActionChoices.GoStraight;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>枚举是在Solidity中创建用户定义类型的一种方法。 它们是显示所有整型相互转换，但不允许隐式转换。</p>
+<h4 id="deployer-link-library-destinations"><a href="#deployer-link-library-destinations" class="headerlink" title="deployer.link(library, destinations)"></a>deployer.link(library, destinations)</h4><p>将已部署的库链接到合约或多个合约。 参数 destinations 可以是单个合约，也可以是多个合约的数组。 如果目的（即参数指定的）合约中有不依赖于链接的库，则合约将被忽略。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 部署库LibA，然后将已部署的LibA链接到合约B，然后部署B.</span><br><span class="line">deployer.deploy(LibA);</span><br><span class="line">deployer.link(LibA, B);</span><br><span class="line">deployer.deploy(B);</span><br><span class="line"></span><br><span class="line">// 链接 LibA 到多个合约</span><br><span class="line">deployer.link(LibA, [B, C, D]);</span><br></pre></td></tr></table></figure>
+
+<h4 id="deployer-then-function-…"><a href="#deployer-then-function-…" class="headerlink" title="deployer.then(function() {…})"></a>deployer.then(function() {…})</h4><p>就像 promise 一样，可运行任意部署步骤。 使用此选项可在迁移期间调用特定的合约函数，以添加，编辑和重新组织合约数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var a, b;</span><br><span class="line">deployer.then(<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">  // 创建一个新版本的 A</span><br><span class="line">  <span class="built_in">return</span> A.new();</span><br><span class="line">&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(instance) &#123;</span><br><span class="line">  a = instance;</span><br><span class="line">  // 获取部署的 B 实例</span><br><span class="line">  <span class="built_in">return</span> B.deployed();</span><br><span class="line">&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(instance) &#123;</span><br><span class="line">  b = instance;</span><br><span class="line">  // 通过B的setA（）函数在B上设置A的新实例地址</span><br><span class="line">  <span class="built_in">return</span> b.setA(a.address);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="可选网络"><a href="#可选网络" class="headerlink" title="可选网络"></a>可选网络</h3><p>可以根据网络条件，条件性地运行部署。要有条件地运行部署步骤，在编写迁移时，加入第二个参数 network， 例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">module.exports = <span class="keyword">function</span>(deployer, network) &#123;</span><br><span class="line">  <span class="keyword">if</span> (network == <span class="string">"dexter"</span>) &#123;</span><br><span class="line">    // Do something specific to the network named <span class="string">"dexter"</span>.</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    // Perform a different step otherwise.</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/2c16c3a6073a1ac48d9de3e0b52d9b69/xmlnote/WEBRESOURCE144cfd2ca5170bc27cc833e7786a2f85/52" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
             <hr/>
@@ -505,7 +515,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/2020/07/10/contract-struct/">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/2020/07/10/contract-struct/</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/undefined.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/undefined.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -712,30 +722,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/hexoT.github.io/2020/07/10/contract-struct/">
+                <a href="/hexoT.github.io/posts/21694.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="合约结构">
+                        <img src="/hexoT.github.io/medias/featureimages/2.jpg" class="responsive-img" alt="truffle与合约交互">
                         
-                        <span class="card-title">合约结构</span>
+                        <span class="card-title">truffle与合约交互</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            合约结构在 Solidity 语言中，合约类似于其他面向对象编程语言中的类。每个合约中可以包含 状态变量、 函数、 函数修改器 、事件 Event、 结构体、 和 枚举类型 的声明，且合约可以从其他合约继承。还有一些特殊的合约，如： 库 和
+                            为何要用truffle与合约交互如果我们为了与合约进行（测试）交互而向每次都向以太坊网络进行原始请求，我们很快就会意识到编写这些请求是笨重而繁琐的。 同样，我们可能会发现管理每个请求的状态是 复杂的。 幸运的是，Truffle为我们处理这种
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-10
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-10
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -744,7 +753,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -763,20 +771,20 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/2020/07/10/solidity-file/">
+                <a href="/hexoT.github.io/posts/52995.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/21.jpg" class="responsive-img" alt="Solidity 源文件结构">
+                        <img src="/hexoT.github.io/medias/featureimages/6.jpg" class="responsive-img" alt="contract">
                         
-                        <span class="card-title">Solidity 源文件结构</span>
+                        <span class="card-title">contract</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Solidity 源文件结构Solidity源文件中可以包含任意多个 合约定义 、导入源文件指令 、 版本标识 指令、 结构体 和 枚举 定义。
-12345678910111213141516171819202122232425262728
+                            合约文件目录所有合约都位于项目的 contracts/ 目录中。 由于合约是用Solidity语言编写的，所有包含合约的文件都将具有 .sol 文件扩展名。 相关的 Solidity 库也将有一个.sol扩展名。
+使用truffle ini
                         
                     </div>
                     <div class="publish-info">

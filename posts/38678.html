@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="合约部署, DAPPS">
+    <meta name="keywords" content="ubuntu环境下Loom SDK 的安装及使用, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>合约部署 | DAPPS</title>
+    <title>ubuntu环境下Loom SDK 的安装及使用 | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -313,7 +313,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">合约部署</h1>
+                    <h1 class="description center-align post-title">ubuntu环境下Loom SDK 的安装及使用</h1>
                 </div>
             </div>
         </div>
@@ -462,33 +462,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>migrate，部署，将写好的合约部署到以太坊网络。</p>
-<h2 id="部署命令"><a href="#部署命令" class="headerlink" title="部署命令"></a>部署命令</h2><p>要部署合约到以太坊网络，运行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle migrate</span><br></pre></td></tr></table></figure>
-<p>这将部署在项目 migrations 目录中的所有迁移文件。 最简单的迁移只是一组管理部署脚本。 如果我们的迁移先前已成功运行，则 truffle migrate 将从上次运行的迁移开始执行，仅运行新创建的迁移。 如果不存在新的迁移，truffle migrate 将不会执行任何操作。 我们可以使用 –reset 选项从头开始运行所有迁移。 对于本地测试，确保在执行 migrate 之前安装并运行了 Ganache等 测试区块链。<br>！<a href="https://note.youdao.com/yws/public/resource/3ba8726079648ae34cb158e719c8365d/xmlnote/WEBRESOURCE87d470bd269186e4b9cdbfaf569829a0/67" target="_blank" rel="noopener"></a></p>
-<p>项目 migrations 目录中的迁移文件</p>
-<h2 id="迁移文件"><a href="#迁移文件" class="headerlink" title="迁移文件"></a>迁移文件</h2><p>以 migrations 目录中的迁移文件1_initial_migration.js为例，</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var Migrations = artifacts.require(<span class="string">"./Migrations.sol"</span>);</span><br><span class="line"></span><br><span class="line">module.exports = <span class="keyword">function</span>(deployer) &#123;</span><br><span class="line"> deployer.deploy(Migrations);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>要注意，文件名以数字为前缀，后缀为描述。 编号前缀是必需的，以便记录迁移是否成功运行。编号有记录 运行迁移文件顺序的作用。</p>
-<h3 id="artifacts-require（）"><a href="#artifacts-require（）" class="headerlink" title="artifacts.require（）"></a>artifacts.require（）</h3><p>在迁移开始时，我们通过 artifacts.require（）方法告诉 Truffle 我们想要与哪些合约进行交互。 这个方法类似于Node的 require。（）里放的就是合约文件的路径。</p>
-<h3 id="module-exports"><a href="#module-exports" class="headerlink" title="module.exports"></a>module.exports</h3><p>所有迁移都必须通过 module.exports 语法导出函数。 每次迁移导出的函数都应该接受 deployer 对象作为其第一个参数。 此对象通过为部署智能合约提供清晰的语法以及执行部署职责（例如保存已部署的 artifacts 供以后使用）。 deployer 对象是用于暂存部署任务最主要接口。</p>
-<h3 id="部署程序-Deployer"><a href="#部署程序-Deployer" class="headerlink" title="部署程序 Deployer"></a>部署程序 Deployer</h3><p>deployer 对象可以同步编写部署任务，它们将以正确的顺序执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 顺序部署AB</span><br><span class="line">deployer.deploy(A);</span><br><span class="line">deployer.deploy(B);</span><br></pre></td></tr></table></figure>
-<p>或者，部署程序上的每个函数可以使用 Promise，等待上一个任务执行的部署任务完成之后执行（进入一个部署队列）：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 部署A完毕，执行B</span><br><span class="line"> deployer.deploy(A).<span class="keyword">then</span>(<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">  <span class="built_in">return</span> deployer.deploy(B, A.address);</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
-<p>下面将介绍 deployer 对象的API</p>
-<h3 id="deployer-对象的API"><a href="#deployer-对象的API" class="headerlink" title="deployer 对象的API"></a>deployer 对象的API</h3><h4 id="deployer-deploy-contract-args…-options"><a href="#deployer-deploy-contract-args…-options" class="headerlink" title="deployer.deploy(contract, args…, options)"></a>deployer.deploy(contract, args…, options)</h4><p>deployer.deploy(contract, args…, options) (合约, 不定参数, 选项)部署合约可以通过使用指定合约对象和可选的合约构造函数的参数来进行合约部署。<br>下面通过示例更好理解 deploy 方法:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 部署没有构造函数的合约</span><br><span class="line">deployer.deploy(A);</span><br><span class="line"></span><br><span class="line">//  部署合约 并使用一些参数传递给合约的构造函数。</span><br><span class="line">deployer.deploy(A, arg1, arg2, ...);</span><br><span class="line"></span><br><span class="line">// 设置overwrite属性为<span class="literal">false</span>，如果合约部署过，不会覆盖</span><br><span class="line">deployer.deploy(A, &#123;overwrite: <span class="literal">false</span>&#125;);</span><br><span class="line"></span><br><span class="line">// 设置gasLimit 和部署合约的账号</span><br><span class="line">deployer.deploy(A, &#123;gas: 4612388, from: <span class="string">"0x...."</span>&#125;);</span><br><span class="line"></span><br><span class="line">// 部署多个合约，一些包含参数，另一些没有。</span><br><span class="line">// 这比编写三个`deployer.deploy（）`语句更快，因为部署者可以作为单个批处理请求执行部署。</span><br><span class="line">deployer.deploy([</span><br><span class="line">  [A, arg1, arg2, ...],</span><br><span class="line">  B,</span><br><span class="line">  [C, arg1]</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
-
-<h4 id="deployer-link-library-destinations"><a href="#deployer-link-library-destinations" class="headerlink" title="deployer.link(library, destinations)"></a>deployer.link(library, destinations)</h4><p>将已部署的库链接到合约或多个合约。 参数 destinations 可以是单个合约，也可以是多个合约的数组。 如果目的（即参数指定的）合约中有不依赖于链接的库，则合约将被忽略。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 部署库LibA，然后将已部署的LibA链接到合约B，然后部署B.</span><br><span class="line">deployer.deploy(LibA);</span><br><span class="line">deployer.link(LibA, B);</span><br><span class="line">deployer.deploy(B);</span><br><span class="line"></span><br><span class="line">// 链接 LibA 到多个合约</span><br><span class="line">deployer.link(LibA, [B, C, D]);</span><br></pre></td></tr></table></figure>
-
-<h4 id="deployer-then-function-…"><a href="#deployer-then-function-…" class="headerlink" title="deployer.then(function() {…})"></a>deployer.then(function() {…})</h4><p>就像 promise 一样，可运行任意部署步骤。 使用此选项可在迁移期间调用特定的合约函数，以添加，编辑和重新组织合约数据。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var a, b;</span><br><span class="line">deployer.then(<span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">  // 创建一个新版本的 A</span><br><span class="line">  <span class="built_in">return</span> A.new();</span><br><span class="line">&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(instance) &#123;</span><br><span class="line">  a = instance;</span><br><span class="line">  // 获取部署的 B 实例</span><br><span class="line">  <span class="built_in">return</span> B.deployed();</span><br><span class="line">&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(instance) &#123;</span><br><span class="line">  b = instance;</span><br><span class="line">  // 通过B的setA（）函数在B上设置A的新实例地址</span><br><span class="line">  <span class="built_in">return</span> b.setA(a.address);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h3 id="可选网络"><a href="#可选网络" class="headerlink" title="可选网络"></a>可选网络</h3><p>可以根据网络条件，条件性地运行部署。要有条件地运行部署步骤，在编写迁移时，加入第二个参数 network， 例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">module.exports = <span class="keyword">function</span>(deployer, network) &#123;</span><br><span class="line">  <span class="keyword">if</span> (network == <span class="string">"dexter"</span>) &#123;</span><br><span class="line">    // Do something specific to the network named <span class="string">"dexter"</span>.</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    // Perform a different step otherwise.</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+                <p>写在前面的话，为何要使用Loom？</p>
+<h2 id="Loom的介绍"><a href="#Loom的介绍" class="headerlink" title="Loom的介绍"></a>Loom的介绍</h2><p>Loom，下一代区块链平台。<br>官网地址：<a href="https://loomx.io/" target="_blank" rel="noopener">https://loomx.io/</a><br>github地址：<a href="https://github.com/loomnetwork" target="_blank" rel="noopener">https://github.com/loomnetwork</a><br>喜欢Loom是有原因的。它不像其它区块链项目，一上来就搞什么白皮书的，搞圈钱运动。Loom的团队从来都是脚踏实地的做区块链的事。<br>*Loom Dappchains采用的是DPOS共识。<br>*Loom Network基于以太坊开发了Loom Network侧链，且基于以太坊的ERC20协议发布Token，Loom币。。<br>*Loom SDK 打造你自己的区块链，选择你自己的共识机制，创建你自己的规则集，发布可运行在任何云平台的全包节点软件。有了 Loom, 你只需专注应用开发。<br>*DAppChains 是一个拥有所有特性的区块链，可运行在以太坊智能合约上。它们是一种先进的侧链，针对大规模数据优化，而非金融交易。每个 DApp 都运行在自己的区块链上，其数据是公开且可分叉的，恰如以太坊和区块链。<br>*Loom Network是一个针对游戏和社交的DApp链，发布SDK，开发者来编写应用。</p>
+<h2 id="Loom的下载"><a href="#Loom的下载" class="headerlink" title="Loom的下载"></a>Loom的下载</h2><p>我使用的系统是Linux(Window 暂时不支持，可以选择ubuntu虚拟机)。<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://private.delegatecall.com/loom/linux/stable/loom</span><br></pre></td></tr></table></figure></p>
+<h2 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h2><p>ubuntu下的环境变量配置是这样的:<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /home/dexter/node-v12.16.3-linux-x64/bin/loom /usr/<span class="built_in">local</span>/bin/loom</span><br></pre></td></tr></table></figure><br>我们把上面下载后的执行文件放到ubuntu home目录的/node-v12.16.3-linux-x64/bin/下,我的home目录是 /home/dexter/,如下图已经把loom执行文件放/node-v12.16.3-linux-x64/bin/目录下:<br>！<a href="https://note.youdao.com/yws/public/resource/325f64800ec30c8191ad335ad339aafc/xmlnote/WEBRESOURCE4fb9dd787191f70b56523228a1fbe781/9" target="_blank" rel="noopener"></a><br>如此就完成loom的全局配置。</p>
+<h2 id="开始使用loom命令"><a href="#开始使用loom命令" class="headerlink" title="开始使用loom命令"></a>开始使用loom命令</h2>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir loom-chain</span><br><span class="line">$ <span class="built_in">cd</span> loom-chain</span><br></pre></td></tr></table></figure>
+<p>在ubuntu中创建loom-chain文件夹并在文件夹中打开命令行，如下：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ loom init</span><br></pre></td></tr></table></figure><br>！<a href="https://note.youdao.com/yws/public/resource/c8a3ebc7983c51b0354f71801559ab0b/xmlnote/WEBRESOURCEffd41093c425a1186f0fd26969fd6557/19" target="_blank" rel="noopener"></a></p>
+<p>执行loom init初始化后生成文件如图。初始化命令会生成 genesis.json 和 chaindata 目录，genesis.json 是这条侧链的创世纪块配置，chaindata 目录用户保存区块数据。</p>
+<h2 id="运行loom区块链"><a href="#运行loom区块链" class="headerlink" title="运行loom区块链"></a>运行loom区块链</h2><p>在loom-chain文件夹使用以下的命令可以启动刚刚初始化的 loom 侧链：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ loom run</span><br></pre></td></tr></table></figure><br>启动后的界面是这样：<br>！<a href="https://note.youdao.com/yws/public/resource/ef82b85c89089ba6d99639867c5d7480/xmlnote/WEBRESOURCE15661a3e9aa228abab7aeabd5b9deaa2/22" target="_blank" rel="noopener"></a></p>
+<p>至此，完成ubuntu环境下Loom SDK 的安装及使用</p>
 <p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/2c16c3a6073a1ac48d9de3e0b52d9b69/xmlnote/WEBRESOURCE144cfd2ca5170bc27cc833e7786a2f85/52" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
@@ -515,7 +497,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/2020/07/10/migrate/">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/2020/07/10/migrate/</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/38678.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/38678.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -726,19 +708,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/hexoT.github.io/2020/07/10/interact/">
+                <a href="/hexoT.github.io/posts/35987.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/2.jpg" class="responsive-img" alt="truffle与合约交互">
+                        <img src="/hexoT.github.io/medias/featureimages/3.jpg" class="responsive-img" alt="ubuntu环境下truffle的安装及使用">
                         
-                        <span class="card-title">truffle与合约交互</span>
+                        <span class="card-title">ubuntu环境下truffle的安装及使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            为何要用truffle与合约交互如果我们为了与合约进行（测试）交互而向每次都向以太坊网络进行原始请求，我们很快就会意识到编写这些请求是笨重而繁琐的。 同样，我们可能会发现管理每个请求的状态是 复杂的。 幸运的是，Truffle为我们处理这种
+                            truffle的开发环境ubuntu环境下开发truffle之前应该先安装好nodejs，网上有很多教程，大家可以直接在网上找，这就不重复造轮了。   1$ node -v下载后使用node -v就可以看到node的版本，建议下载最新的。！
                         
                     </div>
                     <div class="publish-info">
@@ -756,8 +738,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/hexoT.github.io/tags/solidity/">
-                        <span class="chip bg-color">solidity</span>
+                    <a href="/hexoT.github.io/tags/truffle/">
+                        <span class="chip bg-color">truffle</span>
                     </a>
                     
                 </div>
@@ -771,25 +753,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/2020/07/10/contract/">
+                <a href="/hexoT.github.io/posts/31809.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/6.jpg" class="responsive-img" alt="contract">
+                        <img src="/hexoT.github.io/medias/featureimages/22.jpg" class="responsive-img" alt="&#39;my-first-blog&#39;">
                         
-                        <span class="card-title">contract</span>
+                        <span class="card-title">&#39;my-first-blog&#39;</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            合约文件目录所有合约都位于项目的 contracts/ 目录中。 由于合约是用Solidity语言编写的，所有包含合约的文件都将具有 .sol 文件扩展名。 相关的 Solidity 库也将有一个.sol扩展名。
-使用truffle ini
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-26
                             </span>
                         <span class="publish-author">
                             
@@ -798,14 +779,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/hexoT.github.io/tags/solidity/">
-                        <span class="chip bg-color">solidity</span>
-                    </a>
-                    
                 </div>
                 
             </div>

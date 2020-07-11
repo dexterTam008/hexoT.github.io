@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ubuntu环境下Loom SDK 的安装及使用, DAPPS">
+    <meta name="keywords" content="ubuntu环境下truffle的安装及使用, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ubuntu环境下Loom SDK 的安装及使用 | DAPPS</title>
+    <title>ubuntu环境下truffle的安装及使用 | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ubuntu环境下Loom SDK 的安装及使用</h1>
+                    <h1 class="description center-align post-title">ubuntu环境下truffle的安装及使用</h1>
                 </div>
             </div>
         </div>
@@ -430,8 +430,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/hexoT.github.io/tags/solidity/">
-                                <span class="chip bg-color">solidity</span>
+                            <a href="/hexoT.github.io/tags/truffle/">
+                                <span class="chip bg-color">truffle</span>
                             </a>
                         
                     </div>
@@ -462,15 +462,21 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>写在前面的话，为何要使用Loom？</p>
-<h2 id="Loom的介绍"><a href="#Loom的介绍" class="headerlink" title="Loom的介绍"></a>Loom的介绍</h2><p>Loom，下一代区块链平台。<br>官网地址：<a href="https://loomx.io/" target="_blank" rel="noopener">https://loomx.io/</a><br>github地址：<a href="https://github.com/loomnetwork" target="_blank" rel="noopener">https://github.com/loomnetwork</a><br>喜欢Loom是有原因的。它不像其它区块链项目，一上来就搞什么白皮书的，搞圈钱运动。Loom的团队从来都是脚踏实地的做区块链的事。<br>*Loom Dappchains采用的是DPOS共识。<br>*Loom Network基于以太坊开发了Loom Network侧链，且基于以太坊的ERC20协议发布Token，Loom币。。<br>*Loom SDK 打造你自己的区块链，选择你自己的共识机制，创建你自己的规则集，发布可运行在任何云平台的全包节点软件。有了 Loom, 你只需专注应用开发。<br>*DAppChains 是一个拥有所有特性的区块链，可运行在以太坊智能合约上。它们是一种先进的侧链，针对大规模数据优化，而非金融交易。每个 DApp 都运行在自己的区块链上，其数据是公开且可分叉的，恰如以太坊和区块链。<br>*Loom Network是一个针对游戏和社交的DApp链，发布SDK，开发者来编写应用。</p>
-<h2 id="Loom的下载"><a href="#Loom的下载" class="headerlink" title="Loom的下载"></a>Loom的下载</h2><p>我使用的系统是Linux(Window 暂时不支持，可以选择ubuntu虚拟机)。<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget https://private.delegatecall.com/loom/linux/stable/loom</span><br></pre></td></tr></table></figure></p>
-<h2 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h2><p>ubuntu下的环境变量配置是这样的:<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /home/dexter/node-v12.16.3-linux-x64/bin/loom /usr/<span class="built_in">local</span>/bin/loom</span><br></pre></td></tr></table></figure><br>我们把上面下载后的执行文件放到ubuntu home目录的/node-v12.16.3-linux-x64/bin/下,我的home目录是 /home/dexter/,如下图已经把loom执行文件放/node-v12.16.3-linux-x64/bin/目录下:<br>！<a href="https://note.youdao.com/yws/public/resource/325f64800ec30c8191ad335ad339aafc/xmlnote/WEBRESOURCE4fb9dd787191f70b56523228a1fbe781/9" target="_blank" rel="noopener"></a><br>如此就完成loom的全局配置。</p>
-<h2 id="开始使用loom命令"><a href="#开始使用loom命令" class="headerlink" title="开始使用loom命令"></a>开始使用loom命令</h2>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir loom-chain</span><br><span class="line">$ <span class="built_in">cd</span> loom-chain</span><br></pre></td></tr></table></figure>
-<p>在ubuntu中创建loom-chain文件夹并在文件夹中打开命令行，如下：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ loom init</span><br></pre></td></tr></table></figure><br>！<a href="https://note.youdao.com/yws/public/resource/c8a3ebc7983c51b0354f71801559ab0b/xmlnote/WEBRESOURCEffd41093c425a1186f0fd26969fd6557/19" target="_blank" rel="noopener"></a></p>
-<p>执行loom init初始化后生成文件如图。初始化命令会生成 genesis.json 和 chaindata 目录，genesis.json 是这条侧链的创世纪块配置，chaindata 目录用户保存区块数据。</p>
-<h2 id="运行loom区块链"><a href="#运行loom区块链" class="headerlink" title="运行loom区块链"></a>运行loom区块链</h2><p>在loom-chain文件夹使用以下的命令可以启动刚刚初始化的 loom 侧链：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ loom run</span><br></pre></td></tr></table></figure><br>启动后的界面是这样：<br>！<a href="https://note.youdao.com/yws/public/resource/ef82b85c89089ba6d99639867c5d7480/xmlnote/WEBRESOURCE15661a3e9aa228abab7aeabd5b9deaa2/22" target="_blank" rel="noopener"></a></p>
-<p>至此，完成ubuntu环境下Loom SDK 的安装及使用</p>
+                <h2 id="truffle的开发环境"><a href="#truffle的开发环境" class="headerlink" title="truffle的开发环境"></a>truffle的开发环境</h2><p>ubuntu环境下开发truffle之前应该先安装好nodejs，网上有很多教程，大家可以直接在网上找，这就不重复造轮了。<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br></pre></td></tr></table></figure><br>下载后使用node -v就可以看到node的版本，建议下载最新的。<br>！<a href="https://note.youdao.com/yws/public/resource/d634a3cf8ba9e85e81e6e24b9ac71c3d/xmlnote/WEBRESOURCE41c4e33b664209d4c46e6424117c5781/27" target="_blank" rel="noopener"></a><br>接下来，还应该安装NodeJS中用到的truffle运行时需要的web3环境<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br><span class="line">- bignumber.js@2.0.7 node_modules/web3/node_modules/bignumber.js</span><br><span class="line">truffle3@1.0.0 /Users/TryBlockchain/develop/blockchain_workspace/truffle3</span><br><span class="line">└── web3@0.18.2</span><br></pre></td></tr></table></figure><br>如果使用truffle没有集成web3环境，可能会报下述错误：<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ node main.js</span><br><span class="line">/Users/TryBlockchain/develop/blockchain_workspace/truffle3/main/main.js:4</span><br><span class="line">var provider = new Web3.providers.HttpProvider(<span class="string">"http://localhost:8545"</span>);</span><br><span class="line">                ^</span><br><span class="line"></span><br><span class="line">ReferenceError: Web3 is not defined</span><br></pre></td></tr></table></figure><br>Web3 is not defined，Web3还没定义，很明显是还没安装web3所导致的。</p>
+<h2 id="truffle的安装"><a href="#truffle的安装" class="headerlink" title="truffle的安装"></a>truffle的安装</h2>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g truffle</span><br></pre></td></tr></table></figure>
+<p>安装完毕，可以查看truffle是否安装成功。<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle version</span><br></pre></td></tr></table></figure><br>！<a href="https://note.youdao.com/yws/public/resource/22434c326d0d36f27bfae9948f2d2d94/xmlnote/WEBRESOURCE433ddb943009ede5e46e0c1a52f84fe9/32" target="_blank" rel="noopener"></a><br>可以看到版本号，说明安装成功。</p>
+<h2 id="编译测试"><a href="#编译测试" class="headerlink" title="编译测试"></a>编译测试</h2><p>新建一个空文件夹truffle-demo。然后进入文件夹<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle unbox pet-shop</span><br></pre></td></tr></table></figure><br>！<a href="https://note.youdao.com/yws/public/resource/244052e724159ffb295e083a8a875ab9/xmlnote/WEBRESOURCE1dc5b2f1d9fc3fffb30c02592f4e39da/37" target="_blank" rel="noopener"></a><br>如图则表示trufflebox 初始化模板成功。<br>值得注意的是，安装过程如果出现下面这种情况：<br>！<a href="https://note.youdao.com/yws/public/resource/132a29ecd1acaa6c2b8201314249154e/xmlnote/WEBRESOURCE010a823079eb4225020bec9c361dd083/43" target="_blank" rel="noopener"></a><br>则多数是因为网络不行导致的，用个好的网络就可以安装成功了。有时候是因为ubuntu断网了，重启ubuntu网络连接就好了。<br>看一下工程目录:<br>！<a href="https://note.youdao.com/yws/public/resource/4f17f7e27c8b49ac07ca8b24d0668171/xmlnote/WEBRESOURCE7cc3cef2ddf2648f55564ebfcd4d25bf/47" target="_blank" rel="noopener"></a></p>
+<p>contracts:智能合约文件夹<br>migrations:用于部署的脚本<br>node_modules:nodejs<br>src:前端资源<br>test:单元测试<br>bs-config.json:lite-server的配置文件<br>package.json:nodejs依赖<br>truffle-config.js:truffle的配置</p>
+<p>终端输入truffle develop 进入truffle 控制台：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">$ truffle develop</span><br><span class="line">Truffle Develop started at http://127.0.0.1:8545/</span><br><span class="line"></span><br><span class="line">Accounts:</span><br><span class="line">(0) 0x5944f1ef9bbdd9f9924f86fe741ddecb4bd309a9</span><br><span class="line">(1) 0x439740ddc74491bd8019660d4542dee4678a401f</span><br><span class="line">(2) 0xd983f44dde381165878a27583b2660f758d4c7c5</span><br><span class="line">(3) 0x2517f698c61a3977230863bb11534d1ee7b25bce</span><br><span class="line">(4) 0x09da34c90e08adbb7d3c01cf5195b2d7f60c8efd</span><br><span class="line">(5) 0x21ce72d1a911b21f1945477c66395df8533365ad</span><br><span class="line">(6) 0x9502d7b179d4c38e21bc8f463d9344c03618a2d8</span><br><span class="line">(7) 0x6c73739d47ec7973b474d315beaecfed8c4c191b</span><br><span class="line">(8) 0x73bf236c3219350c3a49c6a5627032f50613192c</span><br><span class="line">(9) 0x5e810c521cc4b1c64160610c21532fcf50c44f48</span><br><span class="line"></span><br><span class="line">Private Keys:</span><br><span class="line">(0) 20721027b4ce8cd236f0a4195b4368c6395f8f7fdacf0390f0c506f02d5817c3</span><br><span class="line">(1) f6f85db817cbeca90023118b4a29dbaa5038e9d83dafd2d65db0b34dab9e4440</span><br><span class="line">(2) 68f9f4b86804a8ecb04a89776d7345110e37006b80efde4c3af7f23a8ec7011b</span><br><span class="line">(3) 1b1bf475c27b9c39ebc6b51fae3af49b433a8ad71d9b14540138d1ae643b2d26</span><br><span class="line">(4) 56a39f50edef69d18fff3b2696b00c0750b7b64f64f1584a15b086b65bdd5630</span><br><span class="line">(5) 8aa3f24263cb9bf3a7563b1b77d636f43b8fb9b160733447bfddc33db2094281</span><br><span class="line">(6) 0980de4fa5ebd017550ecda18e09812166ee9b7e2eeb75407c43e6399ba59171</span><br><span class="line">(7) e06f24f41ec689aabda2ac7f59d63a9578ff2fba447ada48fc91c639c0caa2dd</span><br><span class="line">(8) 87c5df96d80ee5abcfbf063303ae9845d1a54a6c7371991eaa046e9baa254571</span><br><span class="line">(9) 8ca326c26cba303f0573be05771d12783c18fba99abcd0f8228ef228b8eb4318</span><br><span class="line"></span><br><span class="line">Mnemonic: foil damage razor border under disorder isolate wood mansion slim solution lock</span><br><span class="line"></span><br><span class="line">⚠️  Important ⚠️  : This mnemonic was created <span class="keyword">for</span> you by Truffle. It is not secure.</span><br><span class="line">Ensure you <span class="keyword">do</span> not use it on production blockchains, or <span class="keyword">else</span> you risk losing funds.</span><br><span class="line"></span><br><span class="line">truffle(develop)&gt;</span><br></pre></td></tr></table></figure>
+<p>在truffle控制台输入compile进行编译：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">truffle(develop)&gt; compile</span><br><span class="line">Compiling your contracts...</span><br><span class="line">===========================</span><br><span class="line">&gt; Compiling ./contracts/Migrations.sol</span><br><span class="line">&gt; Artifacts written to /home/dexter/truffe-demo/build/contracts</span><br><span class="line">&gt; Compiled successfully using:</span><br><span class="line">   - solc: 0.5.16+commit.9c3226ce.Emscripten.clang</span><br></pre></td></tr></table></figure>
+<p>输入migrate进行发布：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">truffle(develop)&gt; migrate</span><br><span class="line">Compiling your contracts...</span><br><span class="line">===========================</span><br><span class="line">&gt; Everything is up to date, there is nothing to compile.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Starting migrations...</span><br><span class="line">======================</span><br><span class="line">&gt; Network name:    <span class="string">'develop'</span></span><br><span class="line">&gt; Network id:      5777</span><br><span class="line">&gt; Block gas <span class="built_in">limit</span>: 6721975 (0x6691b7)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1_initial_migration.js</span><br><span class="line">======================</span><br><span class="line"></span><br><span class="line">   Deploying <span class="string">'Migrations'</span></span><br><span class="line">   ----------------------</span><br><span class="line">   &gt; transaction <span class="built_in">hash</span>:    0xf22102c79bd174a31ec86e2e6779486e17b2bd7bf0e4066fb044bdd33d83e255</span><br><span class="line">   &gt; Blocks: 0            Seconds: 0</span><br><span class="line">   &gt; contract address:    0xA2f91131Ca34Fa891fC1A2C1144413cD354454A1</span><br><span class="line">   &gt; block number:        1</span><br><span class="line">   &gt; block timestamp:     1593914207</span><br><span class="line">   &gt; account:             0x5944f1Ef9bbdD9F9924f86Fe741ddECB4bD309A9</span><br><span class="line">   &gt; balance:             99.9967165</span><br><span class="line">   &gt; gas used:            164175 (0x2814f)</span><br><span class="line">   &gt; gas price:           20 gwei</span><br><span class="line">   &gt; value sent:          0 ETH</span><br><span class="line">   &gt; total cost:          0.0032835 ETH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &gt; Saving migration to chain.</span><br><span class="line">   &gt; Saving artifacts</span><br><span class="line">   -------------------------------------</span><br><span class="line">   &gt; Total cost:           0.0032835 ETH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Summary</span><br><span class="line">=======</span><br><span class="line">&gt; Total deployments:   1</span><br><span class="line">&gt; Final cost:          0.0032835 ETH</span><br></pre></td></tr></table></figure>
+
+<p>输入test指令进行测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">truffle(develop)&gt; <span class="built_in">test</span></span><br><span class="line">Using network <span class="string">'develop'</span>.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Compiling your contracts...</span><br><span class="line">===========================</span><br><span class="line">&gt; Everything is up to date, there is nothing to compile.</span><br></pre></td></tr></table></figure>
+
 <p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/2c16c3a6073a1ac48d9de3e0b52d9b69/xmlnote/WEBRESOURCE144cfd2ca5170bc27cc833e7786a2f85/52" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
@@ -497,7 +503,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/2020/07/10/loom/">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/2020/07/10/loom/</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/35987.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/35987.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -535,8 +541,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/hexoT.github.io/tags/solidity/">
-                                    <span class="chip bg-color">solidity</span>
+                                <a href="/hexoT.github.io/tags/truffle/">
+                                    <span class="chip bg-color">truffle</span>
                                 </a>
                             
                         </div>
@@ -708,19 +714,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/hexoT.github.io/2020/07/10/truffle/">
+                <a href="/hexoT.github.io/posts/36087.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/3.jpg" class="responsive-img" alt="ubuntu环境下truffle的安装及使用">
+                        <img src="/hexoT.github.io/medias/featureimages/7.jpg" class="responsive-img" alt="truffle的入门介绍">
                         
-                        <span class="card-title">ubuntu环境下truffle的安装及使用</span>
+                        <span class="card-title">truffle的入门介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            truffle的开发环境ubuntu环境下开发truffle之前应该先安装好nodejs，网上有很多教程，大家可以直接在网上找，这就不重复造轮了。   1$ node -v下载后使用node -v就可以看到node的版本，建议下载最新的。！
+                            什么是truffletruffle是一个世界级的开发环境，是针对基于以太坊的Solidity语言的一套开发框架，其本身基于Javascript。它致力于让以太坊上的开发变得简单：*内置的智能合约编译，链接，部署和二进制文件的管理。*针对快速
                         
                     </div>
                     <div class="publish-info">
@@ -753,24 +759,25 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/2020/06/26/my-first-blog/">
+                <a href="/hexoT.github.io/posts/38678.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/22.jpg" class="responsive-img" alt="&#39;my-first-blog&#39;">
+                        <img src="/hexoT.github.io/medias/featureimages/8.jpg" class="responsive-img" alt="ubuntu环境下Loom SDK 的安装及使用">
                         
-                        <span class="card-title">&#39;my-first-blog&#39;</span>
+                        <span class="card-title">ubuntu环境下Loom SDK 的安装及使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            写在前面的话，为何要使用Loom？
+Loom的介绍Loom，下一代区块链平台。官网地址：https://loomx.io/github地址：https://github.com/loomnetwork喜欢Loom是有原因的。它不像其它区块链
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-10
                             </span>
                         <span class="publish-author">
                             
@@ -779,6 +786,14 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/hexoT.github.io/tags/solidity/">
+                        <span class="chip bg-color">solidity</span>
+                    </a>
+                    
                 </div>
                 
             </div>

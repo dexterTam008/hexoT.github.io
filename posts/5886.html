@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Solidity 源文件结构, DAPPS">
+    <meta name="keywords" content="Solidity开发使用命令truffle unbox metacoin时发生错误的解决方法, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Solidity 源文件结构 | DAPPS</title>
+    <title>Solidity开发使用命令truffle unbox metacoin时发生错误的解决方法 | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Solidity 源文件结构</h1>
+                    <h1 class="description center-align post-title">Solidity开发使用命令truffle unbox metacoin时发生错误的解决方法</h1>
                 </div>
             </div>
         </div>
@@ -430,8 +430,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/hexoT.github.io/tags/solidity/">
-                                <span class="chip bg-color">solidity</span>
+                            <a href="/hexoT.github.io/tags/error/">
+                                <span class="chip bg-color">error</span>
                             </a>
                         
                     </div>
@@ -462,23 +462,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Solidity-源文件结构"><a href="#Solidity-源文件结构" class="headerlink" title="Solidity 源文件结构"></a>Solidity 源文件结构</h2><p>Solidity源文件中可以包含任意多个 合约定义 、导入源文件指令 、 版本标识 指令、 结构体 和 枚举 定义。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity &gt;&#x3D;0.4.25 &lt;0.7.0;</span><br><span class="line"></span><br><span class="line">import &quot;.&#x2F;ConvertLib.sol&quot;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; This is just a simple example of a coin-like contract.</span><br><span class="line">&#x2F;&#x2F; It is not standards compatible and cannot be expected to talk to other</span><br><span class="line">&#x2F;&#x2F; coin&#x2F;token contracts. If you want to create a standards-compliant</span><br><span class="line">&#x2F;&#x2F; token, see: https:&#x2F;&#x2F;github.com&#x2F;ConsenSys&#x2F;Tokens. Cheers!</span><br><span class="line"></span><br><span class="line">contract MetaCoin &#123;</span><br><span class="line">	mapping (address &#x3D;&gt; uint) balances;</span><br><span class="line"></span><br><span class="line">	event Transfer(address indexed _from, address indexed _to, uint256 _value);</span><br><span class="line"></span><br><span class="line">	constructor() public &#123;</span><br><span class="line">		balances[tx.origin] &#x3D; 10000;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	function sendCoin(address receiver, uint amount) public returns(bool sufficient) &#123;</span><br><span class="line">		if (balances[msg.sender] &lt; amount) return false;</span><br><span class="line">		balances[msg.sender] -&#x3D; amount;</span><br><span class="line">		balances[receiver] +&#x3D; amount;</span><br><span class="line">		emit Transfer(msg.sender, receiver, amount);</span><br><span class="line">		return true;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	function getBalanceInEth(address addr) public view returns(uint)&#123;</span><br><span class="line">		return ConvertLib.convert(getBalance(addr),2);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	function getBalance(address addr) public view returns(uint) &#123;</span><br><span class="line">		return balances[addr];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="合约定义"><a href="#合约定义" class="headerlink" title="合约定义"></a>合约定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">contract MetaCoin &#123;</span><br><span class="line">	uint storedXlbData; &#x2F;&#x2F; 状态变量</span><br><span class="line"></span><br><span class="line">    function getBalanceInEth(address addr) public view returns(uint)&#123;&#x2F;&#x2F; 函数</span><br><span class="line">		return ConvertLib.convert(getBalance(addr),2);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    modifier onlySeller() &#123; &#x2F;&#x2F; 函数修改器</span><br><span class="line">    require(</span><br><span class="line">        msg.sender &#x3D;&#x3D; seller,</span><br><span class="line">        &quot;Only seller can call this.&quot;</span><br><span class="line">    );</span><br><span class="line">    _;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    event Transfer(address indexed _from, address indexed _to, uint256 _value);&#x2F;&#x2F; 事件 Event</span><br><span class="line"></span><br><span class="line">    constructor() public &#123;&#x2F;&#x2F; 结构体</span><br><span class="line">		balances[tx.origin] &#x3D; 10000;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	enum State &#123; Created, Locked, InValid &#125; &#x2F;&#x2F; 枚举</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>每个合约例如contract MetaCoin { }中可以包含 状态变量、 函数、 函数修改器 、事件 Event、 结构体、 和 枚举类型 的声明。<br>！<a href="">合约定义</a></p>
-<h3 id="导入源文件指令"><a href="#导入源文件指令" class="headerlink" title="导入源文件指令"></a>导入源文件指令</h3><p>在全局层面上，可使用如下格式的导入语句：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import <span class="string">"./ConvertLib.sol"</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="版本标识-指令"><a href="#版本标识-指令" class="headerlink" title="版本标识 指令"></a>版本标识 指令</h3><p>为了避免未来被可能引入不兼容更新的编译器所编译，源文件可以（也应该）使用版本 标识pragma 所注解。 我们力图把这类不兼容变更做到尽可能小，但是，Solidity 本身就处在快速的发展之中，所以我们很难保证不引入修改语法的变更。 因此对含重大变更的版本，通读变更日志永远是好办法，变更日志通常会有版本号表明更新点。</p>
-<p>版本标识使用如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity &gt;&#x3D;0.4.25 &lt;0.7.0;</span><br></pre></td></tr></table></figure>
-<p>这样，源文件将既不允许低于 0.4.25 版本的编译器编译， 也不允许高于（包含） 0.7.0 版本的编译器编译（第二个条件因使用 ^ 被添加）。 这种做法的考虑是，编译器在 0.7.0 版本之前不会有重大变更，所以可确保源代码始终按预期被编译。</p>
-<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>Solidity 支持通过构造结构体的形式定义新的类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity &gt;&#x3D;0.4.25 &lt;0.7.0;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; 定义的新类型包含两个属性。</span><br><span class="line">  &#x2F;&#x2F; 在合约外部声明结构体可以使其被多个合约共享。 在这里，这并不是真正需要的。</span><br><span class="line">  struct Funder &#123;</span><br><span class="line">      address addr;</span><br><span class="line">      uint amount;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"> contract CrowdFunding &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 也可以在合约内部定义结构体，这使得它们仅在此合约和衍生合约中可见。</span><br><span class="line">    struct Campaign &#123;</span><br><span class="line">        address beneficiary;</span><br><span class="line">        uint fundingGoal;</span><br><span class="line">        uint numFunders;</span><br><span class="line">        uint amount;</span><br><span class="line">        mapping (uint &#x3D;&gt; Funder) funders;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>当然，结构体可以在合约的里面，也可以在合约外面。</p>
-<h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity &gt;&#x3D;0.4.25 &lt;0.7.0;</span><br><span class="line"></span><br><span class="line">contract test &#123;</span><br><span class="line">    enum ActionChoices &#123; GoLeft, GoRight, GoStraight, SitStill &#125;</span><br><span class="line">    ActionChoices choice;</span><br><span class="line">    ActionChoices constant defaultChoice &#x3D; ActionChoices.GoStraight;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>枚举是在Solidity中创建用户定义类型的一种方法。 它们是显示所有整型相互转换，但不允许隐式转换。</p>
+                <h2 id="输入命令truffle-unbox-metacoin"><a href="#输入命令truffle-unbox-metacoin" class="headerlink" title="输入命令truffle unbox metacoin"></a>输入命令truffle unbox metacoin</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle unbox metacoin</span><br></pre></td></tr></table></figure>
+<p>或者：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle unbox init</span><br></pre></td></tr></table></figure>
+<p>输出为：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">This directory is non-empty...</span><br><span class="line">? Proceed anyway? (Y/n) </span><br><span class="line">Starting unbox...</span><br><span class="line">=================</span><br><span class="line"></span><br><span class="line">? Proceed anyway? Yes</span><br><span class="line">✔ Preparing to download box</span><br><span class="line">✖ Downloading</span><br><span class="line">Unbox failed!</span><br><span class="line">✖ Downloading</span><br><span class="line">Unbox failed!</span><br><span class="line">RequestError: Error: connect ECONNREFUSED 151.101.228.133:443</span><br><span class="line">    at new RequestError (/home/dexter/node-v12.16.3-linux-x64/lib/node_modules/truffle/build/webpack:/node_modules/request-promise-core/lib/errors.js:14:1)</span><br><span class="line">    at Request.plumbing.callback (/home/dexter/node-v12.16.3-linux-x64/lib/node_modules/truffle/build/webpack:/node_modules/request-promise-core/lib/plumbing.js:87:1)</span><br><span class="line">    at Request.RP<span class="variable">$callback</span> [as _callback] (/home/dexter/node-v12.16.3-linux-x64/lib/node_modules/truffle/build/webpack:/node_modules/request-promise-core/lib/plumbing.js:46:1)</span><br><span class="line">    at self.callback (/home/dexter/node-v12.16.3-linux-x64/lib/node_modules/truffle/build/webpack:/node_modules/request/request.js:185:1)</span><br><span class="line">    at Request.emit (events.js:310:20)</span><br><span class="line">    at Request.onRequestError (/home/dexter/node-v12.16.3-linux-x64/lib/node_modules/truffle/build/webpack:/node_modules/request/request.js:881:1)</span><br><span class="line">    at ClientRequest.emit (events.js:310:20)</span><br><span class="line">    at TLSSocket.socketErrorListener (_http_client.js:426:9)</span><br><span class="line">    at TLSSocket.emit (events.js:310:20)</span><br><span class="line">    at emitErrorNT (internal/streams/destroy.js:92:8)</span><br><span class="line">    at emitErrorAndCloseNT (internal/streams/destroy.js:60:3)</span><br><span class="line">    at processTicksAndRejections (internal/process/task_queues.js:84:21)</span><br><span class="line">Truffle v5.1.27 (core: 5.1.27)</span><br><span class="line">Node v12.16.3</span><br></pre></td></tr></table></figure>
+<p>后来多次尝试重新输入命令，在新文件夹运行truffle unbox metacoin结果也一样。网上查是网络问题，其实真的的网络问题，重启手机热点，重启电脑后，再次输入命令truffle unbox metacoin：<br>！<a href="https://note.youdao.com/yws/public/resource/f8b6169bde7085e7ea9c1bb0d29a2ea7/xmlnote/WEBRESOURCEc4609d47cd64fd317a157b7432ed1472/72" target="_blank" rel="noopener"></a></p>
+<p>至此，大功告成。</p>
+<p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/2c16c3a6073a1ac48d9de3e0b52d9b69/xmlnote/WEBRESOURCE144cfd2ca5170bc27cc833e7786a2f85/52" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
             <hr/>
@@ -504,7 +495,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/2020/07/10/solidity-file/">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/2020/07/10/solidity-file/</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/5886.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/5886.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -542,8 +533,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/hexoT.github.io/tags/solidity/">
-                                    <span class="chip bg-color">solidity</span>
+                                <a href="/hexoT.github.io/tags/error/">
+                                    <span class="chip bg-color">error</span>
                                 </a>
                             
                         </div>
@@ -715,19 +706,20 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/hexoT.github.io/2020/07/10/contract-struct/">
+                <a href="/hexoT.github.io/posts/undefined.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="合约结构">
+                        <img src="/hexoT.github.io/medias/featureimages/21.jpg" class="responsive-img" alt="Solidity 源文件结构">
                         
-                        <span class="card-title">合约结构</span>
+                        <span class="card-title">Solidity 源文件结构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            合约结构在 Solidity 语言中，合约类似于其他面向对象编程语言中的类。每个合约中可以包含 状态变量、 函数、 函数修改器 、事件 Event、 结构体、 和 枚举类型 的声明，且合约可以从其他合约继承。还有一些特殊的合约，如： 库 和
+                            Solidity 源文件结构Solidity源文件中可以包含任意多个 合约定义 、导入源文件指令 、 版本标识 指令、 结构体 和 枚举 定义。
+12345678910111213141516171819202122232425262728
                         
                     </div>
                     <div class="publish-info">
@@ -760,23 +752,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/2020/07/10/error1/">
+                <a href="/hexoT.github.io/posts/21694.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/14.jpg" class="responsive-img" alt="Solidity开发使用命令truffle unbox metacoin时发生错误的解决方法">
+                        <img src="/hexoT.github.io/medias/featureimages/2.jpg" class="responsive-img" alt="truffle与合约交互">
                         
-                        <span class="card-title">Solidity开发使用命令truffle unbox metacoin时发生错误的解决方法</span>
+                        <span class="card-title">truffle与合约交互</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            输入命令truffle unbox metacoin1$ truffle unbox metacoin
-或者：
-1$ truffle unbox init
-输出为：
-1234567891011121314151617181920212223
+                            为何要用truffle与合约交互如果我们为了与合约进行（测试）交互而向每次都向以太坊网络进行原始请求，我们很快就会意识到编写这些请求是笨重而繁琐的。 同样，我们可能会发现管理每个请求的状态是 复杂的。 幸运的是，Truffle为我们处理这种
                         
                     </div>
                     <div class="publish-info">
@@ -794,8 +782,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/hexoT.github.io/tags/error/">
-                        <span class="chip bg-color">error</span>
+                    <a href="/hexoT.github.io/tags/solidity/">
+                        <span class="chip bg-color">solidity</span>
                     </a>
                     
                 </div>

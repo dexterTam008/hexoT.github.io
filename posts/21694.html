@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="contract, DAPPS">
+    <meta name="keywords" content="truffle与合约交互, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>contract | DAPPS</title>
+    <title>truffle与合约交互 | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">contract</h1>
+                    <h1 class="description center-align post-title">truffle与合约交互</h1>
                 </div>
             </div>
         </div>
@@ -462,14 +462,36 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="合约文件目录"><a href="#合约文件目录" class="headerlink" title="合约文件目录"></a>合约文件目录</h2><p>所有合约都位于项目的 contracts/ 目录中。 由于合约是用Solidity语言编写的，所有包含合约的文件都将具有 .sol 文件扩展名。 相关的 Solidity 库也将有一个.sol扩展名。</p>
-<p>使用truffle init命令创建的空 Truffle 工程会生成一个用于部署的Migrations.sol 合约文件。 如果我们使用 Truffle Box 来创建工程，则会有多个合约文件。<br>！<a href="https://note.youdao.com/yws/public/resource/874ce020b56a45ac1473dc8dc4f74a4b/xmlnote/WEBRESOURCEb239401647e26a06b3e941b7ce89295c/57" target="_blank" rel="noopener"></a><br>如图是contracts/ 目录下的Migrations.sol合约。</p>
-<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>切换到项目工程所在根目录，然后在终端中键入以下内容：</p>
+                <h2 id="为何要用truffle与合约交互"><a href="#为何要用truffle与合约交互" class="headerlink" title="为何要用truffle与合约交互"></a>为何要用truffle与合约交互</h2><p>如果我们为了与合约进行（测试）交互而向每次都向以太坊网络进行原始请求，我们很快就会意识到编写这些请求是笨重而繁琐的。 同样，我们可能会发现管理每个请求的状态是 复杂的。 幸运的是，Truffle为我们处理这种复杂性，使我们与合约的互动变得轻而易举。</p>
+<h2 id="以太坊网络数据的读和写"><a href="#以太坊网络数据的读和写" class="headerlink" title="以太坊网络数据的读和写"></a>以太坊网络数据的读和写</h2><p>以太坊网络区分将数据写入网络和从网络读取数据。 通常，写入数据称为交易 transaction，而读取数据称为 调用 call。</p>
+<h3 id="交易-Transactions"><a href="#交易-Transactions" class="headerlink" title="交易 Transactions"></a>交易 Transactions</h3><p>交易从改变了网络的状态。 交易的特征是它写入（或更改）数据。 一个交易需要耗费以太运行，称为 “gas”，交易同样需要（较长）时间来处理。通常，通过交易执行的函数不会返回值，仅仅是返回一个交易ID。 可总结交易的特征如下：</p>
+<p>*消耗Gas 费用（以太）<br>*会更改网络状态<br>*不会立即执行（需要等待网络矿工打包）<br>*没有执行返回值（只是一个交易ID）。</p>
+<h3 id="调用-Calls"><a href="#调用-Calls" class="headerlink" title="调用 Calls"></a>调用 Calls</h3><p>调用的特征是读取数据。 当我们通过调用执行合约函数时，我们可以立刻获取到返回值。 可总结调用Call的特点：</p>
+<p>*免费（不消耗 Gas）<br>*不改变网络状态<br>*立即执行<br>*有返回值</p>
+<h2 id="何为合约抽象"><a href="#何为合约抽象" class="headerlink" title="何为合约抽象"></a>何为合约抽象</h2><p>合约抽象是一种代码封装，让我们可以轻松地与合约进行交互。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle unbox metacoin</span><br></pre></td></tr></table></figure>
+<p>终端执行truffle unbox metacoin，在/contrct目录下到开MetaCoin.sol这个合约我们可以看到：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// SPDX-License-Identifier: MIT</span><br><span class="line">pragma solidity &gt;=0.4.25 &lt;0.7.0;</span><br><span class="line"></span><br><span class="line">import <span class="string">"./ConvertLib.sol"</span>;</span><br><span class="line"></span><br><span class="line">// This is just a simple example of a coin-like contract.</span><br><span class="line">// It is not standards compatible and cannot be expected to talk to other</span><br><span class="line">// coin/token contracts. If you want to create a standards-compliant</span><br><span class="line">// token, see: https://github.com/ConsenSys/Tokens. Cheers!</span><br><span class="line"></span><br><span class="line">contract MetaCoin &#123;</span><br><span class="line">	mapping (address =&gt; uint) balances;</span><br><span class="line"></span><br><span class="line">	event Transfer(address indexed _from, address indexed _to, uint256 _value);</span><br><span class="line"></span><br><span class="line">	constructor() public &#123;</span><br><span class="line">		balances[tx.origin] = 10000;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">function</span> sendCoin(address receiver, uint amount) public returns(bool sufficient) &#123;</span><br><span class="line">		<span class="keyword">if</span> (balances[msg.sender] &lt; amount) <span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">		balances[msg.sender] -= amount;</span><br><span class="line">		balances[receiver] += amount;</span><br><span class="line">		emit Transfer(msg.sender, receiver, amount);</span><br><span class="line">		<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">function</span> getBalanceInEth(address addr) public view returns(uint)&#123;</span><br><span class="line">		<span class="built_in">return</span> ConvertLib.convert(getBalance(addr),2);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">function</span> getBalance(address addr) public view returns(uint) &#123;</span><br><span class="line">		<span class="built_in">return</span> balances[addr];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在contract MetaCoin {}下有事件event Transfer()，构造函数constructor()，还有三个函数（sendCoin，getBalanceInEth和getBalance）。理解合约抽象，其实就是一种封装，说白了就是打包。contract MetaCoin {}下打包了事件，构造函数，三个函数（sendCoin，getBalanceInEth和getBalance）…</p>
+<h2 id="控制台上输入命令与合约进行交互"><a href="#控制台上输入命令与合约进行交互" class="headerlink" title="控制台上输入命令与合约进行交互"></a>控制台上输入命令与合约进行交互</h2><h3 id="启动控制台前的工作"><a href="#启动控制台前的工作" class="headerlink" title="启动控制台前的工作"></a>启动控制台前的工作</h3><p>使用合约抽象，我们可以轻松地在以太坊网络上执行合约函数，进行交互。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle compile</span><br></pre></td></tr></table></figure>
-<p>首次运行时，将编译所有合约。 在后续运行中，truffle将仅编译自上次编译以来有更改的合约。 如果我们想覆盖此行为，可以使用 –all 选项运行上面的命令。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ truffle compile</span><br><span class="line">Compiling your contracts...</span><br><span class="line">===========================</span><br><span class="line">&gt; Everything is up to date, there is nothing to compile.</span><br></pre></td></tr></table></figure>
-<p>如上truffle将仅编译自上次编译以来有更改的合约,没有更改就出现Everything is up to date, there is nothing to compile。</p>
-<h2 id="目标文件-Artifacts"><a href="#目标文件-Artifacts" class="headerlink" title="目标文件 Artifacts"></a>目标文件 Artifacts</h2><p>编译的目标文件 Artifacts 将放在 build/contracts/ 目录中：<br>！<a href="https://note.youdao.com/yws/public/resource/74a297d3939ea035df49bfe05a1fe0c8/xmlnote/WEBRESOURCEa3392aad57f048ffc22b33d7772ae35a/62" target="_blank" rel="noopener"></a><br>可以看到目标文件 Artifacts其实就是JSON对象文件。这些 Artifacts 是Truffle内部工作的组成部分，它们在成功部署应用程序中起着重要作用。 我们不应编辑这些文件，因为这些文件将被合约编译和部署覆盖。</p>
+<p>在执行部署之前，需要确保有一个区块链运行， 可以使用<br>Ganache（ubuntu环境下Ganache的安装） 来开启一个私链来进行开发测试，默认会在 8545 端口上运行一个开发链。<br>在启动Ganache前，还应该先修改truffle-config.js文件，连接本地ganache-cli环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  // Uncommenting the defaults below </span><br><span class="line">  // provides <span class="keyword">for</span> an easier quick-start with Ganache.</span><br><span class="line">  // You can also follow this format <span class="keyword">for</span> other networks;</span><br><span class="line">  // see &lt;http://truffleframework.com/docs/advanced/configuration&gt;</span><br><span class="line">  // <span class="keyword">for</span> more details on how to specify configuration options!</span><br><span class="line">  //</span><br><span class="line"> networks: &#123;</span><br><span class="line">  development: &#123;</span><br><span class="line">   host: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">    port: 8545,</span><br><span class="line">    network_id: <span class="string">"*"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  //  <span class="built_in">test</span>: &#123;</span><br><span class="line">  //    host: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">  //    port: 7545,</span><br><span class="line">  //    network_id: <span class="string">"*"</span></span><br><span class="line">  //  &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  //</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然后运行ganache-cli：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ganache-cli</span><br></pre></td></tr></table></figure>
+<p>Ganache 启动之后是这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">Ganache CLI v6.9.1 (ganache-core: 2.10.2)</span><br><span class="line"></span><br><span class="line">Available Accounts</span><br><span class="line">==================</span><br><span class="line">(0) 0xF30F53857d647988c2139C06f61F201358ed7c5A (100 ETH)</span><br><span class="line">(1) 0xA6CaEC75BeD07C935c19381CcAd0B54bB0b55bcC (100 ETH)</span><br><span class="line">(2) 0xAbEAE778ee9e2f76a4639a65125CE15B3ADf6636 (100 ETH)</span><br><span class="line">(3) 0x80661508aB50B862166b900f16de7B3003b0FE77 (100 ETH)</span><br><span class="line">(4) 0x93bDddF9D2703Cf20Bcd2d2f35f7A74485C0445D (100 ETH)</span><br><span class="line">(5) 0xc6C6f5a2ebab7f093eC69Df64AeC431bf8Efb9e7 (100 ETH)</span><br><span class="line">(6) 0x440Ad2C3e69Bfda09Bf96ee2e3AC994A8CedD50f (100 ETH)</span><br><span class="line">(7) 0xeDF4d82bC91c6B686DBea965C4BBC57C3B20aBbe (100 ETH)</span><br><span class="line">(8) 0xed0724f9C9987f1E34c6ea1310Ca185B8dcFdeBF (100 ETH)</span><br><span class="line">(9) 0x042C23152E737F4a9787312347e2421EF62d3830 (100 ETH)</span><br><span class="line"></span><br><span class="line">Private Keys</span><br><span class="line">==================</span><br><span class="line">(0) 0x2da4a67fc6ca91363f8c77ad847bd39c31f8f1adebf1917bcc73479ee3c85b5b</span><br><span class="line">(1) 0x29dada3113b25e0062d98ef2c6c6bcf902890ca29fd75aa83ef51506f35d859b</span><br><span class="line">(2) 0xdf5a94d2e341cca74164109535643dfe76006962da2d722f5ec5b3b6ed156efe</span><br><span class="line">(3) 0xb8a8a3aecad4858c01c855bed20a15efbda573e009a72ded255e9431081804f1</span><br><span class="line">(4) 0xefd2f714680d3eaf56feb620c7ffa4f5dec190c55e85e0391da5c407782eac42</span><br><span class="line">(5) 0x4cfc4f098f5f377474075435eb4f9884039559e1c71a4bb47c3da6d7235143be</span><br><span class="line">(6) 0xe24daa6f598c76235c0a082cc86425e310fedcf867d847f2ae3ccbf959d5ba5e</span><br><span class="line">(7) 0xfab980ecfb7d98b84e2ecbf3a1b25a820d6bcab7d6b98445b6988d3d102afe1a</span><br><span class="line">(8) 0x8cc719c72e450fdd5ddd0e9b328a979ca38618afda188bd1471c7e3e7edea13e</span><br><span class="line">(9) 0xea1a137134552b3cbb333d40dd5deb86f4c7ece2d5285aefffb3b4f762e9a110</span><br><span class="line"></span><br><span class="line">HD Wallet</span><br><span class="line">==================</span><br><span class="line">Mnemonic:      fragile bar affair ritual slam patch <span class="keyword">case</span> <span class="built_in">echo</span> math napkin uncle tomato</span><br><span class="line">Base HD Path:  m/44<span class="string">'/60'</span>/0<span class="string">'/0/&#123;account_index&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Gas Price</span></span><br><span class="line"><span class="string">==================</span></span><br><span class="line"><span class="string">20000000000</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Gas Limit</span></span><br><span class="line"><span class="string">==================</span></span><br><span class="line"><span class="string">6721975</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Call Gas Limit</span></span><br><span class="line"><span class="string">==================</span></span><br><span class="line"><span class="string">9007199254740991</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Listening on 127.0.0.1:8545</span></span><br></pre></td></tr></table></figure>
+<h3 id="启动控制台执行合约函数"><a href="#启动控制台执行合约函数" class="headerlink" title="启动控制台执行合约函数"></a>启动控制台执行合约函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle develop</span><br></pre></td></tr></table></figure>
+<p>然后出现控制台：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">truffle(develop)&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="执行交易Transactions"><a href="#执行交易Transactions" class="headerlink" title="执行交易Transactions"></a>执行交易Transactions</h4><p>下面我们执行交易，使用 sendCoin交易调用的方式从一个帐户向另一个帐户发送20个币：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">truffle(develop)&gt; <span class="built_in">let</span> instance = await MetaCoin.deployed()</span><br><span class="line">undefined</span><br><span class="line">truffle(develop)&gt;<span class="built_in">let</span> account = await web3.eth.getAccounts()</span><br><span class="line">undefined</span><br><span class="line">truffle(develop)&gt;instance.sendCoin(accounts[1], 20, &#123;from: accounts[0]&#125;)</span><br><span class="line">&#123;</span><br><span class="line">  tx: <span class="string">'0xe54369d0f53f4009934891c9b3e266d17b643a4f56528a483d9bbad3fbfb306a'</span>,</span><br><span class="line">  receipt: &#123;</span><br><span class="line">    transactionHash: <span class="string">'0xe54369d0f53f4009934891c9b3e266d17b643a4f56528a483d9bbad3fbfb306a'</span>,</span><br><span class="line">    transactionIndex: 0,</span><br><span class="line">    blockHash: <span class="string">'0x7d59dbf8a0fdcb5cba53d78bed7a61b1812ef4cea0bfb4a7acdd5e38d0d4b646'</span>,</span><br><span class="line">    blockNumber: 8,</span><br><span class="line">    from: <span class="string">'0x5944f1ef9bbdd9f9924f86fe741ddecb4bd309a9'</span>,</span><br><span class="line">    to: <span class="string">'0x51b60184eae1b3b281909751a616b323f1a145bd'</span>,</span><br><span class="line">    gasUsed: 36508,</span><br><span class="line">    cumulativeGasUsed: 36508,</span><br><span class="line">    contractAddress: null,</span><br><span class="line">    logs: [ [Object] ],</span><br><span class="line">    status: <span class="literal">true</span>,</span><br><span class="line">    logsBloom: <span class="string">'0x0000000000000000000000000000000000040000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000c000000000000000000400000000000000000000040000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000002000000000000000000000000000000000000002400000000000004000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'</span>,</span><br><span class="line">    rawLogs: [ [Object] ]</span><br><span class="line">  &#125;,</span><br><span class="line">  logs: [</span><br><span class="line">    &#123;</span><br><span class="line">      logIndex: 0,</span><br><span class="line">      transactionIndex: 0,</span><br><span class="line">      transactionHash: <span class="string">'0xe54369d0f53f4009934891c9b3e266d17b643a4f56528a483d9bbad3fbfb306a'</span>,</span><br><span class="line">      blockHash: <span class="string">'0x7d59dbf8a0fdcb5cba53d78bed7a61b1812ef4cea0bfb4a7acdd5e38d0d4b646'</span>,</span><br><span class="line">      blockNumber: 8,</span><br><span class="line">      address: <span class="string">'0x51b60184EAE1b3B281909751A616B323f1a145bd'</span>,</span><br><span class="line">      <span class="built_in">type</span>: <span class="string">'mined'</span>,</span><br><span class="line">      id: <span class="string">'log_9b49c3fe'</span>,</span><br><span class="line">      event: <span class="string">'Transfer'</span>,</span><br><span class="line">      args: [Result]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体来说，我们将获得以下内容：</p>
+<p>*instance.tx (string) - 交易哈希 hash<br>*instance.logs (array) - 解码过的事件 (日志)<br>*instance.receipt (object) - 交易收据 receipt（包括使用的gas）</p>
+<h4 id="执行调用-call"><a href="#执行调用-call" class="headerlink" title="执行调用 call"></a>执行调用 call</h4><p>由上面可知MetaCoin.getBalance方法是执行调用 call。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">truffle(develop)&gt; <span class="built_in">let</span> balance = await instance.getBalance(accounts[0])</span><br><span class="line">undefined</span><br><span class="line">truffle(develop)&gt; balance.toNumber()</span><br><span class="line">9980</span><br></pre></td></tr></table></figure>
+<p>调用会得到返回值9980。</p>
 <p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/2c16c3a6073a1ac48d9de3e0b52d9b69/xmlnote/WEBRESOURCE144cfd2ca5170bc27cc833e7786a2f85/52" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
@@ -496,7 +518,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/2020/07/10/contract/">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/2020/07/10/contract/</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/21694.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/21694.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -707,7 +729,56 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/hexoT.github.io/2020/07/10/migrate/">
+                <a href="/hexoT.github.io/posts/5886.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/hexoT.github.io/medias/featureimages/14.jpg" class="responsive-img" alt="Solidity开发使用命令truffle unbox metacoin时发生错误的解决方法">
+                        
+                        <span class="card-title">Solidity开发使用命令truffle unbox metacoin时发生错误的解决方法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            输入命令truffle unbox metacoin1$ truffle unbox metacoin
+或者：
+1$ truffle unbox init
+输出为：
+1234567891011121314151617181920212223
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            dexter
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/hexoT.github.io/tags/error/">
+                        <span class="chip bg-color">error</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/hexoT.github.io/posts/undefined.html">
                     <div class="card-image">
                         
                         
@@ -726,54 +797,6 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-10
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            dexter
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/hexoT.github.io/tags/solidity/">
-                        <span class="chip bg-color">solidity</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/hexoT.github.io/2020/07/10/truffle-command/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/hexoT.github.io/medias/featureimages/15.jpg" class="responsive-img" alt="truffle命令指南">
-                        
-                        <span class="card-title">truffle命令指南</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            命令格式1$ truffle [command] [options]
-
-命令truffle console12$ truffle consoletruffle(default)&gt;
-使用默认网络来调起一个控制台，会自动连接到一个运行中的
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
                                 <i class="far fa-clock fa-fw icon-date"></i>2020-07-10
                             </span>
@@ -788,8 +811,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/hexoT.github.io/tags/truffle/">
-                        <span class="chip bg-color">truffle</span>
+                    <a href="/hexoT.github.io/tags/solidity/">
+                        <span class="chip bg-color">solidity</span>
                     </a>
                     
                 </div>
