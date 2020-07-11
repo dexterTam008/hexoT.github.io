@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>ETH的JavaScript项目和工具</title>
+      <link href="/hexoT.github.io/posts/51414.html"/>
+      <url>/hexoT.github.io/posts/51414.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="Solidity"><a href="#Solidity" class="headerlink" title="Solidity"></a>Solidity</h2><p>Solidity 是一门面向合约的、为实现智能合约而创建的高级编程语言。这门语言受到了 C++，Python 和 Javascript 语言的影响，设计的目的是能在以太坊虚拟机（EVM）上运行。<br>！<a href="https://solidity-cn.readthedocs.io/zh/develop/" target="_blank" rel="noopener">相关文档</a><br>！<a href="https://github.com/ethereum/solidity/" target="_blank" rel="noopener">GitHub</a><br>！<a href="https://github.com/ethereum/solidity/" target="_blank" rel="noopener">应用例子：Solidity Gitter 聊天室</a></p><h2 id="Truffle"><a href="#Truffle" class="headerlink" title="Truffle"></a>Truffle</h2><p>使用节点构建的开发环境和测试框架。其本身基于Javascript。<br>！<a href="https://github.com/ethereum/solidity/" target="_blank" rel="noopener">GitHub</a><br>！<a href="https://www.trufflesuite.com/" target="_blank" rel="noopener">trufflesuite.com</a></p><h2 id="Web3-js"><a href="#Web3-js" class="headerlink" title="Web3.js"></a>Web3.js</h2><p>web3.js是一个库集合，你可以使用HTTP或IPC连接本地或远程以太它节点进行交互。 web3的JavaScript库能够与以太坊区块链交互。 它可以检索用户帐户，发送交易，与智能合约交互等。<br>！<a href="https://web3.tryblockchain.org/" target="_blank" rel="noopener">相关文档</a><br>！<a href="https://github.com/ethereum/web3.js/" target="_blank" rel="noopener">GitHub</a></p><h2 id="Ethers-js"><a href="#Ethers-js" class="headerlink" title="Ethers.js"></a>Ethers.js</h2><p>JavaScript 和 TypeScript 中完整的以太坊钱包实现和实用工具。<br>！<a href="https://docs.ethers.io/v5/" target="_blank" rel="noopener">相关文档</a><br>！<a href="https://github.com/ethers-io/ethers.js/" target="_blank" rel="noopener">GitHub</a></p><h2 id="ethereumjs-vm"><a href="#ethereumjs-vm" class="headerlink" title="ethereumjs-vm"></a>ethereumjs-vm</h2><p>在 JavaScript 中实现以太坊虚拟机（VM）<br>！<a href="https://github.com/ethereumjs/ethereumjs-vm" target="_blank" rel="noopener">GitHub</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> ETH </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>合约结构</title>
       <link href="/hexoT.github.io/posts/undefined.html"/>
       <url>/hexoT.github.io/posts/undefined.html</url>
@@ -230,44 +249,6 @@
             <tag> solidity </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>&#39;my-first-blog&#39;</title>
-      <link href="/hexoT.github.io/posts/31809.html"/>
-      <url>/hexoT.github.io/posts/31809.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> uncategorized </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/hexoT.github.io/posts/16107.html"/>
-      <url>/hexoT.github.io/posts/16107.html</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> uncategorized </category>
-          
-      </categories>
-      
       
     </entry>
     
