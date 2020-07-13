@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ubuntu环境下ganace-cli的安装, DAPPS">
+    <meta name="keywords" content="运行truffle migrate时报错Something went wrong while attempting to connect to the network, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ubuntu环境下ganace-cli的安装 | DAPPS</title>
+    <title>运行truffle migrate时报错Something went wrong while attempting to connect to the network | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ubuntu环境下ganace-cli的安装</h1>
+                    <h1 class="description center-align post-title">运行truffle migrate时报错Something went wrong while attempting to connect to the network</h1>
                 </div>
             </div>
         </div>
@@ -430,23 +430,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/hexoT.github.io/tags/solidity/">
-                                <span class="chip bg-color">solidity</span>
+                            <a href="/hexoT.github.io/tags/truffle/">
+                                <span class="chip bg-color">truffle</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -455,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-12
+                    2020-07-13
                 </div>
                 
 
@@ -471,15 +462,16 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="下载ganace-cli"><a href="#下载ganace-cli" class="headerlink" title="下载ganace-cli"></a>下载ganace-cli</h2><p>可以命令行下载：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo npm install -g ganache-cli</span><br></pre></td></tr></table></figure>
-<h2 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h2><p>下载后的ganache-cli会放在/node-v12.16.3-linux-x64/bin下，如图：<br>！<a href="https://note.youdao.com/yws/public/resource/b594b9af170022a9804c43e600297645/xmlnote/WEBRESOURCE2359ed98a28b6ab4e86855bde94ee5c2/103" target="_blank" rel="noopener"></a></p>
-<p>输入以下命令进行全局配置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /home/dexter/node-v12.16.3-linux-x64/bin/ganache-cli /usr/<span class="built_in">local</span>/bin/ganache-cli</span><br></pre></td></tr></table></figure>
+                <h2 id="运行truffle-migrate时报错"><a href="#运行truffle-migrate时报错" class="headerlink" title="运行truffle migrate时报错"></a>运行truffle migrate时报错</h2><p>编译智能合约之后，部署到区块链上运行truffle migrate，报错Something went wrong while attempting to connect to the network，出现下面情况：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ truffle  migrate</span><br><span class="line">Compiling your contracts...</span><br><span class="line">===========================</span><br><span class="line">&gt; Everything is up to date, there is nothing to compile.</span><br><span class="line"></span><br><span class="line">&gt; Something went wrong <span class="keyword">while</span> attempting to connect to the network. Check your network configuration.</span><br><span class="line"></span><br><span class="line">Could not connect to your Ethereum client with the following parameters:</span><br><span class="line">    - host       &gt; 127.0.0.1</span><br><span class="line">    - port       &gt; 7545</span><br><span class="line">    - network_id &gt; *</span><br><span class="line">Please check that your Ethereum client:</span><br><span class="line">    - is running</span><br><span class="line">    - is accepting RPC connections (i.e., <span class="string">"--rpc"</span> option is used <span class="keyword">in</span> geth)</span><br><span class="line">    - is accessible over the network</span><br><span class="line">    - is properly configured <span class="keyword">in</span> your Truffle configuration file (truffle-config.js)</span><br><span class="line"></span><br><span class="line">Truffle v5.1.27 (core: 5.1.27)</span><br><span class="line">Node v12.16.3</span><br></pre></td></tr></table></figure>
 
-<p>这样就可以在全局，即在任何一文件夹内运行ganache-cli命令：</p>
+<h2 id="解决错误"><a href="#解决错误" class="headerlink" title="解决错误"></a>解决错误</h2><p>看下原因：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Could not connect to your Ethereum client with the following parameters:</span><br><span class="line">    - host       &gt; 127.0.0.1</span><br><span class="line">    - port       &gt; 7545</span><br><span class="line">    - network_id &gt; *</span><br><span class="line">Please check that your Ethereum client:</span><br><span class="line">    - is running</span><br><span class="line">    - is accepting RPC connections (i.e., <span class="string">"--rpc"</span> option is used <span class="keyword">in</span> geth)</span><br><span class="line">    - is accessible over the network</span><br><span class="line">    - is properly configured <span class="keyword">in</span> your Truffle configuration file (truffle-config.js)</span><br><span class="line"></span><br><span class="line">Truffle v5.1.27 (core: 5.1.27)</span><br><span class="line">Node v12.16.3</span><br></pre></td></tr></table></figure>
+<p>其实，是因为 - port       &gt; 7545，在命令行运行一个区块链ganache-cli时，可以到上节！<a href="https://dextertam008.github.io/hexoT.github.io/posts/42010.html">ubuntu环境下ganace-cli的安装</a>看到：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">$ ganache-cli</span><br><span class="line">Ganache CLI v6.9.1 (ganache-core: 2.10.2)</span><br><span class="line"></span><br><span class="line">Available Accounts</span><br><span class="line">==================</span><br><span class="line">(0) 0xF30F53857d647988c2139C06f61F201358ed7c5A (100 ETH)</span><br><span class="line">(1) 0xA6CaEC75BeD07C935c19381CcAd0B54bB0b55bcC (100 ETH)</span><br><span class="line">(2) 0xAbEAE778ee9e2f76a4639a65125CE15B3ADf6636 (100 ETH)</span><br><span class="line">(3) 0x80661508aB50B862166b900f16de7B3003b0FE77 (100 ETH)</span><br><span class="line">(4) 0x93bDddF9D2703Cf20Bcd2d2f35f7A74485C0445D (100 ETH)</span><br><span class="line">(5) 0xc6C6f5a2ebab7f093eC69Df64AeC431bf8Efb9e7 (100 ETH)</span><br><span class="line">(6) 0x440Ad2C3e69Bfda09Bf96ee2e3AC994A8CedD50f (100 ETH)</span><br><span class="line">(7) 0xeDF4d82bC91c6B686DBea965C4BBC57C3B20aBbe (100 ETH)</span><br><span class="line">(8) 0xed0724f9C9987f1E34c6ea1310Ca185B8dcFdeBF (100 ETH)</span><br><span class="line">(9) 0x042C23152E737F4a9787312347e2421EF62d3830 (100 ETH)</span><br><span class="line"></span><br><span class="line">Private Keys</span><br><span class="line">==================</span><br><span class="line">(0) 0x2da4a67fc6ca91363f8c77ad847bd39c31f8f1adebf1917bcc73479ee3c85b5b</span><br><span class="line">(1) 0x29dada3113b25e0062d98ef2c6c6bcf902890ca29fd75aa83ef51506f35d859b</span><br><span class="line">(2) 0xdf5a94d2e341cca74164109535643dfe76006962da2d722f5ec5b3b6ed156efe</span><br><span class="line">(3) 0xb8a8a3aecad4858c01c855bed20a15efbda573e009a72ded255e9431081804f1</span><br><span class="line">(4) 0xefd2f714680d3eaf56feb620c7ffa4f5dec190c55e85e0391da5c407782eac42</span><br><span class="line">(5) 0x4cfc4f098f5f377474075435eb4f9884039559e1c71a4bb47c3da6d7235143be</span><br><span class="line">(6) 0xe24daa6f598c76235c0a082cc86425e310fedcf867d847f2ae3ccbf959d5ba5e</span><br><span class="line">(7) 0xfab980ecfb7d98b84e2ecbf3a1b25a820d6bcab7d6b98445b6988d3d102afe1a</span><br><span class="line">(8) 0x8cc719c72e450fdd5ddd0e9b328a979ca38618afda188bd1471c7e3e7edea13e</span><br><span class="line">(9) 0xea1a137134552b3cbb333d40dd5deb86f4c7ece2d5285aefffb3b4f762e9a110</span><br><span class="line"></span><br><span class="line">HD Wallet</span><br><span class="line">==================</span><br><span class="line">Mnemonic:      fragile bar affair ritual slam patch <span class="keyword">case</span> <span class="built_in">echo</span> math napkin uncle tomato</span><br><span class="line">Base HD Path:  m/44<span class="string">'/60'</span>/0<span class="string">'/0/&#123;account_index&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Gas Price</span></span><br><span class="line"><span class="string">==================</span></span><br><span class="line"><span class="string">20000000000</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Gas Limit</span></span><br><span class="line"><span class="string">==================</span></span><br><span class="line"><span class="string">6721975</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Call Gas Limit</span></span><br><span class="line"><span class="string">==================</span></span><br><span class="line"><span class="string">9007199254740991</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Listening on 127.0.0.1:8545</span></span><br></pre></td></tr></table></figure>
-<p>运行成功如上图。</p>
+<p>服务器是监听了端口127.0.0.1:8545，而不是7545，所以我们可以到更改配置的truffle-config.js中修改端口：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  // See &lt;http://truffleframework.com/docs/advanced/configuration&gt;</span><br><span class="line">  // <span class="keyword">for</span> more about customizing your Truffle configuration!</span><br><span class="line">  networks: &#123;</span><br><span class="line">    development: &#123;</span><br><span class="line">      host: <span class="string">"127.0.0.1"</span>,</span><br><span class="line">      port: 7545,</span><br><span class="line">      network_id: <span class="string">"*"</span> // Match any network id</span><br><span class="line">    &#125;,</span><br><span class="line">    develop: &#123;</span><br><span class="line">      port: 8545</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>把上面的7545修改位8545就可以了。</p>
 <p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/2c16c3a6073a1ac48d9de3e0b52d9b69/xmlnote/WEBRESOURCE144cfd2ca5170bc27cc833e7786a2f85/52" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
@@ -506,7 +498,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/42010.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/42010.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/26367.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/26367.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -544,8 +536,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/hexoT.github.io/tags/solidity/">
-                                    <span class="chip bg-color">solidity</span>
+                                <a href="/hexoT.github.io/tags/truffle/">
+                                    <span class="chip bg-color">truffle</span>
                                 </a>
                             
                         </div>
@@ -713,9 +705,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/hexoT.github.io/posts/26367.html">
                     <div class="card-image">
@@ -733,9 +726,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -744,6 +737,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -762,19 +756,22 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/50760.html">
+                <a href="/hexoT.github.io/posts/42010.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="ubuntu下Metamask安装">
+                        <img src="/hexoT.github.io/medias/featureimages/18.jpg" class="responsive-img" alt="ubuntu环境下ganace-cli的安装">
                         
-                        <span class="card-title">ubuntu下Metamask安装</span>
+                        <span class="card-title">ubuntu环境下ganace-cli的安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在 win10下Metamask中文版安装 这一节已经介绍了Metamask。在Ubuntu下安装不同的是要先下载ubuntu环境下的Chrome 浏览器，默认ubuntu环境下是没有Chrome 浏览器的。然后很多人没科学上网的，继续用上
+                            下载ganace-cli可以命令行下载：
+1$ sudo npm install -g ganache-cli
+全局配置下载后的ganache-cli会放在/node-v12.16.3-linux-x64/bin下，如图：！
+输入以下命令进
                         
                     </div>
                     <div class="publish-info">
