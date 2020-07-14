@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="truffle命令指南, DAPPS">
+    <meta name="keywords" content="env, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>truffle命令指南 | DAPPS</title>
+    <title>env | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">truffle命令指南</h1>
+                    <h1 class="description center-align post-title">env</h1>
                 </div>
             </div>
         </div>
@@ -428,25 +428,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/hexoT.github.io/tags/truffle/">
-                                <span class="chip bg-color">truffle</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -455,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-10
+                    2020-07-14
                 </div>
                 
 
@@ -471,27 +458,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle [<span class="built_in">command</span>] [options]</span><br></pre></td></tr></table></figure>
-
-<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><h4 id="truffle-console"><a href="#truffle-console" class="headerlink" title="truffle console"></a>truffle console</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ truffle console</span><br><span class="line">truffle(default)&gt;</span><br></pre></td></tr></table></figure>
-<p>使用默认网络来调起一个控制台，会自动连接到一个运行中的以太坊客户端。你可以使用选项–network来修改这个特性。</p>
-<p>控制台支持Truffle命令行支持的命令，比如，你可以在控制台中执行migrate –reset，其效果与在命令行中执行truffle migrate –reset的效果一致。Truffle的控制台额外增加如下特性：<br>*所有已经编译的合约都可用。就像在开发测试，前端代码中，或者移植代码中那样使用。<br>*在每个命令后，你的合约会被重新加载。如使用migrate –reset命令后，你可以立即使用新分配的地址和二进制。<br>*web3库也可以使用，且也连到你了的以太坊客户端。<br>*所有命令返回的promise，会自动解析，直接打印出结果，你可以不用输入then()，简化了命令。如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ truffle(default)&gt; MyContract.deployed().getValue.call(); </span><br><span class="line">  8</span><br></pre></td></tr></table></figure>
-
-<h4 id="truffle-build"><a href="#truffle-build" class="headerlink" title="truffle build"></a>truffle build</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle build</span><br></pre></td></tr></table></figure>
-<p>构建结果存在./build目录。所以合约文件则在对应的位置./build/contracts。</p>
-<h4 id="truffle-compile"><a href="#truffle-compile" class="headerlink" title="truffle compile"></a>truffle compile</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle compile</span><br></pre></td></tr></table></figure>
-<p>智能编译你的合约，仅会编译自上次编译后修改过的合约，除非另外指定强制刷新。可选参数：<br>*–compile-all: 强制编译所有合约。<br>*–network 名称：指定使用的网络，保存编译的结果到指定的网络上。</p>
-<h4 id="truffle-migrate"><a href="#truffle-migrate" class="headerlink" title="truffle migrate"></a>truffle migrate</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle migrate</span><br></pre></td></tr></table></figure>
-<p>运行工程的移植。可选的参数：<br>*–reset: 从头运行所有的移植。<br>*–network 名称：指定要使用的网络，并将编译后的资料保存到那个网络。<br>*–to number：将版本从当前版本移植到序号指定的版本。<br>*–compile-all: 强制编译所有的合约<br>*–verbose-rpc：打印Truffle与RPC交互的详细日志。</p>
-<h4 id="truffle-init"><a href="#truffle-init" class="headerlink" title="truffle init"></a>truffle init</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle init</span><br></pre></td></tr></table></figure>
-<p>在当前目录下初始化一个全新的APP，一个全新的工程。会自带默认合约和前端配置。</p>
-<h4 id="truffle-serve"><a href="#truffle-serve" class="headerlink" title="truffle serve"></a>truffle serve</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle serve</span><br></pre></td></tr></table></figure>
-<p>在 <a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> 提供编译的app对应的服务，且在需要的时候自动构建，自动部署。与truffle watch类似，区别在于这里增加web服务器功能。可选参数：<br>*-p port: 指定http服务的端口。默认是8080。<br>*–network 名称：名称：指定要使用的网络，并将编译后的资料保存到那个网络。</p>
-<h4 id="truffle-test"><a href="#truffle-test" class="headerlink" title="truffle test"></a>truffle test</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ $ truffle <span class="built_in">test</span> [/path/to/<span class="built_in">test</span>/file]</span><br></pre></td></tr></table></figure>
-<p>运行所有在./test目录下的测试用例。或可选的运行单个测试文件。可选参数：<br>*–network 名称：指定要使用的网络，并将编译后的资料保存到那个网络。<br>*–compile-all: 强制编译所有的合约<br>*–verbose-rpc：打印Truffle与RPC交互的详细日志。</p>
-<p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/2c16c3a6073a1ac48d9de3e0b52d9b69/xmlnote/WEBRESOURCE144cfd2ca5170bc27cc833e7786a2f85/52" target="_blank" rel="noopener">知识星球</a>。</p>
-
+                
             </div>
             <hr/>
 
@@ -516,7 +483,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/63269.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/63269.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/39357.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/39357.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -553,11 +520,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/hexoT.github.io/tags/truffle/">
-                                    <span class="chip bg-color">truffle</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -727,26 +690,71 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/52995.html">
+                <a href="/hexoT.github.io/posts/22237.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/17.jpg" class="responsive-img" alt="合约编译">
+                        <img src="/hexoT.github.io/medias/featureimages/22.jpg" class="responsive-img" alt="truffle部署错误 Cannot find module &#39;web3-provider-engine&#39;">
                         
-                        <span class="card-title">合约编译</span>
+                        <span class="card-title">truffle部署错误 Cannot find module &#39;web3-provider-engine&#39;</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            合约文件目录所有合约都位于项目的 contracts/ 目录中。 由于合约是用Solidity语言编写的，所有包含合约的文件都将具有 .sol 文件扩展名。 相关的 Solidity 库也将有一个.sol扩展名。
-使用truffle ini
+                            truffle部署报错运行命令truffle migrate –network ropsten  –reset –compile-all时候报错，Cannot find module ‘web3-provider-engine/subpro
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-10
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-14
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            dexter
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/hexoT.github.io/tags/truffle/">
+                        <span class="chip bg-color">truffle</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/hexoT.github.io/posts/54347.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/hexoT.github.io/medias/featureimages/10.jpg" class="responsive-img" alt="infura的注册使用">
+                        
+                        <span class="card-title">infura的注册使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Infura是出色的开放以太坊节点，它提供了标准的RPC API可供开发者 调用。除了支持以太坊，Infura还提供IPFS网关和API，并且提供多个 数字货币交易所的行情信息API。
+进入官网infura的注册使用，其实很简单，只要注册了
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -764,55 +772,6 @@
                     
                     <a href="/hexoT.github.io/tags/solidity/">
                         <span class="chip bg-color">solidity</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/hexoT.github.io/posts/36087.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/hexoT.github.io/medias/featureimages/7.jpg" class="responsive-img" alt="truffle的入门介绍">
-                        
-                        <span class="card-title">truffle的入门介绍</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            什么是truffletruffle是一个世界级的开发环境，是针对基于以太坊的Solidity语言的一套开发框架，其本身基于Javascript。它致力于让以太坊上的开发变得简单：*内置的智能合约编译，链接，部署和二进制文件的管理。*针对快速
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-10
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                    uncategorized
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/hexoT.github.io/tags/truffle/">
-                        <span class="chip bg-color">truffle</span>
                     </a>
                     
                 </div>
