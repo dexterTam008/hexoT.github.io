@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="env, DAPPS">
+    <meta name="keywords" content="从文件加载环境变量的Node.js库dotenv, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>env | DAPPS</title>
+    <title>从文件加载环境变量的Node.js库dotenv | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">env</h1>
+                    <h1 class="description center-align post-title">从文件加载环境变量的Node.js库dotenv</h1>
                 </div>
             </div>
         </div>
@@ -428,21 +428,16 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                    <div class="article-tag">
                         
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
+                            <a href="/hexoT.github.io/tags/solidity/">
+                                <span class="chip bg-color">solidity</span>
                             </a>
                         
                     </div>
+                    
+                </div>
+                <div class="col s5 right-align">
                     
                 </div>
             </div>
@@ -451,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-14
+                    2020-07-15
                 </div>
                 
 
@@ -467,7 +462,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>从文件加载环境变量的Node.js库dotenv,一个零依赖模块，用于从”.env”文件中导入环境变量到 process.env。<br>由于项目不同需求，需要配置不同环境变量，按需加载不同的环境变量文件，使用dotenv，可以完美解决这一问题。</p>
+<h2 id="env-file"><a href="#env-file" class="headerlink" title=".env file"></a>.env file</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mnemonic_ropsten = bulb calm achieve unique  auto scene artist  admit buyer jewel indicate kaft</span><br><span class="line">mnemonic_mainnet = bulb calm achieve unique  auto scene artist  admit buyer jewel indicate kaft</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>然后在配置文件config.js里:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/*读取.env环境配置的文件变量定义*/</span><br><span class="line">const dotenv = require(<span class="string">'dotenv'</span>);</span><br><span class="line">const result = dotenv.config();</span><br></pre></td></tr></table></figure>
+<p>接下来在程序中方便地使用环境变量了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/*读取.env文件配置的内容*/</span><br><span class="line">var mnemonic_ropsten = process.env.mnemonic_ropsten;</span><br><span class="line">var mnemonic_mainnet = process.env.mnemonic_mainnet;</span><br></pre></td></tr></table></figure>
+
+<p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/2c16c3a6073a1ac48d9de3e0b52d9b69/xmlnote/WEBRESOURCE144cfd2ca5170bc27cc833e7786a2f85/52" target="_blank" rel="noopener">知识星球</a>。</p>
+
             </div>
             <hr/>
 
@@ -492,7 +495,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/39357.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/39357.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/60426.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/60426.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -529,7 +532,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/hexoT.github.io/tags/solidity/">
+                                    <span class="chip bg-color">solidity</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -695,9 +702,56 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/hexoT.github.io/posts/60426.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/hexoT.github.io/medias/featureimages/17.jpg" class="responsive-img" alt="从文件加载环境变量的Node.js库dotenv">
+                        
+                        <span class="card-title">从文件加载环境变量的Node.js库dotenv</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            介绍从文件加载环境变量的Node.js库dotenv,一个零依赖模块，用于从”.env”文件中导入环境变量到 process.env。由于项目不同需求，需要配置不同环境变量，按需加载不同的环境变量文件，使用dotenv，可以完美解决这一问题
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            dexter
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/hexoT.github.io/tags/solidity/">
+                        <span class="chip bg-color">solidity</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/hexoT.github.io/posts/22237.html">
                     <div class="card-image">
@@ -712,56 +766,6 @@
                     <div class="summary block-with-text">
                         
                             truffle部署报错运行命令truffle migrate –network ropsten  –reset –compile-all时候报错，Cannot find module ‘web3-provider-engine/subpro
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-14
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                    uncategorized
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/hexoT.github.io/tags/truffle/">
-                        <span class="chip bg-color">truffle</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/hexoT.github.io/posts/54347.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/hexoT.github.io/medias/featureimages/10.jpg" class="responsive-img" alt="infura的注册使用">
-                        
-                        <span class="card-title">infura的注册使用</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Infura是出色的开放以太坊节点，它提供了标准的RPC API可供开发者 调用。除了支持以太坊，Infura还提供IPFS网关和API，并且提供多个 数字货币交易所的行情信息API。
-进入官网infura的注册使用，其实很简单，只要注册了
                         
                     </div>
                     <div class="publish-info">
@@ -783,8 +787,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/hexoT.github.io/tags/solidity/">
-                        <span class="chip bg-color">solidity</span>
+                    <a href="/hexoT.github.io/tags/truffle/">
+                        <span class="chip bg-color">truffle</span>
                     </a>
                     
                 </div>
