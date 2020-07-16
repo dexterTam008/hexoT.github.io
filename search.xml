@@ -11,6 +11,12 @@
         <content type="html"><![CDATA[]]></content>
       
       
+      <categories>
+          
+          <category> uncategorized </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -23,6 +29,12 @@
       
         <content type="html"><![CDATA[<h2 id="何为lite-server"><a href="#何为lite-server" class="headerlink" title="何为lite-server"></a>何为lite-server</h2><p>使用lite-server可以快速搭建服务器。<br>lite-server是一个轻量级的、基于Node.js运行环境的服务器，目前仅支持Web App。当运行lite-server后，它能够打开浏览器，当HTML、CSS或JavaScript文件变化时，它会识别到并自动刷新浏览器页面, 当路由没有被找到时，它将自动后退页面。lite-server自动刷新的功能对于开发调试来说是非常方便的。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>推荐的安装lite-server的方式:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install lite-server --save-dev</span><br></pre></td></tr></table></figure><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="其一"><a href="#其一" class="headerlink" title="其一"></a>其一</h3><p>在package.json中添加启动命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"lite-server"</span>,</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure><p>运行npm run dev，lite-server会自动找到index.html并运行。</p><h3 id="其二"><a href="#其二" class="headerlink" title="其二"></a>其二</h3><p>可以在bs-config.json中：<br>指定监听的端口号，<br>指定要启动的浏览器，browser是一个数组，可以添加多个浏览器<br>指定要监视的文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">"port"</span>:8000,</span><br><span class="line"><span class="string">"browser"</span> : [<span class="string">"chrome"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="其三"><a href="#其三" class="headerlink" title="其三"></a>其三</h3><p>可以在bs-config.json中：<br>自定义lite-server的行为，<br>在刷新的时候执行各种回调函数，比如压缩css，比如合并js等</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"use strict"</span>;</span><br><span class="line">module.exports = &#123;</span><br><span class="line"><span class="string">"port"</span>:8000,</span><br><span class="line"><span class="string">"browser"</span> : [<span class="string">"chrome"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> uncategorized </category>
+          
+      </categories>
       
       
         <tags>
@@ -86,11 +98,11 @@
     
     
     <entry>
-      <title>env</title>
+      <title>node-gyp介绍及使用</title>
       <link href="/hexoT.github.io/posts/39357.html"/>
       <url>/hexoT.github.io/posts/39357.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="何为node-gyp"><a href="#何为node-gyp" class="headerlink" title="何为node-gyp"></a>何为node-gyp</h2><p>首先，要认识的是gyp是一种构建自动化工具。node-gyp就是node下的gyp。npm 为了方便干脆就直接源码分发，用户装的时候再现场编译。</p><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>node程序中需要调用一些其他语言编写的 工具 甚至是dll，需要先编译一下，否则就会有跨平台的问题，例如在windows上运行的软件copy到mac上就不能用了，但是如果源码支持，编译一下，在mac上还是可以用的。</p><h2 id="安装及使用"><a href="#安装及使用" class="headerlink" title="安装及使用"></a>安装及使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g node-gyp</span><br></pre></td></tr></table></figure><p>在根目录上输入：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ node-gyp</span><br><span class="line"></span><br><span class="line">  Usage: node-gyp &lt;<span class="built_in">command</span>&gt; [options]</span><br><span class="line"></span><br><span class="line">  <span class="built_in">where</span> &lt;<span class="built_in">command</span>&gt; is one of:</span><br><span class="line">    - build - Invokes `make` and builds the module</span><br><span class="line">    - clean - Removes any generated build files and the <span class="string">"out"</span> dir</span><br><span class="line">    - configure - Generates a Makefile <span class="keyword">for</span> the current module</span><br><span class="line">    - rebuild - Runs <span class="string">"clean"</span>, <span class="string">"configure"</span> and <span class="string">"build"</span> all at once</span><br><span class="line">    - install - Install node development files <span class="keyword">for</span> the specified node version.</span><br><span class="line">    - list - Prints a listing of the currently installed node development files</span><br><span class="line">    - remove - Removes the node development files <span class="keyword">for</span> the specified version</span><br><span class="line"></span><br><span class="line">node-gyp@7.0.0  /home/dexter/node-v12.16.3-linux-x64/lib/node_modules/node-gyp</span><br><span class="line">node@12.16.3</span><br></pre></td></tr></table></figure><p>node-gyp build ： 调用“make”并生成模块。<br>node-gyp clean ： 删除所有生成的生成文件和 “out” dir。<br>node-gyp configure ： 为当前模块生成生成文件。<br>node-gyp rebuild ： 运行”clean”, “configure” and “build”三个命令。<br>node-gyp install ： 安装指定节点版本的节点开发文件。<br>node-gyp list ： 打印当前安装的节点开发文件的列表。<br>node-gyp remove ： 删除指定版本的节点开发文件。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
       
       
       <categories>
@@ -99,6 +111,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> solidity </tag>
+            
+        </tags>
       
     </entry>
     
