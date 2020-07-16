@@ -4,12 +4,50 @@
   
     
     <entry>
+      <title>clean</title>
+      <link href="/hexoT.github.io/posts/15201.html"/>
+      <url>/hexoT.github.io/posts/15201.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>lite-server的介绍及使用</title>
+      <link href="/hexoT.github.io/posts/17528.html"/>
+      <url>/hexoT.github.io/posts/17528.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="何为lite-server"><a href="#何为lite-server" class="headerlink" title="何为lite-server"></a>何为lite-server</h2><p>使用lite-server可以快速搭建服务器。<br>lite-server是一个轻量级的、基于Node.js运行环境的服务器，目前仅支持Web App。当运行lite-server后，它能够打开浏览器，当HTML、CSS或JavaScript文件变化时，它会识别到并自动刷新浏览器页面, 当路由没有被找到时，它将自动后退页面。lite-server自动刷新的功能对于开发调试来说是非常方便的。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>推荐的安装lite-server的方式:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install lite-server --save-dev</span><br></pre></td></tr></table></figure><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="其一"><a href="#其一" class="headerlink" title="其一"></a>其一</h3><p>在package.json中添加启动命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"lite-server"</span>,</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure><p>运行npm run dev，lite-server会自动找到index.html并运行。</p><h3 id="其二"><a href="#其二" class="headerlink" title="其二"></a>其二</h3><p>可以在bs-config.json中：<br>指定监听的端口号，<br>指定要启动的浏览器，browser是一个数组，可以添加多个浏览器<br>指定要监视的文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">"port"</span>:8000,</span><br><span class="line"><span class="string">"browser"</span> : [<span class="string">"chrome"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="其三"><a href="#其三" class="headerlink" title="其三"></a>其三</h3><p>可以在bs-config.json中：<br>自定义lite-server的行为，<br>在刷新的时候执行各种回调函数，比如压缩css，比如合并js等</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"use strict"</span>;</span><br><span class="line">module.exports = &#123;</span><br><span class="line"><span class="string">"port"</span>:8000,</span><br><span class="line"><span class="string">"browser"</span> : [<span class="string">"chrome"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> solidity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>从文件加载环境变量的Node.js库dotenv</title>
       <link href="/hexoT.github.io/posts/60426.html"/>
       <url>/hexoT.github.io/posts/60426.html</url>
       
         <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>从文件加载环境变量的Node.js库dotenv,一个零依赖模块，用于从”.env”文件中导入环境变量到 process.env。<br>由于项目不同需求，需要配置不同环境变量，按需加载不同的环境变量文件，使用dotenv，可以完美解决这一问题。</p><h2 id="env-file"><a href="#env-file" class="headerlink" title=".env file"></a>.env file</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mnemonic_ropsten = bulb calm achieve unique  auto scene artist  admit buyer jewel indicate kaft</span><br><span class="line">mnemonic_mainnet = bulb calm achieve unique  auto scene artist  admit buyer jewel indicate kaft</span><br></pre></td></tr></table></figure><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>然后在配置文件config.js里:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/*读取.env环境配置的文件变量定义*/</span><br><span class="line">const dotenv = require(<span class="string">'dotenv'</span>);</span><br><span class="line">const result = dotenv.config();</span><br></pre></td></tr></table></figure><p>接下来在程序中方便地使用环境变量了：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/*读取.env文件配置的内容*/</span><br><span class="line">var mnemonic_ropsten = process.env.mnemonic_ropsten;</span><br><span class="line">var mnemonic_mainnet = process.env.mnemonic_mainnet;</span><br></pre></td></tr></table></figure><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/2c16c3a6073a1ac48d9de3e0b52d9b69/xmlnote/WEBRESOURCE144cfd2ca5170bc27cc833e7786a2f85/52" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> uncategorized </category>
+          
+      </categories>
       
       
         <tags>
@@ -353,7 +391,7 @@
       <link href="/hexoT.github.io/posts/52995.html"/>
       <url>/hexoT.github.io/posts/52995.html</url>
       
-        <content type="html"><![CDATA[<h2 id="合约文件目录"><a href="#合约文件目录" class="headerlink" title="合约文件目录"></a>合约文件目录</h2><p>所有合约都位于项目的 contracts/ 目录中。 由于合约是用Solidity语言编写的，所有包含合约的文件都将具有 .sol 文件扩展名。 相关的 Solidity 库也将有一个.sol扩展名。</p><p>使用truffle init命令创建的空 Truffle 工程会生成一个用于部署的Migrations.sol 合约文件。 如果我们使用 Truffle Box 来创建工程，则会有多个合约文件。<br>！<a href="https://note.youdao.com/yws/public/resource/874ce020b56a45ac1473dc8dc4f74a4b/xmlnote/WEBRESOURCEb239401647e26a06b3e941b7ce89295c/57" target="_blank" rel="noopener"></a><br>如图是contracts/ 目录下的Migrations.sol合约。</p><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>切换到项目工程所在根目录，然后在终端中键入以下内容：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle compile</span><br></pre></td></tr></table></figure><p>首次运行时，将编译所有合约。 在后续运行中，truffle将仅编译自上次编译以来有更改的合约。 如果我们想覆盖此行为，可以使用 –all 选项运行上面的命令。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ truffle compile</span><br><span class="line">Compiling your contracts...</span><br><span class="line">===========================</span><br><span class="line">&gt; Everything is up to date, there is nothing to compile.</span><br></pre></td></tr></table></figure><p>如上truffle将仅编译自上次编译以来有更改的合约,没有更改就出现Everything is up to date, there is nothing to compile。</p><h2 id="目标文件-Artifacts"><a href="#目标文件-Artifacts" class="headerlink" title="目标文件 Artifacts"></a>目标文件 Artifacts</h2><p>编译的目标文件 Artifacts 将放在 build/contracts/ 目录中：<br>！<a href="https://note.youdao.com/yws/public/resource/74a297d3939ea035df49bfe05a1fe0c8/xmlnote/WEBRESOURCEa3392aad57f048ffc22b33d7772ae35a/62" target="_blank" rel="noopener"></a><br>可以看到目标文件 Artifacts其实就是JSON对象文件。这些 Artifacts 是Truffle内部工作的组成部分，它们在成功部署应用程序中起着重要作用。 我们不应编辑这些文件，因为这些文件将被合约编译和部署覆盖。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/2c16c3a6073a1ac48d9de3e0b52d9b69/xmlnote/WEBRESOURCE144cfd2ca5170bc27cc833e7786a2f85/52" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="合约文件目录"><a href="#合约文件目录" class="headerlink" title="合约文件目录"></a>合约文件目录</h2><p>所有合约都位于项目的 contracts/ 目录中。 由于合约是用Solidity语言编写的，所有包含合约的文件都将具有 .sol 文件扩展名。 相关的 Solidity 库也将有一个.sol扩展名。</p><p>使用truffle init命令创建的空 Truffle 工程会生成一个用于部署的Migrations.sol 合约文件。 如果我们使用 Truffle Box 来创建工程，则会有多个合约文件。<br>！<a href="https://note.youdao.com/yws/public/resource/874ce020b56a45ac1473dc8dc4f74a4b/xmlnote/WEBRESOURCEb239401647e26a06b3e941b7ce89295c/57" target="_blank" rel="noopener"></a><br>如图是contracts/ 目录下的Migrations.sol合约。</p><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>切换到项目工程所在根目录，然后在终端中键入以下内容：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle compile</span><br></pre></td></tr></table></figure><p>首次运行时，将编译所有合约。 在后续运行中，truffle将仅编译自上次编译以来有更改的合约。 如果我们想覆盖此行为，可以使用 –all 选项运行上面的命令。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ truffle compile</span><br><span class="line">Compiling your contracts...</span><br><span class="line">===========================</span><br><span class="line">&gt; Everything is up to date, there is nothing to compile.</span><br></pre></td></tr></table></figure><p>如上truffle将仅编译自上次编译以来有更改的合约,没有更改就出现Everything is up to date, there is nothing to compile。</p><h2 id="目标文件-Artifacts"><a href="#目标文件-Artifacts" class="headerlink" title="目标文件 Artifacts"></a>目标文件 Artifacts</h2><p>编译的目标文件 Artifacts 将放在 build/contracts/ 目录中：<br>！<a href="https://note.youdao.com/yws/public/resource/74a297d3939ea035df49bfe05a1fe0c8/xmlnote/WEBRESOURCEa3392aad57f048ffc22b33d7772ae35a/62" target="_blank" rel="noopener"></a><br>可以看到目标文件 Artifacts其实就是JSON对象文件。这些 Artifacts 是Truffle内部工作的组成部分，它们在成功部署应用程序中起着重要作用。 我们不应编辑这些文件，因为这些文件将被合约编译和部署覆盖。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
       
       
       <categories>
