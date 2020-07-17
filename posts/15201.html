@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="clean, DAPPS">
+    <meta name="keywords" content="部署以太坊测试网络时报错Check to see that your provider is valid., DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>clean | DAPPS</title>
+    <title>部署以太坊测试网络时报错Check to see that your provider is valid. | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">clean</h1>
+                    <h1 class="description center-align post-title">部署以太坊测试网络时报错Check to see that your provider is valid.</h1>
                 </div>
             </div>
         </div>
@@ -428,9 +428,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/hexoT.github.io/tags/error-solidity/">
+                                <span class="chip bg-color">error solidity</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -467,7 +471,21 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><p>部署以太坊测试网络时，输入部署指令sudo truffle migrate –network ropsten  –reset –compile-all：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ sudo truffle migrate --network ropsten  --reset --compile-all</span><br><span class="line">[sudo] password <span class="keyword">for</span> dexter: </span><br><span class="line"></span><br><span class="line">Compiling your contracts...</span><br><span class="line">===========================</span><br><span class="line">&gt; Compiling ./contracts/Adoption.sol</span><br><span class="line">&gt; Compiling ./contracts/Migrations.sol</span><br><span class="line">&gt; Artifacts written to /home/dexter/pet-shop (another copy)/build/contracts</span><br><span class="line">&gt; Compiled successfully using:</span><br><span class="line">   - solc: 0.5.16+commit.9c3226ce.Emscripten.clang</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/home/dexter/node-v12.16.3-linux-x64/lib/node_modules/truffle/build/webpack:/packages/provider/index.js:56</span><br><span class="line">        throw new Error(errorMessage);</span><br><span class="line">^</span><br><span class="line">Error: There was a timeout <span class="keyword">while</span> attempting to connect to the network.</span><br><span class="line">       Check to see that your provider is valid.</span><br><span class="line">       If you have a slow internet connection, try configuring a longer timeout <span class="keyword">in</span> your Truffle config. Use the networks[networkName].networkCheckTimeout property to <span class="keyword">do</span> this.</span><br><span class="line">    at Timeout._onTimeout (/home/dexter/node-v12.16.3-linux-x64/lib/node_modules/truffle/build/webpack:/packages/provider/index.js:56:1)</span><br><span class="line">    at listOnTimeout (internal/timers.js:549:17)</span><br><span class="line">    at processTimers (internal/timers.js:492:7)</span><br></pre></td></tr></table></figure>
+<p>注意的是，报错：Error: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">There was a timeout while attempting to connect to the network.</span><br><span class="line">       Check to see that your provider is valid.</span><br></pre></td></tr></table></figure>
+<p>Check to see that your provider is valid.检查provider是否有效。</p>
+<h2 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h2><p>首先要弄懂 provider 的来头。</p>
+<h3 id="Truffle-HDWallet-Provider"><a href="#Truffle-HDWallet-Provider" class="headerlink" title="Truffle HDWallet Provider"></a>Truffle HDWallet Provider</h3><p>truffle-hdwallet-provider是基于HD Wallet 的Web3 Provider。Wallet就意味着公私钥，所以不难想象它就是预先用来对合约数据进行签名的，然后调用sendRawTransaction把创建合约的交易发送到网络。<br>原先我安装的是 npm install truffle-hdwallet-provider ，默认安装的是最新的。就会显示 Check to see that your provider is valid。 后面我就想应该是这provider不兼容的问题，就执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ npm install truffle-hdwallet-provider@0.0.3 --save</span><br><span class="line">npm WARN deprecated truffle-hdwallet-provider@0.0.3: WARNING: This package has been renamed to @truffle/hdwallet-provider.</span><br><span class="line"></span><br><span class="line">&gt; keccak@3.0.0 install /home/dexter/pet-shop (another copy)/node_modules/ethereum-cryptography/node_modules/keccak</span><br><span class="line">&gt; node-gyp-build || <span class="built_in">exit</span> 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; secp256k1@4.0.1 install /home/dexter/pet-shop (another copy)/node_modules/ethereum-cryptography/node_modules/secp256k1</span><br><span class="line">&gt; node-gyp-build || <span class="built_in">exit</span> 0</span><br><span class="line"></span><br><span class="line">npm WARN @babel/plugin-transform-runtime@7.10.5 requires a peer of @babel/core@^7.0.0-0 but none is installed. You must install peer dependencies yourself.</span><br><span class="line">npm WARN pet-shop@1.0.0 No description</span><br><span class="line">npm WARN pet-shop@1.0.0 No repository field.</span><br><span class="line">npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules/fsevents):</span><br><span class="line">npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform <span class="keyword">for</span> fsevents@1.2.4: wanted &#123;<span class="string">"os"</span>:<span class="string">"darwin"</span>,<span class="string">"arch"</span>:<span class="string">"any"</span>&#125; (current: &#123;<span class="string">"os"</span>:<span class="string">"linux"</span>,<span class="string">"arch"</span>:<span class="string">"x64"</span>&#125;)</span><br><span class="line"></span><br><span class="line">+ truffle-hdwallet-provider@0.0.3</span><br><span class="line">added 64 packages from 113 contributors, removed 219 packages, updated 5 packages and moved 2 packages <span class="keyword">in</span> 50.808s</span><br><span class="line"></span><br><span class="line">19 packages are looking <span class="keyword">for</span> funding</span><br><span class="line">  run `npm fund` <span class="keyword">for</span> details</span><br></pre></td></tr></table></figure>
+
+<h3 id="再次执行sudo-truffle-migrate-–network-ropsten"><a href="#再次执行sudo-truffle-migrate-–network-ropsten" class="headerlink" title="再次执行sudo truffle migrate –network ropsten"></a>再次执行sudo truffle migrate –network ropsten</h3><p>这样，再次执行sudo truffle migrate –network ropsten  –reset –compile-all：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line">$ sudo truffle migrate --network ropsten  --reset --compile-all</span><br><span class="line">[sudo] password <span class="keyword">for</span> dexter: </span><br><span class="line"></span><br><span class="line">Compiling your contracts...</span><br><span class="line">===========================</span><br><span class="line">&gt; Compiling ./contracts/Adoption.sol</span><br><span class="line">&gt; Compiling ./contracts/Migrations.sol</span><br><span class="line">&gt; Artifacts written to /home/dexter/pet-shop (another copy)/build/contracts</span><br><span class="line">&gt; Compiled successfully using:</span><br><span class="line">   - solc: 0.5.16+commit.9c3226ce.Emscripten.clang</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Migrations dry-run (simulation)</span><br><span class="line">===============================</span><br><span class="line">&gt; Network name:    <span class="string">'ropsten-fork'</span></span><br><span class="line">&gt; Network id:      3</span><br><span class="line">&gt; Block gas <span class="built_in">limit</span>: 8000029 (0x7a121d)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1_initial_migration.js</span><br><span class="line">======================</span><br><span class="line"></span><br><span class="line">   Deploying <span class="string">'Migrations'</span></span><br><span class="line">   ----------------------</span><br><span class="line">   &gt; block number:        8308940</span><br><span class="line">   &gt; block timestamp:     1594951272</span><br><span class="line">   &gt; account:             0x8C0dd4AE266aCB15170b2C3dA2BB11b18Fa01994</span><br><span class="line">   &gt; balance:             0.99552475</span><br><span class="line">   &gt; gas used:            149175 (0x246b7)</span><br><span class="line">   &gt; gas price:           30 gwei</span><br><span class="line">   &gt; value sent:          0 ETH</span><br><span class="line">   &gt; total cost:          0.00447525 ETH</span><br><span class="line"></span><br><span class="line">   -------------------------------------</span><br><span class="line">   &gt; Total cost:          0.00447525 ETH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2_initial_migration .js</span><br><span class="line">=======================</span><br><span class="line"></span><br><span class="line">   Deploying <span class="string">'Adoption'</span></span><br><span class="line">   --------------------</span><br><span class="line">   &gt; block number:        8308942</span><br><span class="line">   &gt; block timestamp:     1594951287</span><br><span class="line">   &gt; account:             0x8C0dd4AE266aCB15170b2C3dA2BB11b18Fa01994</span><br><span class="line">   &gt; balance:             0.98858971</span><br><span class="line">   &gt; gas used:            203827 (0x31c33)</span><br><span class="line">   &gt; gas price:           30 gwei</span><br><span class="line">   &gt; value sent:          0 ETH</span><br><span class="line">   &gt; total cost:          0.00611481 ETH</span><br><span class="line"></span><br><span class="line">   -------------------------------------</span><br><span class="line">   &gt; Total cost:          0.00611481 ETH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Summary</span><br><span class="line">=======</span><br><span class="line">&gt; Total deployments:   2</span><br><span class="line">&gt; Final cost:          0.01059006 ETH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Starting migrations...</span><br><span class="line">======================</span><br><span class="line">&gt; Network name:    <span class="string">'ropsten'</span></span><br><span class="line">&gt; Network id:      3</span><br><span class="line">&gt; Block gas <span class="built_in">limit</span>: 8000029 (0x7a121d)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1_initial_migration.js</span><br><span class="line">======================</span><br><span class="line"></span><br><span class="line">   Deploying <span class="string">'Migrations'</span></span><br><span class="line">   ----------------------</span><br><span class="line">   &gt; transaction <span class="built_in">hash</span>:    0xd51446b7970862112e07dca0b31cc285692b84a1fbe8cc752f2463bab3f8afa9</span><br><span class="line">   &gt; Blocks: 3            Seconds: 14</span><br><span class="line">   &gt; contract address:    0x6a836aE3C5876a7482100c17556a961F6a8487A2</span><br><span class="line">   &gt; block number:        8308946</span><br><span class="line">   &gt; block timestamp:     1594951304</span><br><span class="line">   &gt; account:             0x8C0dd4AE266aCB15170b2C3dA2BB11b18Fa01994</span><br><span class="line">   &gt; balance:             0.99507475</span><br><span class="line">   &gt; gas used:            164175 (0x2814f)</span><br><span class="line">   &gt; gas price:           30 gwei</span><br><span class="line">   &gt; value sent:          0 ETH</span><br><span class="line">   &gt; total cost:          0.00492525 ETH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &gt; Saving migration to chain.</span><br><span class="line">   &gt; Saving artifacts</span><br><span class="line">   -------------------------------------</span><br><span class="line">   &gt; Total cost:          0.00492525 ETH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2_initial_migration .js</span><br><span class="line">=======================</span><br><span class="line"></span><br><span class="line">   Deploying <span class="string">'Adoption'</span></span><br><span class="line">   --------------------</span><br><span class="line">   &gt; transaction <span class="built_in">hash</span>:    0xf62e5cba62f654a3704ba96b1975aea4ff9dad18b4e0111c6d919a85f6a0739a</span><br><span class="line">   &gt; Blocks: 0            Seconds: 9</span><br><span class="line">   &gt; contract address:    0x94c2D11388E4921dAD51b3B20A353Feeca287F03</span><br><span class="line">   &gt; block number:        8308948</span><br><span class="line">   &gt; block timestamp:     1594951327</span><br><span class="line">   &gt; account:             0x8C0dd4AE266aCB15170b2C3dA2BB11b18Fa01994</span><br><span class="line">   &gt; balance:             0.98768971</span><br><span class="line">   &gt; gas used:            203827 (0x31c33)</span><br><span class="line">   &gt; gas price:           30 gwei</span><br><span class="line">   &gt; value sent:          0 ETH</span><br><span class="line">   &gt; total cost:          0.00611481 ETH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &gt; Saving migration to chain.</span><br><span class="line">   &gt; Saving artifacts</span><br><span class="line">   -------------------------------------</span><br><span class="line">   &gt; Total cost:          0.00611481 ETH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Summary</span><br><span class="line">=======</span><br><span class="line">&gt; Total deployments:   2</span><br><span class="line">&gt; Final cost:          0.01104006 ETH</span><br></pre></td></tr></table></figure>
+
+<p>这样就成功部署以太坊测试网络。</p>
+<p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
+
             </div>
             <hr/>
 
@@ -529,7 +547,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/hexoT.github.io/tags/error-solidity/">
+                                    <span class="chip bg-color">error solidity</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -704,15 +726,16 @@
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/17.jpg" class="responsive-img" alt="clean">
+                        <img src="/hexoT.github.io/medias/featureimages/21.jpg" class="responsive-img" alt="部署以太坊测试网络时报错Check to see that your provider is valid.">
                         
-                        <span class="card-title">clean</span>
+                        <span class="card-title">部署以太坊测试网络时报错Check to see that your provider is valid.</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            报错部署以太坊测试网络时，输入部署指令sudo truffle migrate –network ropsten  –reset –compile-all：
+123456789101112131415161718192021$ sudo t
                         
                     </div>
                     <div class="publish-info">
@@ -732,6 +755,14 @@
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/hexoT.github.io/tags/error-solidity/">
+                        <span class="chip bg-color">error solidity</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
