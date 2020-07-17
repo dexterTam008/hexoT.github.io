@@ -439,6 +439,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
+                                uncategorized
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -465,10 +474,10 @@
                 <h2 id="以太测试币"><a href="#以太测试币" class="headerlink" title="以太测试币"></a>以太测试币</h2><p>如果想将写好的智能合约部署到以太测试网进行测试，是要先获取以太测试币的。<br>如果还没获取，就部署网络，会出现以下情况：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ truffle migrate --network ropsten</span><br><span class="line"><span class="string">"Migrations"</span> could not deploy due to insufficient funds</span><br><span class="line">   * Account:  0x8C0dd4AE266aCB15170b2C3dA2BB11b18Fa01994</span><br><span class="line">   * Balance:  0 wei</span><br><span class="line">   * Message:  sender doesn<span class="string">'t have enough funds to send tx. The upfront cost is: 90371640000000000 and the sender'</span>s account only has: 0</span><br><span class="line">   * Try:</span><br><span class="line">      + Using an adequately funded account</span><br><span class="line">      + If you are using a <span class="built_in">local</span> Geth node, verify that your node is synced.</span><br></pre></td></tr></table></figure>
 <p>insufficient funds，资金不足。很明显没以太测试币。</p>
-<h2 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h2><h3 id="其一"><a href="#其一" class="headerlink" title="其一"></a>其一</h3><p>进入小狐钱包，如下图，选择Ropsten Test Network，然后点击Deposit：<br>！<a href="https://note.youdao.com/yws/public/resource/e6f5c6b00eaa18fb77ef3a2e1e1e3c66/xmlnote/WEBRESOURCEf99c1d47f493f010d81ebdfce65239a5/135" target="_blank" rel="noopener"></a></p>
-<p>这样，就跳转到下图，点击Get Ether：<br>！<a href="https://note.youdao.com/yws/public/resource/f64196a12082b2fb95f729b91d0763c6/xmlnote/WEBRESOURCE710a67e03be9d264677faed9fc339d37/140" target="_blank" rel="noopener"></a></p>
-<p>页面跳转至下图：<br>！<a href="https://note.youdao.com/yws/public/resource/226d41ad584d36aa2ff44954878122ae/xmlnote/WEBRESOURCE7fbb329ecc3b5785608772918246a6f0/144" target="_blank" rel="noopener"></a></p>
-<p>这就是获取以太测试币的界面，点击 request 1 ether from faucet：<br>！<a href="https://note.youdao.com/yws/public/resource/51bd8ff5547fa949e69dd16765f29b44/xmlnote/WEBRESOURCE69fa1a9dfea3df0436a307c31f9230d8/150" target="_blank" rel="noopener"></a></p>
+<h2 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h2><h3 id="其一"><a href="#其一" class="headerlink" title="其一"></a>其一</h3><p>进入小狐钱包，如下图，选择Ropsten Test Network，然后点击Deposit：<br><img src="https://note.youdao.com/yws/public/resource/e6f5c6b00eaa18fb77ef3a2e1e1e3c66/xmlnote/WEBRESOURCEf99c1d47f493f010d81ebdfce65239a5/135" alt=""></p>
+<p>这样，就跳转到下图，点击Get Ether：<br><img src="https://note.youdao.com/yws/public/resource/f64196a12082b2fb95f729b91d0763c6/xmlnote/WEBRESOURCE710a67e03be9d264677faed9fc339d37/140" alt=""></p>
+<p>页面跳转至下图：<br><img src="https://note.youdao.com/yws/public/resource/226d41ad584d36aa2ff44954878122ae/xmlnote/WEBRESOURCE7fbb329ecc3b5785608772918246a6f0/144" alt=""></p>
+<p>这就是获取以太测试币的界面，点击 request 1 ether from faucet：<br><img src="https://note.youdao.com/yws/public/resource/51bd8ff5547fa949e69dd16765f29b44/xmlnote/WEBRESOURCE69fa1a9dfea3df0436a307c31f9230d8/150" alt=""></p>
 <p>钱包主界面已经显示有0.98个以太测试币，现在就可以处理交易了。</p>
 <h3 id="其二"><a href="#其二" class="headerlink" title="其二"></a>其二</h3><p>可以进入以下网址 <a href="https://faucet.ropsten.be/" target="_blank" rel="noopener">https://faucet.ropsten.be/</a> ，输入你的合约地址领取。</p>
 <p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
@@ -731,8 +740,12 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            dexter
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
+                                    uncategorized
+                                </a>
+                            
                             
                         </span>
                     </div>
