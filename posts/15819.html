@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="node-gyp介绍及使用, DAPPS">
+    <meta name="keywords" content="DAPP领养臭狗前端代码分析, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>node-gyp介绍及使用 | DAPPS</title>
+    <title>DAPP领养臭狗前端代码分析 | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">node-gyp介绍及使用</h1>
+                    <h1 class="description center-align post-title">DAPP领养臭狗前端代码分析</h1>
                 </div>
             </div>
         </div>
@@ -428,25 +428,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/hexoT.github.io/tags/solidity/">
-                                <span class="chip bg-color">solidity</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -455,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-14
+                    2020-07-21
                 </div>
                 
 
@@ -471,12 +458,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="何为node-gyp"><a href="#何为node-gyp" class="headerlink" title="何为node-gyp"></a>何为node-gyp</h2><p>首先，要认识的是gyp是一种构建自动化工具。node-gyp就是node下的gyp。npm 为了方便干脆就直接源码分发，用户装的时候再现场编译。</p>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>node程序中需要调用一些其他语言编写的 工具 甚至是dll，需要先编译一下，否则就会有跨平台的问题，例如在windows上运行的软件copy到mac上就不能用了，但是如果源码支持，编译一下，在mac上还是可以用的。</p>
-<h2 id="安装及使用"><a href="#安装及使用" class="headerlink" title="安装及使用"></a>安装及使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g node-gyp</span><br></pre></td></tr></table></figure>
-<p>在根目录上输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ node-gyp</span><br><span class="line"></span><br><span class="line">  Usage: node-gyp &lt;<span class="built_in">command</span>&gt; [options]</span><br><span class="line"></span><br><span class="line">  <span class="built_in">where</span> &lt;<span class="built_in">command</span>&gt; is one of:</span><br><span class="line">    - build - Invokes `make` and builds the module</span><br><span class="line">    - clean - Removes any generated build files and the <span class="string">"out"</span> dir</span><br><span class="line">    - configure - Generates a Makefile <span class="keyword">for</span> the current module</span><br><span class="line">    - rebuild - Runs <span class="string">"clean"</span>, <span class="string">"configure"</span> and <span class="string">"build"</span> all at once</span><br><span class="line">    - install - Install node development files <span class="keyword">for</span> the specified node version.</span><br><span class="line">    - list - Prints a listing of the currently installed node development files</span><br><span class="line">    - remove - Removes the node development files <span class="keyword">for</span> the specified version</span><br><span class="line"></span><br><span class="line">node-gyp@7.0.0  /home/dexter/node-v12.16.3-linux-x64/lib/node_modules/node-gyp</span><br><span class="line">node@12.16.3</span><br></pre></td></tr></table></figure>
-<p>node-gyp build ： 调用“make”并生成模块。<br>node-gyp clean ： 删除所有生成的生成文件和 “out” dir。<br>node-gyp configure ： 为当前模块生成生成文件。<br>node-gyp rebuild ： 运行”clean”, “configure” and “build”三个命令。<br>node-gyp install ： 安装指定节点版本的节点开发文件。<br>node-gyp list ： 打印当前安装的节点开发文件的列表。<br>node-gyp remove ： 删除指定版本的节点开发文件。</p>
+                <h2 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h2><p>编写前端界面，在项目根目录下新建src文件夹，在文件夹中新建index.html，代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">    &lt;meta http-equiv=<span class="string">"X-UA-Compatible"</span> content=<span class="string">"IE=edge"</span>&gt;</span><br><span class="line">    &lt;meta name=<span class="string">"viewport"</span> content=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span><br><span class="line">    &lt;!-- The above 3 meta tags *must* come first <span class="keyword">in</span> the head; any other head content must come *after* these tags --&gt;</span><br><span class="line">    &lt;title&gt;领 养 臭 狗&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- Bootstrap --&gt;</span><br><span class="line">    &lt;link href=<span class="string">"css/bootstrap.min.css"</span> rel=<span class="string">"stylesheet"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- HTML5 shim and Respond.js <span class="keyword">for</span> IE8 support of HTML5 elements and media queries --&gt;</span><br><span class="line">    &lt;!-- WARNING: Respond.js doesn<span class="string">'t work if you view the page via file:// --&gt;</span></span><br><span class="line"><span class="string">    &lt;!--[if lt IE 9]&gt;</span></span><br><span class="line"><span class="string">      &lt;script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">      &lt;script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">    &lt;![endif]--&gt;</span></span><br><span class="line"><span class="string">  &lt;/head&gt;</span></span><br><span class="line"><span class="string">  &lt;body&gt;</span></span><br><span class="line"><span class="string">    &lt;div class="container"&gt;</span></span><br><span class="line"><span class="string">      &lt;div class="row"&gt;</span></span><br><span class="line"><span class="string">        &lt;div class="col-xs-12 col-sm-8 col-sm-push-2"&gt;</span></span><br><span class="line"><span class="string">          &lt;h1 class="text-center"&gt;领 养 臭 狗&lt;/h1&gt;</span></span><br><span class="line"><span class="string">          &lt;hr/&gt;</span></span><br><span class="line"><span class="string">          &lt;br/&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">      &lt;div id="petsRow" class="row"&gt;</span></span><br><span class="line"><span class="string">        &lt;!-- PETS LOAD HERE --&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;div id="petTemplate" style="display: none;"&gt;</span></span><br><span class="line"><span class="string">      &lt;div class="col-sm-6 col-md-4 col-lg-3"&gt;</span></span><br><span class="line"><span class="string">        &lt;div class="panel panel-default panel-pet"&gt;</span></span><br><span class="line"><span class="string">          &lt;div class="panel-heading"&gt;</span></span><br><span class="line"><span class="string">            &lt;h3 class="panel-title"&gt;Scrappy&lt;/h3&gt;</span></span><br><span class="line"><span class="string">          &lt;/div&gt;</span></span><br><span class="line"><span class="string">          &lt;div class="panel-body"&gt;</span></span><br><span class="line"><span class="string">            &lt;img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src="https://animalso.com/wp-content/uploads/2017/01/Golden-Retriever_6.jpg" data-holder-rendered="true"&gt;</span></span><br><span class="line"><span class="string">            &lt;br/&gt;&lt;br/&gt;</span></span><br><span class="line"><span class="string">            &lt;strong&gt;品种&lt;/strong&gt;: &lt;span class="pet-breed"&gt;Golden Retriever&lt;/span&gt;&lt;br/&gt;</span></span><br><span class="line"><span class="string">            &lt;strong&gt;年龄&lt;/strong&gt;: &lt;span class="pet-age"&gt;3&lt;/span&gt;&lt;br/&gt;</span></span><br><span class="line"><span class="string">            &lt;strong&gt;住址&lt;/strong&gt;: &lt;span class="pet-location"&gt;Warren, MI&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;</span></span><br><span class="line"><span class="string">            &lt;button class="btn btn-default btn-adopt" type="button" data-id="0"&gt;领养&lt;/button&gt;</span></span><br><span class="line"><span class="string">          &lt;/div&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/div&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &lt;!-- jQuery (necessary for Bootstrap'</span>s JavaScript plugins) --&gt;</span><br><span class="line">    &lt;script src=<span class="string">"http://libs.baidu.com/jquery/2.0.0/jquery.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;!-- Include all compiled plugins (below), or include individual files as needed --&gt;</span><br><span class="line">    &lt;script src=<span class="string">"js/bootstrap.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=<span class="string">"js/web3.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=<span class="string">"js/truffle-contract.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=<span class="string">"js/app.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="app-js"><a href="#app-js" class="headerlink" title="app.js"></a>app.js</h2><p>在src文件夹下新建一js文件夹，在js文件夹新建app.js，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line">App &#x3D; &#123;</span><br><span class="line">  web3Provider: null,</span><br><span class="line">  contracts: &#123;&#125;,</span><br><span class="line"></span><br><span class="line">  init: async function() &#123;</span><br><span class="line">    &#x2F;&#x2F; Load pets.</span><br><span class="line">    $.getJSON(&#39;..&#x2F;pets.json&#39;, function(data) &#123;</span><br><span class="line">      var petsRow &#x3D; $(&#39;#petsRow&#39;);</span><br><span class="line">      var petTemplate &#x3D; $(&#39;#petTemplate&#39;);</span><br><span class="line"></span><br><span class="line">      for (i &#x3D; 0; i &lt; data.length; i ++) &#123;</span><br><span class="line">        petTemplate.find(&#39;.panel-title&#39;).text(data[i].name);</span><br><span class="line">        petTemplate.find(&#39;img&#39;).attr(&#39;src&#39;, data[i].picture);</span><br><span class="line">        petTemplate.find(&#39;.pet-breed&#39;).text(data[i].breed);</span><br><span class="line">        petTemplate.find(&#39;.pet-age&#39;).text(data[i].age);</span><br><span class="line">        petTemplate.find(&#39;.pet-location&#39;).text(data[i].location);</span><br><span class="line">        petTemplate.find(&#39;.btn-adopt&#39;).attr(&#39;data-id&#39;, data[i].id);</span><br><span class="line"></span><br><span class="line">        petsRow.append(petTemplate.html());</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    return await App.initWeb3();</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  initWeb3: async function() &#123;</span><br><span class="line">        &#x2F;&#x2F; Modern dapp browsers...</span><br><span class="line">    if (window.ethereum) &#123;</span><br><span class="line">      App.web3Provider &#x3D; window.ethereum;</span><br><span class="line">      try &#123;</span><br><span class="line">        &#x2F;&#x2F; Request account access</span><br><span class="line">        await window.ethereum.enable();</span><br><span class="line">      &#125; catch (error) &#123;</span><br><span class="line">        &#x2F;&#x2F; User denied account access...</span><br><span class="line">        console.error(&quot;User denied account access&quot;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; Legacy dapp browsers...</span><br><span class="line">    else if (window.web3) &#123;</span><br><span class="line">      App.web3Provider &#x3D; window.web3.currentProvider;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; If no injected web3 instance is detected, fall back to Ganache</span><br><span class="line">    else &#123;</span><br><span class="line">      App.web3Provider &#x3D; new Web3.providers.HttpProvider(&#39;http:&#x2F;&#x2F;localhost:8545&#39;);</span><br><span class="line">    &#125;</span><br><span class="line">    web3 &#x3D; new Web3(App.web3Provider);</span><br><span class="line"></span><br><span class="line">    return App.initContract();</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  initContract: function() &#123;</span><br><span class="line">    &#x2F;&#x2F; 加载Adoption.json，保存了Adoption的ABI（接口说明）信息及部署后的网络(地址)信息，它在编译合约的时候生成   ABI，在部署的时候追加网络信息</span><br><span class="line">  $.getJSON(&#39;Adoption.json&#39;, function(data) &#123;</span><br><span class="line">    &#x2F;&#x2F; 用Adoption.json数据创建一个可交互的TruffleContract合约实例。</span><br><span class="line">    var AdoptionArtifact &#x3D; data;</span><br><span class="line">    App.contracts.Adoption &#x3D; TruffleContract(AdoptionArtifact);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Set the provider for our contract</span><br><span class="line">    App.contracts.Adoption.setProvider(App.web3Provider);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; Use our contract to retrieve and mark the adopted pets</span><br><span class="line">    return App.markAdopted();</span><br><span class="line">  &#125;);</span><br><span class="line">  return App.bindEvents();</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  bindEvents: function() &#123;</span><br><span class="line">    $(document).on(&#39;click&#39;, &#39;.btn-adopt&#39;, App.handleAdopt);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  markAdopted: function(adopters, account) &#123;</span><br><span class="line">        var adoptionInstance;</span><br><span class="line"></span><br><span class="line">    App.contracts.Adoption.deployed().then(function(instance) &#123;</span><br><span class="line">      adoptionInstance &#x3D; instance;</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; 调用合约的getAdopters(), 用call读取信息不用消耗gas</span><br><span class="line">      return adoptionInstance.getAdopters.call();</span><br><span class="line">    &#125;).then(function(adopters) &#123;</span><br><span class="line">      for (i &#x3D; 0; i &lt; adopters.length; i++) &#123;</span><br><span class="line">        if (adopters[i] !&#x3D;&#x3D; &#39;0x0000000000000000000000000000000000000000&#39;) &#123;</span><br><span class="line">          $(&#39;.panel-pet&#39;).eq(i).find(&#39;button&#39;).text(&#39;Success&#39;).attr(&#39;disabled&#39;, true);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;).catch(function(err) &#123;</span><br><span class="line">      console.log(err.message);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  handleAdopt: function(event) &#123;</span><br><span class="line">     event.preventDefault();</span><br><span class="line"></span><br><span class="line">    var petId &#x3D; parseInt($(event.target).data(&#39;id&#39;));</span><br><span class="line"></span><br><span class="line">    var adoptionInstance;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 获取用户账号</span><br><span class="line">    web3.eth.getAccounts(function(error, accounts) &#123;</span><br><span class="line">      if (error) &#123;</span><br><span class="line">        console.log(error);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      var account &#x3D; accounts[0];</span><br><span class="line"></span><br><span class="line">      App.contracts.Adoption.deployed().then(function(instance) &#123;</span><br><span class="line">        adoptionInstance &#x3D; instance;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 发送交易领养宠物</span><br><span class="line">        return adoptionInstance.adopt(petId, &#123;from: account&#125;);</span><br><span class="line">      &#125;).then(function(result) &#123;</span><br><span class="line">        return App.markAdopted();</span><br><span class="line">      &#125;).catch(function(err) &#123;</span><br><span class="line">        console.log(err.message);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">$(function() &#123;</span><br><span class="line">  $(window).load(function() &#123;</span><br><span class="line">    App.init();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="pets-json"><a href="#pets-json" class="headerlink" title="pets.json"></a>pets.json</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;id&quot;: 0,</span><br><span class="line">    &quot;name&quot;: &quot;旺财&quot;,</span><br><span class="line">    &quot;picture&quot;: &quot;images&#x2F;scottish-terrier.jpeg&quot;,</span><br><span class="line">    &quot;age&quot;: 3,</span><br><span class="line">    &quot;breed&quot;: &quot;杂交&quot;,</span><br><span class="line">    &quot;location&quot;: &quot;华府&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;id&quot;: 1,</span><br><span class="line">    &quot;name&quot;: &quot;阿福&quot;,</span><br><span class="line">    &quot;picture&quot;: &quot;images&#x2F;scottish-terrier.jpeg&quot;,</span><br><span class="line">    &quot;age&quot;: 8,</span><br><span class="line">    &quot;breed&quot;: &quot;杂交&quot;,</span><br><span class="line">    &quot;location&quot;: &quot;华府&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;id&quot;: 2,</span><br><span class="line">    &quot;name&quot;: &quot;安安&quot;,</span><br><span class="line">    &quot;picture&quot;: &quot;images&#x2F;french-bulldog.jpeg&quot;,</span><br><span class="line">    &quot;age&quot;: 7,</span><br><span class="line">    &quot;breed&quot;: &quot;饲养&quot;,</span><br><span class="line">    &quot;location&quot;: &quot;华府&quot;</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
 <p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
@@ -503,7 +492,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/39357.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/39357.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/15819.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/15819.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -540,11 +529,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/hexoT.github.io/tags/solidity/">
-                                    <span class="chip bg-color">solidity</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -710,49 +695,40 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/22237.html">
+                <a href="/hexoT.github.io/posts/15819.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/22.jpg" class="responsive-img" alt="truffle部署错误 Cannot find module &#39;web3-provider-engine&#39;">
+                        <img src="/hexoT.github.io/medias/featureimages/2.jpg" class="responsive-img" alt="DAPP领养臭狗前端代码分析">
                         
-                        <span class="card-title">truffle部署错误 Cannot find module &#39;web3-provider-engine&#39;</span>
+                        <span class="card-title">DAPP领养臭狗前端代码分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            truffle部署报错运行命令truffle migrate –network ropsten  –reset –compile-all时候报错，Cannot find module ‘web3-provider-engine/subpro
+                            index.html编写前端界面，在项目根目录下新建src文件夹，在文件夹中新建index.html，代码如下：
+123456789101112131415161718192021222324252627282930313233343536
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-21
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                    uncategorized
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            dexter
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/hexoT.github.io/tags/truffle/">
-                        <span class="chip bg-color">truffle</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -763,25 +739,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/35991.html">
+                <a href="/hexoT.github.io/posts/25550.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="DAPP-以太坊DAPP领养臭狗">
+                        <img src="/hexoT.github.io/medias/featureimages/9.jpg" class="responsive-img" alt="web3js介绍及开发基础">
                         
-                        <span class="card-title">DAPP-以太坊DAPP领养臭狗</span>
+                        <span class="card-title">web3js介绍及开发基础</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DAPP基于的技术栈有truffle、infura、web3.js，通过部署智能合约到以太测试网络或主网，实现以太坊DAPP领养臭狗。开发环境为ubuntu。
-DAPP的介绍首先，先看下DAPP的界面：！在UBUTU环境编译成功智能合约后，
+                            Web3是一套和以太坊节点进行通信的API，如果我们需要基于以太坊来开发去中心化应用，就可能需要使用web3（或者使用 ethers.js ），例如需要通过Web3来获取节点状态，获取账号信息，调用合约、监听合约事件等等。web3.js 是
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-20
                             </span>
                         <span class="publish-author">
                             
@@ -794,8 +769,8 @@ DAPP的介绍首先，先看下DAPP的界面：！在UBUTU环境编译成功智�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/hexoT.github.io/tags/DAPP-solidity-truffle-infura-web3-js/">
-                        <span class="chip bg-color">DAPP solidity truffle infura web3.js</span>
+                    <a href="/hexoT.github.io/tags/solidity/">
+                        <span class="chip bg-color">solidity</span>
                     </a>
                     
                 </div>

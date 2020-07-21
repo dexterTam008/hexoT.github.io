@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="node-gyp介绍及使用, DAPPS">
+    <meta name="keywords" content="web3js介绍及开发基础, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>node-gyp介绍及使用 | DAPPS</title>
+    <title>web3js介绍及开发基础 | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">node-gyp介绍及使用</h1>
+                    <h1 class="description center-align post-title">web3js介绍及开发基础</h1>
                 </div>
             </div>
         </div>
@@ -439,15 +439,6 @@
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
-                            </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
@@ -455,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-14
+                    2020-07-20
                 </div>
                 
 
@@ -471,12 +462,22 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="何为node-gyp"><a href="#何为node-gyp" class="headerlink" title="何为node-gyp"></a>何为node-gyp</h2><p>首先，要认识的是gyp是一种构建自动化工具。node-gyp就是node下的gyp。npm 为了方便干脆就直接源码分发，用户装的时候再现场编译。</p>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>node程序中需要调用一些其他语言编写的 工具 甚至是dll，需要先编译一下，否则就会有跨平台的问题，例如在windows上运行的软件copy到mac上就不能用了，但是如果源码支持，编译一下，在mac上还是可以用的。</p>
-<h2 id="安装及使用"><a href="#安装及使用" class="headerlink" title="安装及使用"></a>安装及使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g node-gyp</span><br></pre></td></tr></table></figure>
-<p>在根目录上输入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ node-gyp</span><br><span class="line"></span><br><span class="line">  Usage: node-gyp &lt;<span class="built_in">command</span>&gt; [options]</span><br><span class="line"></span><br><span class="line">  <span class="built_in">where</span> &lt;<span class="built_in">command</span>&gt; is one of:</span><br><span class="line">    - build - Invokes `make` and builds the module</span><br><span class="line">    - clean - Removes any generated build files and the <span class="string">"out"</span> dir</span><br><span class="line">    - configure - Generates a Makefile <span class="keyword">for</span> the current module</span><br><span class="line">    - rebuild - Runs <span class="string">"clean"</span>, <span class="string">"configure"</span> and <span class="string">"build"</span> all at once</span><br><span class="line">    - install - Install node development files <span class="keyword">for</span> the specified node version.</span><br><span class="line">    - list - Prints a listing of the currently installed node development files</span><br><span class="line">    - remove - Removes the node development files <span class="keyword">for</span> the specified version</span><br><span class="line"></span><br><span class="line">node-gyp@7.0.0  /home/dexter/node-v12.16.3-linux-x64/lib/node_modules/node-gyp</span><br><span class="line">node@12.16.3</span><br></pre></td></tr></table></figure>
-<p>node-gyp build ： 调用“make”并生成模块。<br>node-gyp clean ： 删除所有生成的生成文件和 “out” dir。<br>node-gyp configure ： 为当前模块生成生成文件。<br>node-gyp rebuild ： 运行”clean”, “configure” and “build”三个命令。<br>node-gyp install ： 安装指定节点版本的节点开发文件。<br>node-gyp list ： 打印当前安装的节点开发文件的列表。<br>node-gyp remove ： 删除指定版本的节点开发文件。</p>
+                <p>Web3是一套和以太坊节点进行通信的API，如果我们需要基于以太坊来开发去中心化应用，就可能需要使用web3（或者使用 ethers.js ），例如需要通过Web3来获取节点状态，获取账号信息，调用合约、监听合约事件等等。<br>web3.js 是 Web3 协议的 JavaScript 实现版本。</p>
+<p>可以使用 web3.js库 提供的 web3 对象， 在底层实现上，通过RPC 调用 和本地以太坊节点进行通信。web3.js可以与任何暴露了RPC接口的以太坊节点连接。</p>
+<h2 id="web3对象"><a href="#web3对象" class="headerlink" title="web3对象"></a>web3对象</h2><p>web3 包含的几个对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">web3.eth 用来与以太坊区块链及合约的交互</span><br><span class="line">web3.shh 用来与Whisper协议相关交互</span><br><span class="line">web3.db  用来与本地数据库交互</span><br><span class="line">web3.net 用来获取网络相关信息</span><br><span class="line">web3     主对象 包含一些工具</span><br></pre></td></tr></table></figure>
+
+<h2 id="引入web3"><a href="#引入web3" class="headerlink" title="引入web3"></a>引入web3</h2><p>常用的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">linux&#x2F;windows环境下： npm install web3</span><br><span class="line">ios环境下：bower install web3</span><br></pre></td></tr></table></figure>
+
+<p>然后创建一个 web3实例，设置一个provider。为了保证你不会覆盖一个已有的provider（Mist浏览器或安装了MetaMak的浏览器会提供Provider），需要先检查是否有 web3 实例，示例代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 检查是否是新的DApp浏览器 或 MetaMask</span><br><span class="line">var web3Provider;</span><br><span class="line">if (window.ethereum) &#123;</span><br><span class="line">   web3Provider &#x3D; window.ethereum;</span><br><span class="line">  try &#123;</span><br><span class="line">    &#x2F;&#x2F; 请求用户授权</span><br><span class="line">    await window.ethereum.enable();</span><br><span class="line">  &#125; catch (error) &#123;</span><br><span class="line">    &#x2F;&#x2F; 用户不授权时</span><br><span class="line">    console.error(&quot;User denied account access&quot;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; else if (window.web3) &#123;   &#x2F;&#x2F; 老版 MetaMask Legacy dapp browsers...</span><br><span class="line">  web3Provider &#x3D; window.web3.currentProvider;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  web3Provider &#x3D; new Web3.providers.HttpProvider(&#39;http:&#x2F;&#x2F;localhost:8545&#39;);</span><br><span class="line">&#125;</span><br><span class="line">web3 &#x3D; new Web3(web3Provider);</span><br></pre></td></tr></table></figure>
+<p>成功引入后，就可以使用 web3 对象的API 了。</p>
+<h2 id="web3js-API"><a href="#web3js-API" class="headerlink" title="web3js API"></a>web3js API</h2><p>详见：</p>
+<h2 id="异步支持"><a href="#异步支持" class="headerlink" title="异步支持"></a>异步支持</h2><p>web3js API被设计来与本地的RPC结点交互，所有函数默认使用同步的HTTP的请求。<br>想发起一个异步的请求。允许函数传一个跟在参数列表后的可选的回调函数来支持异步。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">web3.eth.getBlock(32, function(error, result)&#123;</span><br><span class="line">    if(!error)</span><br><span class="line">        console.log(result)</span><br><span class="line">    else</span><br><span class="line">        console.error(error);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="批量请求"><a href="#批量请求" class="headerlink" title="批量请求"></a>批量请求</h2><p>可以允许将多个请求放入队列，并一次执行。</p>
 <p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
@@ -503,7 +504,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/39357.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/39357.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/25550.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/25550.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -714,44 +715,33 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/22237.html">
+                <a href="/hexoT.github.io/posts/15819.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/22.jpg" class="responsive-img" alt="truffle部署错误 Cannot find module &#39;web3-provider-engine&#39;">
+                        <img src="/hexoT.github.io/medias/featureimages/2.jpg" class="responsive-img" alt="DAPP领养臭狗前端代码分析">
                         
-                        <span class="card-title">truffle部署错误 Cannot find module &#39;web3-provider-engine&#39;</span>
+                        <span class="card-title">DAPP领养臭狗前端代码分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            truffle部署报错运行命令truffle migrate –network ropsten  –reset –compile-all时候报错，Cannot find module ‘web3-provider-engine/subpro
+                            index.html编写前端界面，在项目根目录下新建src文件夹，在文件夹中新建index.html，代码如下：
+123456789101112131415161718192021222324252627282930313233343536
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-14
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-21
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                    uncategorized
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            dexter
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/hexoT.github.io/tags/truffle/">
-                        <span class="chip bg-color">truffle</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -763,25 +753,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/35991.html">
+                <a href="/hexoT.github.io/posts/13341.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="DAPP-以太坊DAPP领养臭狗">
+                        <img src="/hexoT.github.io/medias/featureimages/9.jpg" class="responsive-img" alt="Dotenv的使用">
                         
-                        <span class="card-title">DAPP-以太坊DAPP领养臭狗</span>
+                        <span class="card-title">Dotenv的使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DAPP基于的技术栈有truffle、infura、web3.js，通过部署智能合约到以太测试网络或主网，实现以太坊DAPP领养臭狗。开发环境为ubuntu。
-DAPP的介绍首先，先看下DAPP的界面：！在UBUTU环境编译成功智能合约后，
+                            Dotenv的介绍
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-18
                             </span>
                         <span class="publish-author">
                             
@@ -794,8 +783,8 @@ DAPP的介绍首先，先看下DAPP的界面：！在UBUTU环境编译成功智�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/hexoT.github.io/tags/DAPP-solidity-truffle-infura-web3-js/">
-                        <span class="chip bg-color">DAPP solidity truffle infura web3.js</span>
+                    <a href="/hexoT.github.io/tags/solidity/">
+                        <span class="chip bg-color">solidity</span>
                     </a>
                     
                 </div>
