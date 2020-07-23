@@ -4,6 +4,57 @@
   
     
     <entry>
+      <title>webpack-dev-server</title>
+      <link href="/hexoT.github.io/posts/37089.html"/>
+      <url>/hexoT.github.io/posts/37089.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>npm的脚本命令</title>
+      <link href="/hexoT.github.io/posts/10235.html"/>
+      <url>/hexoT.github.io/posts/10235.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="npm脚本"><a href="#npm脚本" class="headerlink" title="npm脚本"></a>npm脚本</h2><p>首先要理解的是npm脚本，npm脚本其实在package.json文件里面，使用scripts字段定义的脚本:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"devDependencies"</span>: &#123;&#125;,</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"node index.js"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>{…}里面的scripts字段是一个对象。它的每一个属性，对应一段脚本。比如，start命令对应的脚本是./node_modules/.bin/testrpc。</p><h2 id="npm脚本命令"><a href="#npm脚本命令" class="headerlink" title="npm脚本命令"></a>npm脚本命令</h2><p>我们在项目的根目录下输入npm run start:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run start</span><br></pre></td></tr></table></figure><p>其中npm run start就是npm脚本命令,其作用就是执行start这个脚本。<br>其实等同于执行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node index.js</span><br></pre></td></tr></table></figure><p>查看当前项目的所有 npm 脚本命令，可以使用不带任何参数的npm run命令:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run</span><br></pre></td></tr></table></figure><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> npm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>truffle合约迁移的懒编译</title>
+      <link href="/hexoT.github.io/posts/undefined.html"/>
+      <url>/hexoT.github.io/posts/undefined.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="Lazy-Compilation懒编译"><a href="#Lazy-Compilation懒编译" class="headerlink" title="Lazy Compilation懒编译"></a>Lazy Compilation懒编译</h2><p>truffle migrate如果发现已经发布过，且发布的版本号没有变化就不会再发布。</p><h2 id="强制重编译"><a href="#强制重编译" class="headerlink" title="强制重编译"></a>强制重编译</h2><p>我们要想编译更新后的合约，那么可以给它强制重新编译。使用truffle migrate –reset：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle migrate --reset</span><br></pre></td></tr></table></figure><p>运行truffle migrate前，需要确认本地节点处于运行状态。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> truffle </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>web3js使用实例</title>
       <link href="/hexoT.github.io/posts/2268.html"/>
       <url>/hexoT.github.io/posts/2268.html</url>
@@ -555,7 +606,7 @@
     
     
     <entry>
-      <title>合约编译</title>
+      <title>以太坊合约编译</title>
       <link href="/hexoT.github.io/posts/52995.html"/>
       <url>/hexoT.github.io/posts/52995.html</url>
       
