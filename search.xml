@@ -49,8 +49,8 @@
     
     <entry>
       <title>truffle合约迁移的懒编译</title>
-      <link href="/hexoT.github.io/posts/undefined.html"/>
-      <url>/hexoT.github.io/posts/undefined.html</url>
+      <link href="/hexoT.github.io/posts/52968.html"/>
+      <url>/hexoT.github.io/posts/52968.html</url>
       
         <content type="html"><![CDATA[<h2 id="Lazy-Compilation懒编译"><a href="#Lazy-Compilation懒编译" class="headerlink" title="Lazy Compilation懒编译"></a>Lazy Compilation懒编译</h2><p>truffle migrate如果发现已经发布过，且发布的版本号没有变化就不会再发布。</p><h2 id="强制重编译"><a href="#强制重编译" class="headerlink" title="强制重编译"></a>强制重编译</h2><p>我们要想编译更新后的合约，那么可以给它强制重新编译。使用truffle migrate –reset：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ truffle migrate --reset</span><br></pre></td></tr></table></figure><p>运行truffle migrate前，需要确认本地节点处于运行状态。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
       
