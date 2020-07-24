@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="webpack-dev-server, DAPPS">
+    <meta name="keywords" content="使用webpack-dev-server实时渲染前端, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>webpack-dev-server | DAPPS</title>
+    <title>使用webpack-dev-server实时渲染前端 | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">webpack-dev-server</h1>
+                    <h1 class="description center-align post-title">使用webpack-dev-server实时渲染前端</h1>
                 </div>
             </div>
         </div>
@@ -435,6 +435,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
+                                uncategorized
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -458,7 +467,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="webpack-dev-server概念"><a href="#webpack-dev-server概念" class="headerlink" title="webpack-dev-server概念"></a>webpack-dev-server概念</h2><p>Webpack-dev-server,一个轻量的node.js express服务器。 它会使用当前的路径作为请求的资源路径，使用 当前目录下的资源来处理静态资源的请求，如javascript、 css/ 图片等。</p>
+<h2 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h2><p>Webpack是一个模块加载器，这里所谓模块其实就是项目中用到javascript、coffeescript、css、less、jsx以及图片等等资源，Webpack采用不同的loader将这些资源加载后打包，然后输出打包后的文件，打包后的文件可以是一个或多个js文件，也可以根据需要分别打包，比如将所有css文件单独输出。在webpack.config.js中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const path &#x3D; require(&quot;path&quot;);</span><br><span class="line">const CopyWebpackPlugin &#x3D; require(&quot;copy-webpack-plugin&quot;);</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">  mode: &#39;development&#39;,</span><br><span class="line">  entry: &quot;.&#x2F;src&#x2F;index.js&quot;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    filename: &quot;index.js&quot;,</span><br><span class="line">    path: path.resolve(__dirname, &quot;dist&quot;),</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    new CopyWebpackPlugin([&#123; from: &quot;.&#x2F;src&#x2F;index.html&quot;, to: &quot;index.html&quot; &#125;]),</span><br><span class="line">  ],</span><br><span class="line">  devServer: &#123; contentBase: path.join(__dirname, &quot;dist&quot;), compress: true &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>entry: 为需要打包的资源，output:为需要输出的资源，path: path.resolve(__dirname, “dist”)设置输出路径为dist文件夹下。</p>
+<h2 id="实时渲染前端"><a href="#实时渲染前端" class="headerlink" title="实时渲染前端"></a>实时渲染前端</h2><p>Webpack有一个很实用的功能叫做热替换（Hot-replace），开发过程中都不需要刷新浏览器，任何前端代码的更改都会实时的在浏览器中表现出来，这需要安装Webpack-dev-server才能实现此功能。首先我们得先安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack</span><br></pre></td></tr></table></figure>
+<p>然后：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack-dev-server --save-dev</span><br></pre></td></tr></table></figure>
+<p>安装之后就可以任何前端代码的更改都会实时渲染前端。</p>
+<p>在package.json中配置”scripts”：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;app&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.0.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;&quot;,</span><br><span class="line">  &quot;private&quot;: true,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;webpack&quot;,</span><br><span class="line">    &quot;dev&quot;: &quot;webpack-dev-server&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    &quot;copy-webpack-plugin&quot;: &quot;^5.0.5&quot;,</span><br><span class="line">    &quot;webpack&quot;: &quot;^4.41.2&quot;,</span><br><span class="line">    &quot;webpack-cli&quot;: &quot;^3.3.10&quot;,</span><br><span class="line">    &quot;webpack-dev-server&quot;: &quot;^3.9.0&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;web3&quot;: &quot;^1.2.4&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输入命令npm run build，启动后端服务器：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ npm run build</span><br><span class="line">&gt; app@1.0.0 build &#x2F;home&#x2F;dexter&#x2F;chapter2&#x2F;app</span><br><span class="line">&gt; webpack</span><br><span class="line"></span><br><span class="line">Hash: 9bdecb5cc749ae50c065</span><br><span class="line">Version: webpack 4.41.2</span><br><span class="line">Time: 12830ms</span><br><span class="line">Built at: 07&#x2F;23&#x2F;2020 8:53:34 PM</span><br><span class="line">     Asset      Size  Chunks             Chunk Names</span><br><span class="line">index.html  1.09 KiB          [emitted]  </span><br><span class="line">  index.js  2.14 MiB    main  [emitted]  main</span><br><span class="line">Entrypoint main &#x3D; index.js</span><br><span class="line">[0] buffer (ignored) 15 bytes &#123;main&#125; [optional] [built]</span><br><span class="line">[1] util (ignored) 15 bytes &#123;main&#125; [built]</span><br><span class="line">[2] util (ignored) 15 bytes &#123;main&#125; [built]</span><br><span class="line">[3] crypto (ignored) 15 bytes &#123;main&#125; [optional] [built]</span><br><span class="line">[..&#x2F;build&#x2F;contracts&#x2F;Voting.json] 93.6 KiB &#123;main&#125; [built]</span><br><span class="line">[.&#x2F;node_modules&#x2F;webpack&#x2F;buildin&#x2F;amd-options.js] (webpack)&#x2F;buildin&#x2F;amd-options.js 80 bytes &#123;main&#125; [built]</span><br><span class="line">[.&#x2F;node_modules&#x2F;webpack&#x2F;buildin&#x2F;global.js] (webpack)&#x2F;buildin&#x2F;global.js 472 bytes &#123;main&#125; [built]</span><br><span class="line">[.&#x2F;node_modules&#x2F;webpack&#x2F;buildin&#x2F;module.js] (webpack)&#x2F;buildin&#x2F;module.js 497 bytes &#123;main&#125; [built]</span><br><span class="line">[.&#x2F;src&#x2F;index.js] 2.8 KiB &#123;main&#125; [built]</span><br><span class="line">    + 333 hidden modules</span><br></pre></td></tr></table></figure>
+<p>输入命令npm run dev，启用实时渲染前端功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install dev</span><br></pre></td></tr></table></figure>
+<p>这样就可以实现更改任何前端代码都会实时渲染前端。</p>
+<p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
+
             </div>
             <hr/>
 
@@ -695,15 +721,15 @@
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/5.jpg" class="responsive-img" alt="webpack-dev-server">
+                        <img src="/hexoT.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="使用webpack-dev-server实时渲染前端">
                         
-                        <span class="card-title">webpack-dev-server</span>
+                        <span class="card-title">使用webpack-dev-server实时渲染前端</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            webpack-dev-server概念Webpack-dev-server,一个轻量的node.js express服务器。 它会使用当前的路径作为请求的资源路径，使用 当前目录下的资源来处理静态资源的请求，如javascript、 cs
                         
                     </div>
                     <div class="publish-info">
@@ -712,8 +738,12 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            dexter
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
+                                    uncategorized
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -751,8 +781,12 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            dexter
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
+                                    uncategorized
+                                </a>
+                            
                             
                         </span>
                     </div>
