@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Solidity 0.5中的address和address payable</title>
+      <link href="/hexoT.github.io/posts/57575.html"/>
+      <url>/hexoT.github.io/posts/57575.html</url>
+      
+        <content type="html"><![CDATA[<p>solidity 0.5将地址类型细分为address和address payable。<br>其目的在于，强制智能合约开发人员认真考虑一个地址是否应当接收以太币，如果该地址根本不需要接收以太币，那么就应当使用address类型。当地址被声明为address类型后，如果开发者试图向该地址转入以太币，就会导致编译时类型错误。如果该地址需要接收以太币，那么就应当使用address payable类型。</p><h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>address payable和address类型的变量都表示以太坊地址，都可以使用底层的.call()方法。<br>address payable表示可用于支付的地址，因此可以使用.transfer()和.send()方法，但是address类型的变量则不能使用这些方法。如果使用了，会报错：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: <span class="string">"send"</span> and <span class="string">"transfer"</span> are only available <span class="keyword">for</span> objects of <span class="built_in">type</span> <span class="string">"address payable"</span>, not <span class="string">"address"</span>.</span><br></pre></td></tr></table></figure><h2 id="address和address-payable之间的转换"><a href="#address和address-payable之间的转换" class="headerlink" title="address和address payable之间的转换"></a>address和address payable之间的转换</h2><h3 id="address-payable转换为address"><a href="#address-payable转换为address" class="headerlink" title="address payable转换为address"></a>address payable转换为address</h3><p>address payable类型的变量可以显式或隐式地转换为address类型：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">address payable addr1 = msg.sender;</span><br><span class="line">address addr2 = addr1; // 隐式转换</span><br><span class="line">address addr3 = address(addr1); // 显式转换</span><br></pre></td></tr></table></figure><h3 id="address转换为address-payable"><a href="#address转换为address-payable" class="headerlink" title="address转换为address payable"></a>address转换为address payable</h3><p>address类型的变量只能显式地转换为address payable，需要首先转换为整数类型（例如uint160），然后再将该整型值转换为address类型：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">address addr1 = msg.sender;</span><br><span class="line">address payable addr3 = address(uint160(addr1)); // 正确，先转换为uint160，然后转换为address payable</span><br></pre></td></tr></table></figure><h2 id="solidity内置的变量类型"><a href="#solidity内置的变量类型" class="headerlink" title="solidity内置的变量类型"></a>solidity内置的变量类型</h2><p>在Solidity的内置变量中，以下几个变量的类型都是address payable：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*msg.sender</span><br><span class="line">*block.coinbase</span><br><span class="line">*tx.origin</span><br></pre></td></tr></table></figure><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>webpack中引入style-loader和css-loader</title>
       <link href="/hexoT.github.io/posts/34965.html"/>
       <url>/hexoT.github.io/posts/34965.html</url>
