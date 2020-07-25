@@ -435,6 +435,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
+                                uncategorized
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -458,8 +467,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>webpack是用JavaScript写的，运行在node环境，所以默认webpack打包的时候只会处理JavaScript之间的依赖关系。<br>因为像 <style> 标签、 .css 这样的文件不是一个 JavaScript 模块，你需要配置 webpack 使用  style-loader 和css-loader 去处理它们。</p>
-<h2 id="style-loader"><a href="#style-loader" class="headerlink" title="style-loader"></a>style-loader</h2><p>style-loader 的功能就是在 DOM 里插入一个 <style> 标签，并且将 css 写入这个标签内。</p>
+                <p>webpack是用JavaScript写的，运行在node环境，所以默认webpack打包的时候只会处理JavaScript之间的依赖关系。<br>因为像 &lt; style &gt; 标签、 .css 这样的文件不是一个 JavaScript 模块，你需要配置 webpack 使用  style-loader 和css-loader 去处理它们。</p>
+<h2 id="style-loader"><a href="#style-loader" class="headerlink" title="style-loader"></a>style-loader</h2><p>style-loader 的功能就是在 DOM 里插入一个 &lt; style &gt; 标签，并且将 css 写入这个标签内。</p>
 <h2 id="css-loader"><a href="#css-loader" class="headerlink" title="css-loader"></a>css-loader</h2><p>css-loader 的功能就是让webpack打包的时候可以加载.css 文件。</p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>首先得先安装style-loader、css-loader模块。在项目根目录输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ npm install style-loader --save-dev</span><br><span class="line">+ style-loader@0.13.2</span><br><span class="line">added 1 package from 1 contributor <span class="keyword">in</span> 6.271s</span><br><span class="line"></span><br><span class="line">23 packages are looking <span class="keyword">for</span> funding</span><br><span class="line">  run `npm fund` <span class="keyword">for</span> details</span><br></pre></td></tr></table></figure>
@@ -467,7 +476,7 @@
 <p>然后就是在 webpack.config.js 中使用style-loader和css-loader，use: [ ‘style-loader’, ‘css-loader’ ]如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line"></span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">       <span class="built_in">test</span>: /\.css$/,</span><br><span class="line">       use: [ <span class="string">'style-loader'</span>, <span class="string">'css-loader'</span> ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>现在我们就可以在webpack中加载<style> 标签、 .css 这样的文件。</p>
+<p>现在我们就可以在webpack中加载&lt; style &gt;标签、 .css 这样的文件。</p>
 <p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
@@ -714,7 +723,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            webpack是用JavaScript写的，运行在node环境，所以默认webpack打包的时候只会处理JavaScript之间的依赖关系。因为像  标签、 .css 这样的文件不是一个 JavaScript 模块，你需要配置 webpac
+                            webpack是用JavaScript写的，运行在node环境，所以默认webpack打包的时候只会处理JavaScript之间的依赖关系。因为像 &lt; style &gt; 标签、 .css 这样的文件不是一个 JavaScript 
                         
                     </div>
                     <div class="publish-info">
@@ -723,8 +732,12 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            dexter
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
+                                    uncategorized
+                                </a>
+                            
                             
                         </span>
                     </div>
