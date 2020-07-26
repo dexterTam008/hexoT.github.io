@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="truffle migrate时报错&#34;Could not connect to your Ethereum client&#34;, DAPPS">
+    <meta name="keywords" content="truffle.js中使用babel-register, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>truffle migrate时报错&#34;Could not connect to your Ethereum client&#34; | DAPPS</title>
+    <title>truffle.js中使用babel-register | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">truffle migrate时报错&#34;Could not connect to your Ethereum client&#34;</h1>
+                    <h1 class="description center-align post-title">truffle.js中使用babel-register</h1>
                 </div>
             </div>
         </div>
@@ -430,23 +430,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/hexoT.github.io/tags/error/">
-                                <span class="chip bg-color">error</span>
+                            <a href="/hexoT.github.io/tags/truffle/">
+                                <span class="chip bg-color">truffle</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -471,12 +462,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>使用truffle框架编译solidity智能合约时，出现报错”Could not connect to your Ethereum client”。如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ truffle migrate --network develop</span><br><span class="line">Compiling your contracts...</span><br><span class="line">===========================</span><br><span class="line">&gt; Everything is up to date, there is nothing to compile.</span><br><span class="line"></span><br><span class="line">&gt; Something went wrong <span class="keyword">while</span> attempting to connect to the network. Check your network configuration.</span><br><span class="line"></span><br><span class="line">Could not connect to your Ethereum client with the following parameters:</span><br><span class="line">    - host       &gt; 127.0.0.1</span><br><span class="line">    - port       &gt; 7545</span><br><span class="line">    - network_id &gt; 5777</span><br><span class="line">Please check that your Ethereum client:</span><br><span class="line">    - is running</span><br><span class="line">    - is accepting RPC connections (i.e., <span class="string">"--rpc"</span> option is used <span class="keyword">in</span> geth)</span><br><span class="line">    - is accessible over the network</span><br><span class="line">    - is properly configured <span class="keyword">in</span> your Truffle configuration file (truffle-config.js)</span><br><span class="line"></span><br><span class="line">Truffle v5.1.27 (core: 5.1.27)</span><br><span class="line">Node v12.16.3</span><br></pre></td></tr></table></figure>
-<p>其中，是已经打开ganache-cli的，按道理是Ethereum client以太服务器已经打开。看一下上面有一句：Everything is up to date, there is nothing to compile 意思是已经没东西更新了。</p>
-<p>这就明白了，原来代码更新了无法重新编译。于是启用命令sudo truffle migrate –network develop  –reset ,强制重新编译:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">$ sudo truffle migrate --network develop  --reset</span><br><span class="line">[sudo] password <span class="keyword">for</span> dexter: </span><br><span class="line"></span><br><span class="line">Compiling your contracts...</span><br><span class="line">===========================</span><br><span class="line">&gt; Everything is up to date, there is nothing to compile.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Starting migrations...</span><br><span class="line">======================</span><br><span class="line">&gt; Network name:    <span class="string">'develop'</span></span><br><span class="line">&gt; Network id:      1595490216226</span><br><span class="line">&gt; Block gas <span class="built_in">limit</span>: 6721975 (0x6691b7)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1_initial_migration.js</span><br><span class="line">======================</span><br><span class="line"></span><br><span class="line">   Deploying <span class="string">'Migrations'</span></span><br><span class="line">   ----------------------</span><br><span class="line">   &gt; transaction <span class="built_in">hash</span>:    0x5118de6fe50deaba18665e4253e1e1cf6888417f68537d0761be5b3d86f425d6</span><br><span class="line">   &gt; Blocks: 0            Seconds: 0</span><br><span class="line">   &gt; contract address:    0xbEAe2c1d35d465B4B9DB156a2679EFE8128dC03e</span><br><span class="line">   &gt; block number:        1</span><br><span class="line">   &gt; block timestamp:     1595490251</span><br><span class="line">   &gt; account:             0xc3F946CDb146749a65Bc7C3d52690Cd504Ca08Be</span><br><span class="line">   &gt; balance:             99.99671218</span><br><span class="line">   &gt; gas used:            164391 (0x28227)</span><br><span class="line">   &gt; gas price:           20 gwei</span><br><span class="line">   &gt; value sent:          0 ETH</span><br><span class="line">   &gt; total cost:          0.00328782 ETH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &gt; Saving migration to chain.</span><br><span class="line">   &gt; Saving artifacts</span><br><span class="line">   -------------------------------------</span><br><span class="line">   &gt; Total cost:          0.00328782 ETH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2_deploy_contracts.js</span><br><span class="line">=====================</span><br><span class="line"></span><br><span class="line">   Deploying <span class="string">'Voting'</span></span><br><span class="line">   ------------------</span><br><span class="line">   &gt; transaction <span class="built_in">hash</span>:    0xd9c6dbb0e1d022d0b8ed7727e3b7d8e1dcabe9537829e761af3c72f6ba02e290</span><br><span class="line">   &gt; Blocks: 0            Seconds: 0</span><br><span class="line">   &gt; contract address:    0x8660A777fC7b1D61F49B18232833fD76fb1ADc3c</span><br><span class="line">   &gt; block number:        3</span><br><span class="line">   &gt; block timestamp:     1595490252</span><br><span class="line">   &gt; account:             0xc3F946CDb146749a65Bc7C3d52690Cd504Ca08Be</span><br><span class="line">   &gt; balance:             99.99001174</span><br><span class="line">   &gt; gas used:            292681 (0x47749)</span><br><span class="line">   &gt; gas price:           20 gwei</span><br><span class="line">   &gt; value sent:          0 ETH</span><br><span class="line">   &gt; total cost:          0.00585362 ETH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &gt; Saving migration to chain.</span><br><span class="line">   &gt; Saving artifacts</span><br><span class="line">   -------------------------------------</span><br><span class="line">   &gt; Total cost:          0.00585362 ETH</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Summary</span><br><span class="line">=======</span><br><span class="line">&gt; Total deployments:   2</span><br><span class="line">&gt; Final cost:          0.00914144 ETH</span><br></pre></td></tr></table></figure>
-<p>这样就不会报错了。</p>
+                <h2 id="Babel-是什么"><a href="#Babel-是什么" class="headerlink" title="Babel 是什么?"></a>Babel 是什么?</h2><p>Babel 是一个 JavaScript 编译器,主要用于将 ECMAScript 2015+ 版本的代码转换为向后兼容的 JavaScript 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。下面列出的是 Babel 能为你做的事情：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*语法转换</span><br><span class="line">*通过 Polyfill 方式在目标环境中添加缺失的特性 (通过 @babel/polyfill 模块)</span><br><span class="line">*源码转换 (codemods)</span><br></pre></td></tr></table></figure>
+
+<h2 id="babel-register"><a href="#babel-register" class="headerlink" title="babel-register"></a>babel-register</h2><p>使用 Babel 的方法是通过 require 钩子。 require 钩子会将自己绑定到 node 的 require 上并自动编译文件。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install babel-register --save-dev</span><br></pre></td></tr></table></figure>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>在truffle.js中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ require(<span class="string">"babel-register"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>通过 node 引入的带 .es6, .es, .jsx 和 .js 后缀的所有后续文件都将会被 Babel 转译。</p>
 <p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
@@ -503,7 +496,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/20102.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/20102.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/17760.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/17760.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -541,8 +534,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/hexoT.github.io/tags/error/">
-                                    <span class="chip bg-color">error</span>
+                                <a href="/hexoT.github.io/tags/truffle/">
+                                    <span class="chip bg-color">truffle</span>
                                 </a>
                             
                         </div>
@@ -710,9 +703,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/hexoT.github.io/posts/17760.html">
                     <div class="card-image">
@@ -730,9 +724,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -741,6 +735,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -759,20 +754,20 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/21223.html">
+                <a href="/hexoT.github.io/posts/20102.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/11.jpg" class="responsive-img" alt="solidity访问当前合约函数的方式">
+                        <img src="/hexoT.github.io/medias/featureimages/21.jpg" class="responsive-img" alt="truffle migrate时报错&#34;Could not connect to your Ethereum client&#34;">
                         
-                        <span class="card-title">solidity访问当前合约函数的方式</span>
+                        <span class="card-title">truffle migrate时报错&#34;Could not connect to your Ethereum client&#34;</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            solidity访问当前合约的函数,有2种方式。一种是直接用函数名f,此方法用于内部函数;一种是this.f， 此方法用于外部函数。
-123456789101112131415pragma solidity ^0.4.0;contract 
+                            使用truffle框架编译solidity智能合约时，出现报错”Could not connect to your Ethereum client”。如下：
+12345678910111213141516171819$ truffle mi
                         
                     </div>
                     <div class="publish-info">
@@ -790,6 +785,14 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/hexoT.github.io/tags/error/">
+                        <span class="chip bg-color">error</span>
+                    </a>
+                    
                 </div>
                 
             </div>
