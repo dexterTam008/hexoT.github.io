@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="truffle.js中使用babel-register, DAPPS">
+    <meta name="keywords" content="DAPP运行后页面报错[WDS] Disconnected! app.js:15441:9, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>truffle.js中使用babel-register | DAPPS</title>
+    <title>DAPP运行后页面报错[WDS] Disconnected! app.js:15441:9 | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">truffle.js中使用babel-register</h1>
+                    <h1 class="description center-align post-title">DAPP运行后页面报错[WDS] Disconnected! app.js:15441:9</h1>
                 </div>
             </div>
         </div>
@@ -430,23 +430,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/hexoT.github.io/tags/truffle/">
-                                <span class="chip bg-color">truffle</span>
+                            <a href="/hexoT.github.io/tags/error/">
+                                <span class="chip bg-color">error</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -455,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-26
+                    2020-07-27
                 </div>
                 
 
@@ -471,15 +462,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Babel-是什么"><a href="#Babel-是什么" class="headerlink" title="Babel 是什么?"></a>Babel 是什么?</h2><p>Babel 是一个 JavaScript 编译器,主要用于将 ECMAScript 2015+ 版本的代码转换为向后兼容的 JavaScript 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。下面列出的是 Babel 能为你做的事情：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*语法转换</span><br><span class="line">*通过 Polyfill 方式在目标环境中添加缺失的特性 (通过 @babel/polyfill 模块)</span><br><span class="line">*源码转换 (codemods)</span><br></pre></td></tr></table></figure>
-
-<h2 id="babel-register"><a href="#babel-register" class="headerlink" title="babel-register"></a>babel-register</h2><p>使用 Babel 的方法是通过 require 钩子。 require 钩子会将自己绑定到 node 的 require 上并自动编译文件。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install babel-register --save-dev</span><br></pre></td></tr></table></figure>
-<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>在truffle.js中</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ require(<span class="string">"babel-register"</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>通过 node 引入的带 .es6, .es, .jsx 和 .js 后缀的所有后续文件都将会被 Babel 转译。</p>
-<p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
+                <p>DAPP成功编译部署后，一直没报错，打开浏览器的Console，出现：<br> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[WDS] Disconnected! app.js:15441:9</span><br><span class="line"> close http://localhost:8080/app.js:15441</span><br><span class="line"> onclose http://localhost:8080/app.js:43214</span><br><span class="line"> dispatchEvent http://localhost:8080/app.js:29342</span><br><span class="line"> _close http://localhost:8080/app.js:30141</span><br></pre></td></tr></table></figure><br>[WDS] Disconnected!</p>
+<h2 id="truffle-config-js"><a href="#truffle-config-js" class="headerlink" title="truffle-config.js"></a>truffle-config.js</h2><p>其中，truffle-config.js配置是：<br> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> module.exports = &#123;</span><br><span class="line">networks: &#123;</span><br><span class="line">  development: &#123;</span><br><span class="line">    host: 'localhost',</span><br><span class="line">    port: 8545,</span><br><span class="line">    gas: 6700000,</span><br><span class="line">    network_id: '*' // Match any network id</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="修改truffle-config-js"><a href="#修改truffle-config-js" class="headerlink" title="修改truffle-config.js"></a>修改truffle-config.js</h2><p>网上查说是主要因为项目使用了代理服务软件解析问题，将host: ‘localhost’改为host: ‘127.0.0.1’就可以解决此问题。<br>修改后直接刷新页面就不会再报[WDS] Disconnected!的错误了。</p>
+<p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/2c16c3a6073a1ac48d9de3e0b52d9b69/xmlnote/WEBRESOURCE144cfd2ca5170bc27cc833e7786a2f85/52" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
             <hr/>
@@ -505,7 +491,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/17760.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/17760.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/60572.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/60572.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -543,8 +529,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/hexoT.github.io/tags/truffle/">
-                                    <span class="chip bg-color">truffle</span>
+                                <a href="/hexoT.github.io/tags/error/">
+                                    <span class="chip bg-color">error</span>
                                 </a>
                             
                         </div>
@@ -712,9 +698,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/hexoT.github.io/posts/60572.html">
                     <div class="card-image">
@@ -732,9 +719,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -743,6 +730,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -761,20 +749,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/20102.html">
+                <a href="/hexoT.github.io/posts/17760.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/21.jpg" class="responsive-img" alt="truffle migrate时报错&#34;Could not connect to your Ethereum client&#34;">
+                        <img src="/hexoT.github.io/medias/featureimages/19.jpg" class="responsive-img" alt="truffle.js中使用babel-register">
                         
-                        <span class="card-title">truffle migrate时报错&#34;Could not connect to your Ethereum client&#34;</span>
+                        <span class="card-title">truffle.js中使用babel-register</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            使用truffle框架编译solidity智能合约时，出现报错”Could not connect to your Ethereum client”。如下：
-12345678910111213141516171819$ truffle mi
+                            Babel 是什么?Babel 是一个 JavaScript 编译器,主要用于将 ECMAScript 2015+ 版本的代码转换为向后兼容的 JavaScript 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。下面列出的是 Bab
                         
                     </div>
                     <div class="publish-info">
@@ -796,8 +783,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/hexoT.github.io/tags/error/">
-                        <span class="chip bg-color">error</span>
+                    <a href="/hexoT.github.io/tags/truffle/">
+                        <span class="chip bg-color">truffle</span>
                     </a>
                     
                 </div>
