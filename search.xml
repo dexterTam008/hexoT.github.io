@@ -11,6 +11,12 @@
         <content type="html"><![CDATA[<p>部署合约后运行npm run dev，在浏览器控制台出现MetaMask - RPC Error: Error: JsonRpcEngine - response has no error or result for request，具体如下报错：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MetaMask - RPC Error: Error: JsonRpcEngine - response has no error or result <span class="keyword">for</span> request:</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"jsonrpc"</span>: <span class="string">"2.0"</span>,</span><br><span class="line">  <span class="string">"id"</span>: 2359889513,</span><br><span class="line">  <span class="string">"method"</span>: <span class="string">"net_version"</span>,</span><br><span class="line">  <span class="string">"params"</span>: [],</span><br><span class="line">  <span class="string">"origin"</span>: <span class="string">"localhost"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>看报错response has no error or result for request，请求的响应没有错误或结果，可以知道原因，没请求。</p><p>在本地根目录，重启ganache-cli之后报错就不会出现。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
       
       
+      <categories>
+          
+          <category> uncategorized </category>
+          
+      </categories>
+      
       
         <tags>
             
