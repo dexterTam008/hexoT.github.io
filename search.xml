@@ -4,11 +4,81 @@
   
     
     <entry>
+      <title>truffle对Web3合约的封装</title>
+      <link href="/hexoT.github.io/posts/12139.html"/>
+      <url>/hexoT.github.io/posts/12139.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>abi-evm</title>
+      <link href="/hexoT.github.io/posts/29658.html"/>
+      <url>/hexoT.github.io/posts/29658.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>以太坊合约contract结合web3js调用实例</title>
+      <link href="/hexoT.github.io/posts/1353.html"/>
+      <url>/hexoT.github.io/posts/1353.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="Web3概述"><a href="#Web3概述" class="headerlink" title="Web3概述"></a>Web3概述</h2><p>*与合约交互，最常用的方式就是使用web3.js library提供的web3。<br>*底层实现上，它通过RPC调用与本地节点通信。<br>*web3.js可以与任何暴露了RPC接口的以太坊节点连接。</p><h2 id="Web3调用合约"><a href="#Web3调用合约" class="headerlink" title="Web3调用合约"></a>Web3调用合约</h2><p>*web3.js封装了合约调用的方法。<br>*使用可以直接使用web3.eth.contract的里的sendTransaction来修改区块链数据。<br>*调用合约，可能需要from等参数，否则可能出现调用异常。</p><h2 id="Web3初始化"><a href="#Web3初始化" class="headerlink" title="Web3初始化"></a>Web3初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import Web3 from &quot;web3&quot;;</span><br></pre></td></tr></table></figure><h2 id="Web3常用API"><a href="#Web3常用API" class="headerlink" title="Web3常用API"></a>Web3常用API</h2><h3 id="web3-eth-contract，-创建一个Solidity的合约对象，用来在某个地址上初始化合约。"><a href="#web3-eth-contract，-创建一个Solidity的合约对象，用来在某个地址上初始化合约。" class="headerlink" title="web3.eth.contract， 创建一个Solidity的合约对象，用来在某个地址上初始化合约。"></a>web3.eth.contract， 创建一个Solidity的合约对象，用来在某个地址上初始化合约。</h3><p>*参数：Array，一到多个描述合约的参数，事件的API对象。<br>*返回值：Object，一个合约对象。<br>*示例：var MyContract = new web3.eth.Contract(abiArray);</p><h3 id="合约对象的方法"><a href="#合约对象的方法" class="headerlink" title="合约对象的方法"></a>合约对象的方法</h3><p>*显示对象call。myContract.methods.myMethod([param1[,param2[,…]]]).call(options[,callback]);(不修改数据)<br>*显示调用send。myContract.methods.myMethod([param1[,params[,…]]]).send(options[,callback]);(修改数据，消耗gas)</p><h3 id="web3-eth-account，以太坊账号"><a href="#web3-eth-account，以太坊账号" class="headerlink" title="web3.eth.account，以太坊账号"></a>web3.eth.account，以太坊账号</h3><p>*示例：web3.eth.getAccounts([callback])<br>web3.eth.getBalance(address[,defaultBlock] [,callback])</p><h3 id="web3-toWei"><a href="#web3-toWei" class="headerlink" title="web3.toWei"></a>web3.toWei</h3><p>*按对应货币转为以wei为单位。最常用的单位为ether。<br>示例：var value = web3.toWei(‘1’,‘ether’);<br>console.log(value); // “10000000000000000000”</p><h2 id="Web3调用合约的例子"><a href="#Web3调用合约的例子" class="headerlink" title="Web3调用合约的例子"></a>Web3调用合约的例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import Web3 from &quot;web3&quot;;</span><br><span class="line">import Artifact from &#39;..&#x2F;..&#x2F;build&#x2F;contracts&#x2F;Voting.json&#39;</span><br><span class="line"></span><br><span class="line">const App &#x3D; &#123;</span><br><span class="line">web3: null,</span><br><span class="line"></span><br><span class="line"> Data: async function() &#123;</span><br><span class="line">     const networkId &#x3D; await web3.eth.net.getId();</span><br><span class="line">     const deployedNetwork &#x3D; Artifact.networks[networkId];</span><br><span class="line"></span><br><span class="line">     this.voting &#x3D; new web3.eth.Contract(</span><br><span class="line">        Artifact.abi,</span><br><span class="line">        deployedNetwork.address,</span><br><span class="line">      );</span><br><span class="line">  &#x2F;&#x2F;Web3调用合约实例</span><br><span class="line">  const &#123; totalTokens &#125; &#x3D; this.voting.methods;</span><br><span class="line">  &#x2F;&#x2F;应用合约里的totalTokens()函数</span><br><span class="line">  var tokenstotal &#x3D; await totalTokens().call();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>其中，Web3调用合约实例 ： const { totalTokens } = this.voting.methods; 应用合约里的totalTokens()函数：<br>var tokenstotal = await totalTokens().call()。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web3 eth contract </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MetaMask报错response has no error or result for request</title>
       <link href="/hexoT.github.io/posts/62905.html"/>
       <url>/hexoT.github.io/posts/62905.html</url>
       
         <content type="html"><![CDATA[<p>部署合约后运行npm run dev，在浏览器控制台出现MetaMask - RPC Error: Error: JsonRpcEngine - response has no error or result for request，具体如下报错：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MetaMask - RPC Error: Error: JsonRpcEngine - response has no error or result <span class="keyword">for</span> request:</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"jsonrpc"</span>: <span class="string">"2.0"</span>,</span><br><span class="line">  <span class="string">"id"</span>: 2359889513,</span><br><span class="line">  <span class="string">"method"</span>: <span class="string">"net_version"</span>,</span><br><span class="line">  <span class="string">"params"</span>: [],</span><br><span class="line">  <span class="string">"origin"</span>: <span class="string">"localhost"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>看报错response has no error or result for request，请求的响应没有错误或结果，可以知道原因，没请求。</p><p>在本地根目录，重启ganache-cli之后报错就不会出现。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> uncategorized </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> error </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>使用 web3.utils.toWei报错“Please pass numbers as strings or BN objects to avoid precision errors.”</title>
+      <link href="/hexoT.github.io/posts/62905.html"/>
+      <url>/hexoT.github.io/posts/62905.html</url>
+      
+        <content type="html"><![CDATA[<p>使用 web3.utils.toWei报错“Please pass numbers as strings or BN objects to avoid precision errors.”，具体如下报错：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Please pass numbers as strings or BN objects to avoid precision errors.</span><br></pre></td></tr></table></figure><p>我们在调用合约方法时，都可以传一些参数的，比如转账金额 value。<br>value 的单位是 wei，这是一个很小的单位，所以一般数值很大。<br>所以，我们在使用web3.utils.toWei时，注意先把 ether 的值转成字符串，不然就会报出标题中的错误。</p><p>比如我们要将 0.1 ether 转 wei（其中this.inputEther的值是0.1 ether） ，应该这样使用 web3.utils.toWei(this.inputEther.toString(), ‘ether’)。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
       
       
       <categories>
