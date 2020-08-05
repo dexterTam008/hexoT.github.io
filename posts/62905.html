@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="使用 web3.utils.toWei报错“Please pass numbers as strings or BN objects to avoid precision errors.”, DAPPS">
+    <meta name="keywords" content="MetaMask报错response has no error or result for request, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>使用 web3.utils.toWei报错“Please pass numbers as strings or BN objects to avoid precision errors.” | DAPPS</title>
+    <title>MetaMask报错response has no error or result for request | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">使用 web3.utils.toWei报错“Please pass numbers as strings or BN objects to avoid precision errors.”</h1>
+                    <h1 class="description center-align post-title">MetaMask报错response has no error or result for request</h1>
                 </div>
             </div>
         </div>
@@ -471,10 +471,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>使用 web3.utils.toWei报错“Please pass numbers as strings or BN objects to avoid precision errors.”，具体如下报错：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Please pass numbers as strings or BN objects to avoid precision errors.</span><br></pre></td></tr></table></figure>
-<p>我们在调用合约方法时，都可以传一些参数的，比如转账金额 value。<br>value 的单位是 wei，这是一个很小的单位，所以一般数值很大。<br>所以，我们在使用web3.utils.toWei时，注意先把 ether 的值转成字符串，不然就会报出标题中的错误。</p>
-<p>比如我们要将 0.1 ether 转 wei（其中this.inputEther的值是0.1 ether） ，应该这样使用 web3.utils.toWei(this.inputEther.toString(), ‘ether’)。</p>
+                <p>部署合约后运行npm run dev，在浏览器控制台出现MetaMask - RPC Error: Error: JsonRpcEngine - response has no error or result for request，具体如下报错：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MetaMask - RPC Error: Error: JsonRpcEngine - response has no error or result <span class="keyword">for</span> request:</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"jsonrpc"</span>: <span class="string">"2.0"</span>,</span><br><span class="line">  <span class="string">"id"</span>: 2359889513,</span><br><span class="line">  <span class="string">"method"</span>: <span class="string">"net_version"</span>,</span><br><span class="line">  <span class="string">"params"</span>: [],</span><br><span class="line">  <span class="string">"origin"</span>: <span class="string">"localhost"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看报错response has no error or result for request，请求的响应没有错误或结果，可以知道原因，没请求。</p>
+<p>在本地根目录，重启ganache-cli之后报错就不会出现。</p>
 <p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
@@ -716,15 +716,16 @@
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/11.jpg" class="responsive-img" alt="MetaMask报错response has no error or result for request">
+                        <img src="/hexoT.github.io/medias/featureimages/1.jpg" class="responsive-img" alt="使用 web3.utils.toWei报错“Please pass numbers as strings or BN objects to avoid precision errors.”">
                         
-                        <span class="card-title">MetaMask报错response has no error or result for request</span>
+                        <span class="card-title">使用 web3.utils.toWei报错“Please pass numbers as strings or BN objects to avoid precision errors.”</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            部署合约后运行npm run dev，在浏览器控制台出现MetaMask - RPC Error: Error: JsonRpcEngine - response has no error or result for request，具体如
+                            使用 web3.utils.toWei报错“Please pass numbers as strings or BN objects to avoid precision errors.”，具体如下报错：
+1Error: Please pa
                         
                     </div>
                     <div class="publish-info">
