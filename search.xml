@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>以太坊send发送合约方法交易报错“error invalid number value”</title>
+      <link href="/hexoT.github.io/posts/31577.html"/>
+      <url>/hexoT.github.io/posts/31577.html</url>
+      
+        <content type="html"><![CDATA[<p>send - 发送合约方法交易时出现报错：“error: invalid number value”。</p><p>其中发送合约方法交易的具体代码是：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">buy().send(&#123;value: this.web3.utils.fromWei(price.toString()), from: this.account&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(receipt)&#123;</span><br><span class="line">  web3.eth.getBalance(this.account, <span class="keyword">function</span>(error, result) &#123;</span><br><span class="line">      $(<span class="string">"#contract-balance"</span>).html(this.web3.utils.toWei(result.toString()) + <span class="string">" Ether"</span>);</span><br><span class="line">        console.log(this.web3.utils.toWei(result.toString()));</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>具体报错如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">app.js:43236 Uncaught (<span class="keyword">in</span> promise) Error: [number-to-bn] <span class="keyword">while</span> converting number <span class="string">"0.01"</span> to BN.js instance, error: invalid number value. Value must be an <span class="built_in">integer</span>, hex string, BN or BigNumber instance. Note, decimals are not supported.</span><br><span class="line">    at numberToBN (app.js:43236)</span><br><span class="line">    at Object.fromWei (app.js:84706)</span><br><span class="line">    at Object.fromWei (app.js:4914)</span><br><span class="line">    at Object.buyTokens (app.js:53602)</span><br></pre></td></tr></table></figure><p>“error: invalid number value”，无效的数值，可以看到问题是出现在数值，数值value处。<br>查阅web3.js官网手册可知，send() - 发送合约方法交易的参数value：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value - Number|String|BN|BigNumber: 可选，交易转账金额，单位：wei</span><br></pre></td></tr></table></figure><p>也就是value的值单位是wei，而我们代码value: this.web3.utils.fromWei(price.toString())，其作用是将单位wei转换为eth。<br>所以，我们将代码改为value: this.web3.utils.toWei(price.toString())，将单位eth转换为wei。</p><p>这样就不会报错了。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> error </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>truffle部署以太网络报错“Error The network id specified in the truffle config (3) does not match”</title>
+      <link href="/hexoT.github.io/posts/58544.html"/>
+      <url>/hexoT.github.io/posts/58544.html</url>
+      
+        <content type="html"><![CDATA[<p>truffle migrate部署以太网络报错“Error: The network id specified in the truffle config (3) does not match”，部署的是–network ropsten，具体如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$sudo</span> truffle migrate --network ropsten  --reset</span><br><span class="line"></span><br><span class="line">Compiling your contracts...</span><br><span class="line">===========================</span><br><span class="line">&gt; Everything is up to date, there is nothing to compile.</span><br><span class="line"></span><br><span class="line">Error: The network id specified <span class="keyword">in</span> the truffle config (3) does not match the one returned by the network (1596613920994).  Ensure that both the network and the provider are properly configured.</span><br><span class="line">    at Object.detectAndSetNetworkId (/home/dexter/node-v12.16.3-linux-x64/lib/node_modules/truffle/build/webpack:/packages/environment/environment.js:97:1)</span><br><span class="line">    at processTicksAndRejections (internal/process/task_queues.js:97:5)</span><br><span class="line">    at Object.detect (/home/dexter/node-v12.16.3-linux-x64/lib/node_modules/truffle/build/webpack:/packages/environment/environment.js:24:1)</span><br><span class="line">    at /home/dexter/node-v12.16.3-linux-x64/lib/node_modules/truffle/build/webpack:/packages/core/lib/commands/migrate.js:193:1</span><br><span class="line">Truffle v5.1.27 (core: 5.1.27)</span><br><span class="line">Node v12.16.3</span><br></pre></td></tr></table></figure><p>可以看到，Error: The network id specified in the truffle config (3) does not match the one returned by the network (1596613920994)。 network id ，not match。network id不匹配，查看：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  networks: &#123;</span><br><span class="line">    development: &#123;</span><br><span class="line">      host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">      port: 8545,</span><br><span class="line">      gas: 6700000,</span><br><span class="line">      network_id: <span class="string">'*'</span> // Match any network id</span><br><span class="line">    &#125;,</span><br><span class="line">    ropsten: &#123;</span><br><span class="line">      host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">      port: 8545,</span><br><span class="line">      gas: 4700000,</span><br><span class="line">      network_id: <span class="string">'3'</span> // Match any network id</span><br><span class="line">    &#125;,</span><br><span class="line">    kovan: &#123;</span><br><span class="line">      host: <span class="string">'127.0.0.1'</span>,</span><br><span class="line">      port: 8545,</span><br><span class="line">      gas: 4700000,</span><br><span class="line">      network_id: <span class="string">'5'</span> // Match any network id</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>部署是–network ropsten，现在我们将ropsten网络的network_id: ‘3’改为network_id: ‘*’，意思是适配一切network id。这样我们重新sudo truffle migrate –network ropsten  –reset就不会再出现错误了。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> error </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>truffle对Web3合约的封装</title>
       <link href="/hexoT.github.io/posts/12139.html"/>
       <url>/hexoT.github.io/posts/12139.html</url>
