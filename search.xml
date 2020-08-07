@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>solidity智能合约中bytes32传参报错“Error  invalid arrayify value ”</title>
+      <link href="/hexoT.github.io/posts/53754.html"/>
+      <url>/hexoT.github.io/posts/53754.html</url>
+      
+        <content type="html"><![CDATA[<p>solidity智能合约中bytes32传参报错“Error  invalid arrayify value ”.<br>具体是这样的，web3js代码中调用智能合约中的函数，代码如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> candidateName = <span class="string">'dexter'</span>;</span><br><span class="line">const networkId = await this.web3.eth.net.getId();</span><br><span class="line">const deployedNetwork = votingArtifact.networks[networkId];</span><br><span class="line">this.voting = new this.web3.eth.Contract(</span><br><span class="line">      votingArtifact.abi,</span><br><span class="line">      deployedNetwork.address,</span><br><span class="line">    );</span><br><span class="line">const &#123; voteForCandidate, totalVotesFor &#125; = this.voting.methods;</span><br><span class="line">await voteForCandidate(candidateName).call(&#123;gas: 140000, from: this.account&#125;);</span><br></pre></td></tr></table></figure><p>npm run dev运行DAPP后，在浏览器上报错：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: invalid arrayify value (argument=<span class="string">"value"</span>, value=<span class="string">"Rama000000000000000000000000000000000000000000000000000000000000"</span>, code=INVALID_ARGUMENT, version=bytes/5.0.3)</span><br></pre></td></tr></table></figure><p>其中voteForCandidate()是智能合约vote.sol中的函数，其代码如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> voteForCandidate(bytes32 candidate, uint votesInTokens) public &#123;</span><br><span class="line">uint index = indexOfCandidate(candidate);</span><br><span class="line">require(index != uint(-1));</span><br><span class="line"></span><br><span class="line">// msg.sender gives us the address of the account/voter who is trying</span><br><span class="line">// to call this <span class="keyword">function</span></span><br><span class="line"><span class="keyword">if</span> (voterInfo[msg.sender].tokensUsedPerCandidate.length == 0) &#123;</span><br><span class="line">  <span class="keyword">for</span>(uint i = 0; i &lt; candidateList.length; i++) &#123;</span><br><span class="line">    voterInfo[msg.sender].tokensUsedPerCandidate.push(0);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>看下报错invalid arrayify value，无效的值。我们得重点看下传入的参数值，<br>在web3js中voteForCandidate(candidateName, voteTokens)，let candidateName = ‘dexter’，传入的数值是一个字符串。<br>而在智能合约vote.sol中voteForCandidate(bytes32 candidate, uint votesInTokens)，首个参数要求的是bytes32，正是因为<br>传入的值格式不对才会造成上面报错。现在我们需要做的是在web3js代码中将字符串转为bytes32。通过web3.utils.fromAscii(candidateName)的方法就可以在web3js中将字符串转为bytes32。</p><p>我们将web3js中的await voteForCandidate(candidateName, voteTokens).call({gas: 140000, from: this.account})改为<br>await voteForCandidate(this.web3.utils.fromAscii(candidateName), voteTokens).call({gas: 140000, from: this.account})，就不会出现上面的错误了。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> error </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>web3.js调用合约方法报错“ Error Invalid number of parameters for &quot;voteForCandidate&quot;. Got 1 expected 2! ”</title>
+      <link href="/hexoT.github.io/posts/29285.html"/>
+      <url>/hexoT.github.io/posts/29285.html</url>
+      
+        <content type="html"><![CDATA[<p>web3.js调用合约方法报错“Error Invalid number of parameters for “voteForCandidate”. Got 1 expected 2!”.具体是这样的，web3js代码中调用智能合约中的函数，代码如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const networkId = await this.web3.eth.net.getId();</span><br><span class="line">const deployedNetwork = votingArtifact.networks[networkId];</span><br><span class="line">this.voting = new this.web3.eth.Contract(</span><br><span class="line">      votingArtifact.abi,</span><br><span class="line">      deployedNetwork.address,</span><br><span class="line">    );</span><br><span class="line">const &#123; voteForCandidate, totalVotesFor &#125; = this.voting.methods;</span><br><span class="line">await voteForCandidate(this.web3.utils.fromAscii(candidateName)).call(&#123;gas: 140, from: this.account&#125;);</span><br></pre></td></tr></table></figure><p>其中voteForCandidate(candidateName)是智能合约vote.sol中的函数，其代码如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> voteForCandidate(bytes32 candidate, uint votesInTokens) public &#123;</span><br><span class="line">uint index = indexOfCandidate(candidate);</span><br><span class="line">require(index != uint(-1));</span><br><span class="line"></span><br><span class="line">// msg.sender gives us the address of the account/voter who is trying</span><br><span class="line">// to call this <span class="keyword">function</span></span><br><span class="line"><span class="keyword">if</span> (voterInfo[msg.sender].tokensUsedPerCandidate.length == 0) &#123;</span><br><span class="line">  <span class="keyword">for</span>(uint i = 0; i &lt; candidateList.length; i++) &#123;</span><br><span class="line">    voterInfo[msg.sender].tokensUsedPerCandidate.push(0);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>npm run dev运行DAPP后，在浏览器上报错：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Invalid number of parameters <span class="keyword">for</span> <span class="string">"voteForCandidate"</span>. Got 1 expected 2!</span><br></pre></td></tr></table></figure><p>看下报错，Got 1 expected 2!只得到1个，期望2个。我们再看看web3js中voteForCandidate(this.web3.utils.fromAscii(candidateName))，<br>而vote.sol中voteForCandidate(bytes32 candidate, uint votesInTokens)，这很明显web3js传入参数只有一个，<br>而合约中要求参数是2个，所以会引发错误。</p><p>现在我们在web3js中voteForCandidate(this.web3.utils.fromAscii(candidateName))增加漏了的参数，<br>这样voteForCandidate(this.web3.utils.fromAscii(candidateName), voteTokens)就不会报错了。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> error </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>web3.js智能合约之methods</title>
       <link href="/hexoT.github.io/posts/60636.html"/>
       <url>/hexoT.github.io/posts/60636.html</url>
@@ -11,6 +49,18 @@
         <content type="html"><![CDATA[]]></content>
       
       
+      <categories>
+          
+          <category> uncategorized </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web3.js </tag>
+            
+        </tags>
       
     </entry>
     
@@ -130,11 +180,11 @@
     
     
     <entry>
-      <title>MetaMask报错response has no error or result for request</title>
+      <title>使用 web3.utils.toWei报错“Please pass numbers as strings or BN objects to avoid precision errors.”</title>
       <link href="/hexoT.github.io/posts/62905.html"/>
       <url>/hexoT.github.io/posts/62905.html</url>
       
-        <content type="html"><![CDATA[<p>部署合约后运行npm run dev，在浏览器控制台出现MetaMask - RPC Error: Error: JsonRpcEngine - response has no error or result for request，具体如下报错：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MetaMask - RPC Error: Error: JsonRpcEngine - response has no error or result <span class="keyword">for</span> request:</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"jsonrpc"</span>: <span class="string">"2.0"</span>,</span><br><span class="line">  <span class="string">"id"</span>: 2359889513,</span><br><span class="line">  <span class="string">"method"</span>: <span class="string">"net_version"</span>,</span><br><span class="line">  <span class="string">"params"</span>: [],</span><br><span class="line">  <span class="string">"origin"</span>: <span class="string">"localhost"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>看报错response has no error or result for request，请求的响应没有错误或结果，可以知道原因，没请求。</p><p>在本地根目录，重启ganache-cli之后报错就不会出现。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
+        <content type="html"><![CDATA[<p>使用 web3.utils.toWei报错“Please pass numbers as strings or BN objects to avoid precision errors.”，具体如下报错：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Please pass numbers as strings or BN objects to avoid precision errors.</span><br></pre></td></tr></table></figure><p>我们在调用合约方法时，都可以传一些参数的，比如转账金额 value。<br>value 的单位是 wei，这是一个很小的单位，所以一般数值很大。<br>所以，我们在使用web3.utils.toWei时，注意先把 ether 的值转成字符串，不然就会报出标题中的错误。</p><p>比如我们要将 0.1 ether 转 wei（其中this.inputEther的值是0.1 ether） ，应该这样使用 web3.utils.toWei(this.inputEther.toString(), ‘ether’)。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
       
       
       <categories>
@@ -155,11 +205,11 @@
     
     
     <entry>
-      <title>使用 web3.utils.toWei报错“Please pass numbers as strings or BN objects to avoid precision errors.”</title>
+      <title>MetaMask报错response has no error or result for request</title>
       <link href="/hexoT.github.io/posts/62905.html"/>
       <url>/hexoT.github.io/posts/62905.html</url>
       
-        <content type="html"><![CDATA[<p>使用 web3.utils.toWei报错“Please pass numbers as strings or BN objects to avoid precision errors.”，具体如下报错：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Please pass numbers as strings or BN objects to avoid precision errors.</span><br></pre></td></tr></table></figure><p>我们在调用合约方法时，都可以传一些参数的，比如转账金额 value。<br>value 的单位是 wei，这是一个很小的单位，所以一般数值很大。<br>所以，我们在使用web3.utils.toWei时，注意先把 ether 的值转成字符串，不然就会报出标题中的错误。</p><p>比如我们要将 0.1 ether 转 wei（其中this.inputEther的值是0.1 ether） ，应该这样使用 web3.utils.toWei(this.inputEther.toString(), ‘ether’)。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
+        <content type="html"><![CDATA[<p>部署合约后运行npm run dev，在浏览器控制台出现MetaMask - RPC Error: Error: JsonRpcEngine - response has no error or result for request，具体如下报错：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MetaMask - RPC Error: Error: JsonRpcEngine - response has no error or result <span class="keyword">for</span> request:</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"jsonrpc"</span>: <span class="string">"2.0"</span>,</span><br><span class="line">  <span class="string">"id"</span>: 2359889513,</span><br><span class="line">  <span class="string">"method"</span>: <span class="string">"net_version"</span>,</span><br><span class="line">  <span class="string">"params"</span>: [],</span><br><span class="line">  <span class="string">"origin"</span>: <span class="string">"localhost"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>看报错response has no error or result for request，请求的响应没有错误或结果，可以知道原因，没请求。</p><p>在本地根目录，重启ganache-cli之后报错就不会出现。</p><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
       
       
       <categories>
