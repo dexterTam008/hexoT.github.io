@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="web3.js调用合约方法报错“ Error Invalid number of parameters for &#34;voteForCandidate&#34;. Got 1 expected 2! ”, DAPPS">
+    <meta name="keywords" content="web3-call调用合约方法, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>web3.js调用合约方法报错“ Error Invalid number of parameters for &#34;voteForCandidate&#34;. Got 1 expected 2! ” | DAPPS</title>
+    <title>web3-call调用合约方法 | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">web3.js调用合约方法报错“ Error Invalid number of parameters for &#34;voteForCandidate&#34;. Got 1 expected 2! ”</h1>
+                    <h1 class="description center-align post-title">web3-call调用合约方法</h1>
                 </div>
             </div>
         </div>
@@ -430,23 +430,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/hexoT.github.io/tags/error/">
-                                <span class="chip bg-color">error</span>
+                            <a href="/hexoT.github.io/tags/web3js/">
+                                <span class="chip bg-color">web3js</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -455,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-07
+                    2020-08-08
                 </div>
                 
 
@@ -471,14 +462,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>web3.js调用合约方法报错“Error Invalid number of parameters for “voteForCandidate”. Got 1 expected 2!”.具体是这样的，web3js代码中调用智能合约中的函数，代码如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const networkId = await this.web3.eth.net.getId();</span><br><span class="line">const deployedNetwork = votingArtifact.networks[networkId];</span><br><span class="line">this.voting = new this.web3.eth.Contract(</span><br><span class="line">      votingArtifact.abi,</span><br><span class="line">      deployedNetwork.address,</span><br><span class="line">    );</span><br><span class="line">const &#123; voteForCandidate, totalVotesFor &#125; = this.voting.methods;</span><br><span class="line">await voteForCandidate(this.web3.utils.fromAscii(candidateName)).call(&#123;gas: 140, from: this.account&#125;);</span><br></pre></td></tr></table></figure>
-<p>其中voteForCandidate(candidateName)是智能合约vote.sol中的函数，其代码如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> voteForCandidate(bytes32 candidate, uint votesInTokens) public &#123;</span><br><span class="line">uint index = indexOfCandidate(candidate);</span><br><span class="line">require(index != uint(-1));</span><br><span class="line"></span><br><span class="line">// msg.sender gives us the address of the account/voter who is trying</span><br><span class="line">// to call this <span class="keyword">function</span></span><br><span class="line"><span class="keyword">if</span> (voterInfo[msg.sender].tokensUsedPerCandidate.length == 0) &#123;</span><br><span class="line">  <span class="keyword">for</span>(uint i = 0; i &lt; candidateList.length; i++) &#123;</span><br><span class="line">    voterInfo[msg.sender].tokensUsedPerCandidate.push(0);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>npm run dev运行DAPP后，在浏览器上报错：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Invalid number of parameters <span class="keyword">for</span> <span class="string">"voteForCandidate"</span>. Got 1 expected 2!</span><br></pre></td></tr></table></figure>
-<p>看下报错，Got 1 expected 2!只得到1个，期望2个。我们再看看web3js中voteForCandidate(this.web3.utils.fromAscii(candidateName))，<br>而vote.sol中voteForCandidate(bytes32 candidate, uint votesInTokens)，这很明显web3js传入参数只有一个，<br>而合约中要求参数是2个，所以会引发错误。</p>
-<p>现在我们在web3js中voteForCandidate(this.web3.utils.fromAscii(candidateName))增加漏了的参数，<br>这样voteForCandidate(this.web3.utils.fromAscii(candidateName), voteTokens)就不会报错了。</p>
+                <p>web3js调用合约是只读方法，并在EVM中直接执行方法，不需要发送任何交易。因此不会改变合约的状态。<br>web3js的call调用合约方法具体代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> this.voting = new this.web3.eth.Contract(</span><br><span class="line">      votingArtifact.abi,</span><br><span class="line">      deployedNetwork.address,</span><br><span class="line">    );//创建合约对象</span><br><span class="line">const &#123; totalVotesFor &#125; = this.voting.methods;//为合约方法创建交易</span><br><span class="line">voteForCandidate(candidateName).call(options[, callback]);//调用合约</span><br></pre></td></tr></table></figure>
+<p>由上代码可以看出，web3js的call调用合约方法分三步：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一，创建合约对象；</span><br><span class="line">第二，为合约方法创建交易；</span><br><span class="line">第三，调用合约；</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">options - Object : 选项，包含如下字段：</span><br><span class="line">   from - String (optional): The address the call “transaction” should be made from.</span><br><span class="line">   gasPrice - String (optional): The gas price <span class="keyword">in</span> wei to use <span class="keyword">for</span> this call “transaction”.</span><br><span class="line">   gas - Number (optional): The maximum gas provided <span class="keyword">for</span> this call “transaction” (gas <span class="built_in">limit</span>).</span><br><span class="line">callback - Function : 可选的回调函数，其第二个参数为合约方法的执行结果，第一个参数为错误对象</span><br></pre></td></tr></table></figure>
+<p>返回值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一个Promise对象，其解析值为合约方法的返回值，Mixed类型。如果合约方法返回多个值，则解析值为一个对象。</span><br></pre></td></tr></table></figure>
+
+<p>示例代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 使用回调函数接收合约方法执行结果</span><br><span class="line">voteForCandidate(candidateName).call(&#123;gas: 140000, from: this.account&#125;, <span class="keyword">function</span>(error, result)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 使用Promise接收合约方法执行结果</span><br><span class="line">voteForCandidate(candidateName).call(&#123;gas: 140000, from: this.account&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(result)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
@@ -505,7 +500,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/29285.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/29285.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/5067.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/5067.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -543,8 +538,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/hexoT.github.io/tags/error/">
-                                    <span class="chip bg-color">error</span>
+                                <a href="/hexoT.github.io/tags/web3js/">
+                                    <span class="chip bg-color">web3js</span>
                                 </a>
                             
                         </div>
@@ -716,34 +711,30 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/53754.html">
+                <a href="/hexoT.github.io/posts/37173.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/19.jpg" class="responsive-img" alt="solidity智能合约中bytes32传参报错“Error  invalid arrayify value ”">
+                        <img src="/hexoT.github.io/medias/featureimages/4.jpg" class="responsive-img" alt="truffle migrate部署测试网络报错&#34; invalid bytes32 value&#34;">
                         
-                        <span class="card-title">solidity智能合约中bytes32传参报错“Error  invalid arrayify value ”</span>
+                        <span class="card-title">truffle migrate部署测试网络报错&#34; invalid bytes32 value&#34;</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            solidity智能合约中bytes32传参报错“Error  invalid arrayify value ”.具体是这样的，web3js代码中调用智能合约中的函数，代码如下：
-123456789let candidateName = '
+                            truffle migrate部署测试网络报错” invalid bytes32 value”。报错具体如下：
+12345678910$sudo truffle migrate --network ropsten  --reset2_dep
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-07
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-08
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                    uncategorized
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            dexter
                             
                         </span>
                     </div>
@@ -766,24 +757,25 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/60636.html">
+                <a href="/hexoT.github.io/posts/53754.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/0.jpg" class="responsive-img" alt="web3.js智能合约之methods">
+                        <img src="/hexoT.github.io/medias/featureimages/19.jpg" class="responsive-img" alt="solidity智能合约中bytes32传参报错“Error  invalid arrayify value ”">
                         
-                        <span class="card-title">web3.js智能合约之methods</span>
+                        <span class="card-title">solidity智能合约中bytes32传参报错“Error  invalid arrayify value ”</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            solidity智能合约中bytes32传参报错“Error  invalid arrayify value ”.具体是这样的，web3js代码中调用智能合约中的函数，代码如下：
+123456789let candidateName = '
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-07
                             </span>
                         <span class="publish-author">
                             
@@ -800,8 +792,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/hexoT.github.io/tags/web3-js/">
-                        <span class="chip bg-color">web3.js</span>
+                    <a href="/hexoT.github.io/tags/error/">
+                        <span class="chip bg-color">error</span>
                     </a>
                     
                 </div>
