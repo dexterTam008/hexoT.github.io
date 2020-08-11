@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="以太坊合约contract结合web3js调用实例, DAPPS">
+    <meta name="keywords" content="web3-发送合约方法交易send, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>以太坊合约contract结合web3js调用实例 | DAPPS</title>
+    <title>web3-发送合约方法交易send | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">以太坊合约contract结合web3js调用实例</h1>
+                    <h1 class="description center-align post-title">web3-发送合约方法交易send</h1>
                 </div>
             </div>
         </div>
@@ -428,25 +428,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/hexoT.github.io/tags/web3-eth-contract/">
-                                <span class="chip bg-color">web3 eth contract</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -455,7 +442,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-31
+                    2020-08-09
                 </div>
                 
 
@@ -471,15 +458,18 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Web3概述"><a href="#Web3概述" class="headerlink" title="Web3概述"></a>Web3概述</h2><p>*与合约交互，最常用的方式就是使用web3.js library提供的web3。<br>*底层实现上，它通过RPC调用与本地节点通信。<br>*web3.js可以与任何暴露了RPC接口的以太坊节点连接。</p>
-<h2 id="Web3调用合约"><a href="#Web3调用合约" class="headerlink" title="Web3调用合约"></a>Web3调用合约</h2><p>*web3.js封装了合约调用的方法。<br>*使用可以直接使用web3.eth.contract的里的sendTransaction来修改区块链数据。<br>*调用合约，可能需要from等参数，否则可能出现调用异常。</p>
-<h2 id="Web3初始化"><a href="#Web3初始化" class="headerlink" title="Web3初始化"></a>Web3初始化</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import Web3 from &quot;web3&quot;;</span><br></pre></td></tr></table></figure>
-<h2 id="Web3常用API"><a href="#Web3常用API" class="headerlink" title="Web3常用API"></a>Web3常用API</h2><h3 id="web3-eth-contract，-创建一个Solidity的合约对象，用来在某个地址上初始化合约。"><a href="#web3-eth-contract，-创建一个Solidity的合约对象，用来在某个地址上初始化合约。" class="headerlink" title="web3.eth.contract， 创建一个Solidity的合约对象，用来在某个地址上初始化合约。"></a>web3.eth.contract， 创建一个Solidity的合约对象，用来在某个地址上初始化合约。</h3><p>*参数：Array，一到多个描述合约的参数，事件的API对象。<br>*返回值：Object，一个合约对象。<br>*示例：var MyContract = new web3.eth.Contract(abiArray);</p>
-<h3 id="合约对象的方法"><a href="#合约对象的方法" class="headerlink" title="合约对象的方法"></a>合约对象的方法</h3><p>*显示对象call。myContract.methods.myMethod([param1[,param2[,…]]]).call(options[,callback]);(不修改数据)<br>*显示调用send。myContract.methods.myMethod([param1[,params[,…]]]).send(options[,callback]);(修改数据，消耗gas)</p>
-<h3 id="web3-eth-account，以太坊账号"><a href="#web3-eth-account，以太坊账号" class="headerlink" title="web3.eth.account，以太坊账号"></a>web3.eth.account，以太坊账号</h3><p>*示例：web3.eth.getAccounts([callback])<br>web3.eth.getBalance(address[,defaultBlock] [,callback])</p>
-<h3 id="web3-toWei"><a href="#web3-toWei" class="headerlink" title="web3.toWei"></a>web3.toWei</h3><p>*按对应货币转为以wei为单位。最常用的单位为ether。<br>示例：var value = web3.toWei(‘1’,‘ether’);<br>console.log(value); // “10000000000000000000”</p>
-<h2 id="Web3调用合约的例子"><a href="#Web3调用合约的例子" class="headerlink" title="Web3调用合约的例子"></a>Web3调用合约的例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">import Web3 from &quot;web3&quot;;</span><br><span class="line">import Artifact from &#39;..&#x2F;..&#x2F;build&#x2F;contracts&#x2F;Voting.json&#39;</span><br><span class="line"></span><br><span class="line">const App &#x3D; &#123;</span><br><span class="line">web3: null,</span><br><span class="line"></span><br><span class="line"> Data: async function() &#123;</span><br><span class="line">     const networkId &#x3D; await web3.eth.net.getId();</span><br><span class="line">     const deployedNetwork &#x3D; Artifact.networks[networkId];</span><br><span class="line"></span><br><span class="line">     this.voting &#x3D; new web3.eth.Contract(</span><br><span class="line">        Artifact.abi,</span><br><span class="line">        deployedNetwork.address,</span><br><span class="line">      );</span><br><span class="line">  &#x2F;&#x2F;Web3调用合约实例</span><br><span class="line">  const &#123; totalTokens &#125; &#x3D; this.voting.methods;</span><br><span class="line">  &#x2F;&#x2F;应用合约里的totalTokens()函数</span><br><span class="line">  var tokenstotal &#x3D; await totalTokens().call();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中，Web3调用合约实例 ： const { totalTokens } = this.voting.methods; 应用合约里的totalTokens()函数：<br>var tokenstotal = await totalTokens().call()。</p>
+                <p>web3js中，send向合约发送交易来执行指定方法，将改变合约的状态。<br>web3js的send向合约发送交易来执行指定方法具体实现代码示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const networkId = web3.eth.net.getId();</span><br><span class="line">const deployedNetwork = votingArtifact.networks[networkId];</span><br><span class="line"> this.voting = new this.web3.eth.Contract(</span><br><span class="line">      votingArtifact.abi,</span><br><span class="line">      deployedNetwork.address,</span><br><span class="line">    );//创建合约对象</span><br><span class="line">const &#123; buy &#125; =  this.voting.methods;//为合约方法创建交易</span><br><span class="line">buy().send(options[, callback]);//发送交易来执行指定方法</span><br></pre></td></tr></table></figure>
+<p>由上代码可以看出，web3js的call调用合约方法分三步：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一，创建合约对象；</span><br><span class="line">第二，为合约方法创建交易；</span><br><span class="line">第三，发送交易来执行指定方法；</span><br></pre></td></tr></table></figure>
+<p>参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">options - Object : 选项，包含如下字段：</span><br><span class="line">   from - String: 交易发送方地址</span><br><span class="line">   gasPrice - String : 可选，用于本次交易的gas价格，单位：wei</span><br><span class="line">   gas - Number : 可选，本次交易的gas用量上限，即gas <span class="built_in">limit</span></span><br><span class="line">   value - Number|String|BN|BigNumber: 可选，交易转账金额，单位：wei</span><br><span class="line">callback - Function: 可选的回调参数，其参数为交易哈希值和错误对象</span><br></pre></td></tr></table></figure>
+<p>返回值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">回调函数中将返回32字节长的交易哈希值。</span><br></pre></td></tr></table></figure>
+
+<p>各种方法示例代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 使用回调函数接收合约方法执行结果</span><br><span class="line">buy().send(&#123;gas: 140000, from: this.account&#125;, <span class="keyword">function</span>(error, transactionHash)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 使用Promise接收合约方法执行结果</span><br><span class="line">buy().send(&#123;gas: 140000, from: this.account&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(receipt)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 使用事件触发接收合约方法执行结果</span><br><span class="line">buy().send(&#123;gas: 140000, from: this.account&#125;).on(<span class="string">'transactionHash'</span>, <span class="keyword">function</span>(<span class="built_in">hash</span>)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
@@ -506,7 +496,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/1353.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/1353.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/41060.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/41060.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -543,11 +533,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/hexoT.github.io/tags/web3-eth-contract/">
-                                    <span class="chip bg-color">web3 eth contract</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -717,13 +703,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/29658.html">
+                <a href="/hexoT.github.io/posts/27209.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/17.jpg" class="responsive-img" alt="abi-evm">
+                        <img src="/hexoT.github.io/medias/featureimages/21.jpg" class="responsive-img" alt="web3-合约实例的参数options">
                         
-                        <span class="card-title">abi-evm</span>
+                        <span class="card-title">web3-合约实例的参数options</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -734,16 +720,12 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-01
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                    uncategorized
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            dexter
                             
                         </span>
                     </div>
@@ -758,24 +740,25 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/62905.html">
+                <a href="/hexoT.github.io/posts/37173.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/11.jpg" class="responsive-img" alt="MetaMask报错response has no error or result for request">
+                        <img src="/hexoT.github.io/medias/featureimages/4.jpg" class="responsive-img" alt="truffle migrate部署测试网络报错&#34; invalid bytes32 value&#34;">
                         
-                        <span class="card-title">MetaMask报错response has no error or result for request</span>
+                        <span class="card-title">truffle migrate部署测试网络报错&#34; invalid bytes32 value&#34;</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            部署合约后运行npm run dev，在浏览器控制台出现MetaMask - RPC Error: Error: JsonRpcEngine - response has no error or result for request，具体如
+                            truffle migrate部署测试网络报错” invalid bytes32 value”。报错具体如下：
+12345678910$sudo truffle migrate --network ropsten  --reset2_dep
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-08
                             </span>
                         <span class="publish-author">
                             
