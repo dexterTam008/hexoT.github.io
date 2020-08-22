@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="web3-发送合约方法交易send, DAPPS">
+    <meta name="keywords" content="solidity的映射mappings, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>web3-发送合约方法交易send | DAPPS</title>
+    <title>solidity的映射mappings | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">web3-发送合约方法交易send</h1>
+                    <h1 class="description center-align post-title">solidity的映射mappings</h1>
                 </div>
             </div>
         </div>
@@ -430,23 +430,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/hexoT.github.io/tags/web3js/">
-                                <span class="chip bg-color">web3js</span>
+                            <a href="/hexoT.github.io/tags/solidity/">
+                                <span class="chip bg-color">solidity</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -455,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-09
+                    2020-08-22
                 </div>
                 
 
@@ -471,20 +462,9 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>web3js中，send向合约发送交易来执行指定方法，将改变合约的状态。<br>web3js的send向合约发送交易来执行指定方法具体实现代码示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const networkId = web3.eth.net.getId();</span><br><span class="line">const deployedNetwork = votingArtifact.networks[networkId];</span><br><span class="line"> this.voting = new this.web3.eth.Contract(</span><br><span class="line">      votingArtifact.abi,</span><br><span class="line">      deployedNetwork.address,</span><br><span class="line">    );//创建合约对象</span><br><span class="line">const &#123; buy &#125; =  this.voting.methods;//为合约方法创建交易</span><br><span class="line">buy().send(options[, callback]);//发送交易来执行指定方法</span><br></pre></td></tr></table></figure>
-<p>由上代码可以看出，web3js的call调用合约方法分三步：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一，创建合约对象；</span><br><span class="line">第二，为合约方法创建交易；</span><br><span class="line">第三，发送交易来执行指定方法；</span><br></pre></td></tr></table></figure>
-<p>参数：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">options - Object : 选项，包含如下字段：</span><br><span class="line">   from - String: 交易发送方地址</span><br><span class="line">   gasPrice - String : 可选，用于本次交易的gas价格，单位：wei</span><br><span class="line">   gas - Number : 可选，本次交易的gas用量上限，即gas <span class="built_in">limit</span></span><br><span class="line">   value - Number|String|BN|BigNumber: 可选，交易转账金额，单位：wei</span><br><span class="line">callback - Function: 可选的回调参数，其参数为交易哈希值和错误对象</span><br></pre></td></tr></table></figure>
-<p>返回值：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">回调函数中将返回32字节长的交易哈希值。</span><br></pre></td></tr></table></figure>
-
-<p>各种方法示例代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 使用回调函数接收合约方法执行结果</span><br><span class="line">buy().send(&#123;gas: 140000, from: this.account&#125;, <span class="keyword">function</span>(error, transactionHash)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 使用Promise接收合约方法执行结果</span><br><span class="line">buy().send(&#123;gas: 140000, from: this.account&#125;).<span class="keyword">then</span>(<span class="keyword">function</span>(receipt)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 使用事件触发接收合约方法执行结果</span><br><span class="line">buy().send(&#123;gas: 140000, from: this.account&#125;).on(<span class="string">'transactionHash'</span>, <span class="keyword">function</span>(<span class="built_in">hash</span>)&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
-
+                <p>映射mappings，一种键值对的映射关系存储结构。<br>它们被虚拟地初始化，使得每个可能的键都存在并被映射到其字节表示全为零的值：类型的默认值。<br>定义方式为mapping(_KeyType =&gt; _KeyValue)。<br>注意：键的类型_KeyType允许除映射外的所有类型，如数组，合约，枚举，结构体。值的类型无限制。</p>
+<p>可以通过将映射标记为public，来让Solidity创建一个访问器。要想访问这样的映射，需要提供一个键值做为参数。<br>例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">contract MappingExample&#123;</span><br><span class="line">    mapping(bytes32 =&gt; uint) public balances;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">function</span> update(bytes32 candidate,uint amount) returns (address addr)&#123;</span><br><span class="line">    	balances[candidate] + = amount;//要想访问这样的映射，需要提供一个键值做为参数。</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
             </div>
             <hr/>
 
@@ -509,7 +489,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/41060.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/41060.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/7556.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/7556.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -547,8 +527,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/hexoT.github.io/tags/web3js/">
-                                    <span class="chip bg-color">web3js</span>
+                                <a href="/hexoT.github.io/tags/solidity/">
+                                    <span class="chip bg-color">solidity</span>
                                 </a>
                             
                         </div>
@@ -716,9 +696,56 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/hexoT.github.io/posts/7556.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/hexoT.github.io/medias/featureimages/22.jpg" class="responsive-img" alt="solidity的映射mappings">
+                        
+                        <span class="card-title">solidity的映射mappings</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            映射mappings，一种键值对的映射关系存储结构。它们被虚拟地初始化，使得每个可能的键都存在并被映射到其字节表示全为零的值：类型的默认值。定义方式为mapping(_KeyType =&gt; _KeyValue)。注意：键的类型_Key
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            dexter
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/hexoT.github.io/tags/solidity/">
+                        <span class="chip bg-color">solidity</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/hexoT.github.io/posts/27209.html">
                     <div class="card-image">
@@ -736,50 +763,8 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                    uncategorized
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/hexoT.github.io/posts/37173.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/hexoT.github.io/medias/featureimages/4.jpg" class="responsive-img" alt="truffle migrate部署测试网络报错&#34; invalid bytes32 value&#34;">
-                        
-                        <span class="card-title">truffle migrate部署测试网络报错&#34; invalid bytes32 value&#34;</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            truffle migrate部署测试网络报错” invalid bytes32 value”。报错具体如下：
-12345678910$sudo truffle migrate --network ropsten  --reset2_dep
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
                             </span>
                         <span class="publish-author">
                             
@@ -792,14 +777,6 @@
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/hexoT.github.io/tags/error/">
-                        <span class="chip bg-color">error</span>
-                    </a>
-                    
                 </div>
                 
             </div>
