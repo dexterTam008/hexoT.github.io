@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="web3-合约实例的参数options, DAPPS">
+    <meta name="keywords" content="eth-sig-util验证签名地址, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>web3-合约实例的参数options | DAPPS</title>
+    <title>eth-sig-util验证签名地址 | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">web3-合约实例的参数options</h1>
+                    <h1 class="description center-align post-title">eth-sig-util验证签名地址</h1>
                 </div>
             </div>
         </div>
@@ -428,21 +428,16 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
-                    
-                </div>
-                <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                    <div class="article-tag">
                         
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
+                            <a href="/hexoT.github.io/tags/eth/">
+                                <span class="chip bg-color">eth</span>
                             </a>
                         
                     </div>
+                    
+                </div>
+                <div class="col s5 right-align">
                     
                 </div>
             </div>
@@ -451,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-11
+                    2020-08-23
                 </div>
                 
 
@@ -467,7 +462,19 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>eth-sig-util，以太坊签名函数的小集合，就是一个函数库。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>切换到项目工程所在根目录，然后在终端中键入以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install eth-sig-util --save</span><br></pre></td></tr></table></figure>
+<h2 id="函数集合"><a href="#函数集合" class="headerlink" title="函数集合"></a>函数集合</h2><h3 id="concatSig-v-r-s"><a href="#concatSig-v-r-s" class="headerlink" title="concatSig(v, r, s)"></a>concatSig(v, r, s)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">所有三个参数都应作为缓冲区提供。</span><br><span class="line">返回连续、十六进制前缀的十六进制值的签名，适合包含在JSON事务的数据字段中。</span><br></pre></td></tr></table></figure>
+<h3 id="normalize-address"><a href="#normalize-address" class="headerlink" title="normalize(address)"></a>normalize(address)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">接受大写或小写的地址（带或不带十六进制前缀），并返回一个全小写、十六进制前缀的地址，适合提交给以太坊提供商。</span><br></pre></td></tr></table></figure>
+<h3 id="personalSign-privateKeyBuffer-msgParams"><a href="#personalSign-privateKeyBuffer-msgParams" class="headerlink" title="personalSign (privateKeyBuffer, msgParams)"></a>personalSign (privateKeyBuffer, msgParams)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msgParams应具有要签名的十六进制编码数据的数据密钥。</span><br><span class="line">返回调用所需的带前缀的签名个人签名。</span><br></pre></td></tr></table></figure>
+<h3 id="recoverPersonalSignature-msgParams"><a href="#recoverPersonalSignature-msgParams" class="headerlink" title="recoverPersonalSignature (msgParams)"></a>recoverPersonalSignature (msgParams)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msgParams应该有一个十六进制编码的无符号数据密钥，以及一个十六进制编码并已签名的sig密钥。</span><br><span class="line">返回十六进制编码的发件人地址。</span><br></pre></td></tr></table></figure>
+<h3 id="signTypedData-privateKeyBuffer-msgParams"><a href="#signTypedData-privateKeyBuffer-msgParams" class="headerlink" title="signTypedData (privateKeyBuffer, msgParams)"></a>signTypedData (privateKeyBuffer, msgParams)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">根据EIP 712的早期草案，标记键入的数据。</span><br><span class="line">数据应在msgParams的数据键下。该方法返回带前缀的签名。</span><br></pre></td></tr></table></figure>
+<h3 id="signTypedData-v3-privateKeyBuffer-msgParams"><a href="#signTypedData-v3-privateKeyBuffer-msgParams" class="headerlink" title="signTypedData_v3 (privateKeyBuffer, msgParams)"></a>signTypedData_v3 (privateKeyBuffer, msgParams)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">根据EIP 712的发布版本标记键入的数据。</span><br><span class="line">数据应在msgParams的数据键下。该方法返回带前缀的签名。</span><br></pre></td></tr></table></figure>
+<h3 id="signTypedData-v4-privateKeyBuffer-msgParams"><a href="#signTypedData-v4-privateKeyBuffer-msgParams" class="headerlink" title="signTypedData_v4 (privateKeyBuffer, msgParams)"></a>signTypedData_v4 (privateKeyBuffer, msgParams)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">根据已发布版本EIP 712的扩展标记键入的数据。</span><br><span class="line">这个扩展增加了对数组和递归数据类型的支持。</span><br><span class="line">数据应在msgParams的数据键下。该方法返回带前缀的签名。</span><br></pre></td></tr></table></figure>
+<h3 id="recoverTypedSignature-data-sig"><a href="#recoverTypedSignature-data-sig" class="headerlink" title="recoverTypedSignature ({data, sig})"></a>recoverTypedSignature ({data, sig})</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">执行signTypedData的签名者的返回地址。</span><br><span class="line">期望与用于签名的数据相同。sig是一个前缀签名。</span><br></pre></td></tr></table></figure>
+<h3 id="typedSignatureHash-typedData"><a href="#typedSignatureHash-typedData" class="headerlink" title="typedSignatureHash (typedData)"></a>typedSignatureHash (typedData)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">根据EIP712架构返回类型化数据参数的十六进制编码哈希。</span><br></pre></td></tr></table></figure>
+<h3 id="extractPublicKey-msgParams"><a href="#extractPublicKey-msgParams" class="headerlink" title="extractPublicKey (msgParams)"></a>extractPublicKey (msgParams)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msgParams应该有一个十六进制编码的无符号数据密钥，以及一个十六进制编码并已签名的sig密钥。</span><br><span class="line">返回十六进制编码的公钥。</span><br></pre></td></tr></table></figure>
             </div>
             <hr/>
 
@@ -492,7 +499,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/27209.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/27209.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/15127.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/15127.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -529,7 +536,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/hexoT.github.io/tags/eth/">
+                                    <span class="chip bg-color">eth</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -695,9 +706,59 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/hexoT.github.io/posts/15127.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/hexoT.github.io/medias/featureimages/6.jpg" class="responsive-img" alt="eth-sig-util验证签名地址">
+                        
+                        <span class="card-title">eth-sig-util验证签名地址</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            eth-sig-util，以太坊签名函数的小集合，就是一个函数库。
+安装切换到项目工程所在根目录，然后在终端中键入以下内容：
+1$ npm install eth-sig-util --save
+函数集合concatSig(v, r, s)
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            dexter
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/hexoT.github.io/tags/eth/">
+                        <span class="chip bg-color">eth</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/hexoT.github.io/posts/7556.html">
                     <div class="card-image">
@@ -715,9 +776,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -735,56 +796,6 @@
                     
                     <a href="/hexoT.github.io/tags/solidity/">
                         <span class="chip bg-color">solidity</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/hexoT.github.io/posts/41060.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/hexoT.github.io/medias/featureimages/7.jpg" class="responsive-img" alt="web3-发送合约方法交易send">
-                        
-                        <span class="card-title">web3-发送合约方法交易send</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            web3js中，send向合约发送交易来执行指定方法，将改变合约的状态。web3js的send向合约发送交易来执行指定方法具体实现代码示例：
-12345678const networkId = web3.eth.net.getId();co
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-09
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                    uncategorized
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/hexoT.github.io/tags/web3js/">
-                        <span class="chip bg-color">web3js</span>
                     </a>
                     
                 </div>

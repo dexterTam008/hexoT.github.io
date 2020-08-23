@@ -4,12 +4,37 @@
   
     
     <entry>
+      <title>eth-sig-util验证签名地址</title>
+      <link href="/hexoT.github.io/posts/15127.html"/>
+      <url>/hexoT.github.io/posts/15127.html</url>
+      
+        <content type="html"><![CDATA[<p>eth-sig-util，以太坊签名函数的小集合，就是一个函数库。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>切换到项目工程所在根目录，然后在终端中键入以下内容：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install eth-sig-util --save</span><br></pre></td></tr></table></figure><h2 id="函数集合"><a href="#函数集合" class="headerlink" title="函数集合"></a>函数集合</h2><h3 id="concatSig-v-r-s"><a href="#concatSig-v-r-s" class="headerlink" title="concatSig(v, r, s)"></a>concatSig(v, r, s)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">所有三个参数都应作为缓冲区提供。</span><br><span class="line">返回连续、十六进制前缀的十六进制值的签名，适合包含在JSON事务的数据字段中。</span><br></pre></td></tr></table></figure><h3 id="normalize-address"><a href="#normalize-address" class="headerlink" title="normalize(address)"></a>normalize(address)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">接受大写或小写的地址（带或不带十六进制前缀），并返回一个全小写、十六进制前缀的地址，适合提交给以太坊提供商。</span><br></pre></td></tr></table></figure><h3 id="personalSign-privateKeyBuffer-msgParams"><a href="#personalSign-privateKeyBuffer-msgParams" class="headerlink" title="personalSign (privateKeyBuffer, msgParams)"></a>personalSign (privateKeyBuffer, msgParams)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msgParams应具有要签名的十六进制编码数据的数据密钥。</span><br><span class="line">返回调用所需的带前缀的签名个人签名。</span><br></pre></td></tr></table></figure><h3 id="recoverPersonalSignature-msgParams"><a href="#recoverPersonalSignature-msgParams" class="headerlink" title="recoverPersonalSignature (msgParams)"></a>recoverPersonalSignature (msgParams)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msgParams应该有一个十六进制编码的无符号数据密钥，以及一个十六进制编码并已签名的sig密钥。</span><br><span class="line">返回十六进制编码的发件人地址。</span><br></pre></td></tr></table></figure><h3 id="signTypedData-privateKeyBuffer-msgParams"><a href="#signTypedData-privateKeyBuffer-msgParams" class="headerlink" title="signTypedData (privateKeyBuffer, msgParams)"></a>signTypedData (privateKeyBuffer, msgParams)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">根据EIP 712的早期草案，标记键入的数据。</span><br><span class="line">数据应在msgParams的数据键下。该方法返回带前缀的签名。</span><br></pre></td></tr></table></figure><h3 id="signTypedData-v3-privateKeyBuffer-msgParams"><a href="#signTypedData-v3-privateKeyBuffer-msgParams" class="headerlink" title="signTypedData_v3 (privateKeyBuffer, msgParams)"></a>signTypedData_v3 (privateKeyBuffer, msgParams)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">根据EIP 712的发布版本标记键入的数据。</span><br><span class="line">数据应在msgParams的数据键下。该方法返回带前缀的签名。</span><br></pre></td></tr></table></figure><h3 id="signTypedData-v4-privateKeyBuffer-msgParams"><a href="#signTypedData-v4-privateKeyBuffer-msgParams" class="headerlink" title="signTypedData_v4 (privateKeyBuffer, msgParams)"></a>signTypedData_v4 (privateKeyBuffer, msgParams)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">根据已发布版本EIP 712的扩展标记键入的数据。</span><br><span class="line">这个扩展增加了对数组和递归数据类型的支持。</span><br><span class="line">数据应在msgParams的数据键下。该方法返回带前缀的签名。</span><br></pre></td></tr></table></figure><h3 id="recoverTypedSignature-data-sig"><a href="#recoverTypedSignature-data-sig" class="headerlink" title="recoverTypedSignature ({data, sig})"></a>recoverTypedSignature ({data, sig})</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">执行signTypedData的签名者的返回地址。</span><br><span class="line">期望与用于签名的数据相同。sig是一个前缀签名。</span><br></pre></td></tr></table></figure><h3 id="typedSignatureHash-typedData"><a href="#typedSignatureHash-typedData" class="headerlink" title="typedSignatureHash (typedData)"></a>typedSignatureHash (typedData)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">根据EIP712架构返回类型化数据参数的十六进制编码哈希。</span><br></pre></td></tr></table></figure><h3 id="extractPublicKey-msgParams"><a href="#extractPublicKey-msgParams" class="headerlink" title="extractPublicKey (msgParams)"></a>extractPublicKey (msgParams)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">msgParams应该有一个十六进制编码的无符号数据密钥，以及一个十六进制编码并已签名的sig密钥。</span><br><span class="line">返回十六进制编码的公钥。</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> eth </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>solidity的映射mappings</title>
       <link href="/hexoT.github.io/posts/7556.html"/>
       <url>/hexoT.github.io/posts/7556.html</url>
       
         <content type="html"><![CDATA[<p>映射mappings，一种键值对的映射关系存储结构。<br>它们被虚拟地初始化，使得每个可能的键都存在并被映射到其字节表示全为零的值：类型的默认值。<br>定义方式为mapping(_KeyType =&gt; _KeyValue)。<br>注意：键的类型_KeyType允许除映射外的所有类型，如数组，合约，枚举，结构体。值的类型无限制。</p><p>可以通过将映射标记为public，来让Solidity创建一个访问器。要想访问这样的映射，需要提供一个键值做为参数。<br>例子：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">contract MappingExample&#123;</span><br><span class="line">    mapping(bytes32 =&gt; uint) public balances;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">function</span> update(bytes32 candidate,uint amount) returns (address addr)&#123;</span><br><span class="line">    balances[candidate] + = amount;//要想访问这样的映射，需要提供一个键值做为参数。</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
+      
+      <categories>
+          
+          <category> uncategorized </category>
+          
+      </categories>
       
       
         <tags>
