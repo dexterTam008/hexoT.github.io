@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ethereumjs-util, DAPPS">
+    <meta name="keywords" content="solidity语法之库Libraries, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ethereumjs-util | DAPPS</title>
+    <title>solidity语法之库Libraries | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ethereumjs-util</h1>
+                    <h1 class="description center-align post-title">solidity语法之库Libraries</h1>
                 </div>
             </div>
         </div>
@@ -430,23 +430,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/hexoT.github.io/tags/eth/">
-                                <span class="chip bg-color">eth</span>
+                            <a href="/hexoT.github.io/tags/solidity/">
+                                <span class="chip bg-color">solidity</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -471,11 +462,16 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>ethereumjs-util，以太坊的实用函数集合。它可以在node.js使用，和在浏览器中使用browserify。<br>Browserify：提供在浏览器环境下require()npm模块的支持。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>切换到项目工程所在根目录，然后在终端中键入以下内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install ethereumjs-util</span><br></pre></td></tr></table></figure>
-<h2 id="使用例子"><a href="#使用例子" class="headerlink" title="使用例子"></a>使用例子</h2><p>使用例子：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import assert from <span class="string">'assert'</span></span><br><span class="line">import &#123; isValidChecksumAddress, unpadBuffer, BN &#125; from <span class="string">'ethereumjs-util'</span></span><br><span class="line"> </span><br><span class="line">const address = <span class="string">'0x2F015C60E0be116B1f0CD534704Db9c92118FB6A'</span></span><br><span class="line">assert.ok(isValidChecksumAddress(address))</span><br><span class="line"> </span><br><span class="line">assert.equal(unpadBuffer(Buffer.from(<span class="string">'000000006600'</span>, <span class="string">'hex'</span>)), Buffer.from(<span class="string">'6600'</span>, <span class="string">'hex'</span>))</span><br><span class="line"> </span><br><span class="line">assert.equal(new BN(<span class="string">'dead'</span>, 16).add(new BN(<span class="string">'101010'</span>, 2)), 57047)</span><br></pre></td></tr></table></figure>
+                <p>库(Libraries)，与合约类似，但它的目的是在一个指定的地址，且仅部署一次，然后通过EVM的特性DELEGATECALL(Homestead之前是用CALLCODE)来复用代码。</p>
+<h2 id="库函数运行的上下文"><a href="#库函数运行的上下文" class="headerlink" title="库函数运行的上下文"></a>库函数运行的上下文</h2><p>DELEGATECALL指令意味着，代码是在发起调用合约的context中被执行的，因此this将指向到发起调用的合约。我们来看看下面的例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.0; </span><br><span class="line">library DelegateCalledLibary&#123; </span><br><span class="line">	<span class="keyword">function</span> relatedVar() returns (address, address, uint)&#123; </span><br><span class="line">		<span class="built_in">return</span> (this, msg.sender, msg.value); </span><br><span class="line">	&#125;</span><br><span class="line">&#125; </span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">contract CalledContract&#123; </span><br><span class="line">	<span class="keyword">function</span> calling() returns(address, address, address, address, uint, uint)&#123; </span><br><span class="line">		//库函数使用时，不需要实例化，就可以通过库.函数的方式直接访问。</span><br><span class="line">		var (libAddr, libSender, libVal) = DelegateCalledLibary.relatedVar(); </span><br><span class="line">		//库里的this，msg.sender，msg.value与调用合约中的完全一致。</span><br><span class="line">		var (contractAddr, contractSender, contractVal) = (this, msg.sender, msg.value); </span><br><span class="line">		<span class="built_in">return</span> (libAddr, contractAddr, libSender, contractSender, libVal, contractVal); </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的例子中，调用CalledContract中的calling()方法，我们会发现库里的this，msg.sender，msg.value与调用合约中的完全一致。<br>虽然如此，但需要注意的是，对于库的调用，实际会被编译为DELEGATECALL的向外部合约或库的调用，如果使用库函数，实际意味着你正在发起一个external的函数调用（在Homestead版本之前，由于底层是使用的CALLCODE实现的，所以msg.sender和msg.value值会变）。</p>
+<h2 id="Using-For"><a href="#Using-For" class="headerlink" title="Using For"></a>Using For</h2><p>我们可以使用指令using A for B来附着库A里定义的函数来任意的类型B。A库里的函数允许一种惯例。这些库函数可以接收调用函数的实例对象作为第一个参数（类似Python中的特殊self变量）。使用这种语法，我们可以让上一个例子的实现更加简单。<br>下面来看例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.0; </span><br><span class="line">library Set&#123; </span><br><span class="line">	//这里只是定义了一个结构体 </span><br><span class="line">	struct Data&#123; mapping(uint =&gt; bool) flags; &#125; </span><br><span class="line">	//访问传进来的状态变量 </span><br><span class="line">	<span class="keyword">function</span> contains(Data storage self, uint val) returns(bool)</span><br><span class="line">	&#123; </span><br><span class="line">		<span class="built_in">return</span> self.flags[val]; </span><br><span class="line">	&#125; </span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">contract LibraryUsingFor&#123; </span><br><span class="line">	//将库Set附着到了库的数据结构Set.Data上</span><br><span class="line">	using Set <span class="keyword">for</span> Set.Data; </span><br><span class="line">	Set.Data data; </span><br><span class="line">	<span class="keyword">function</span> call() returns(bool, bool)</span><br><span class="line">	&#123; </span><br><span class="line">		//对应的对象上被附着了库函数，可以直接调用 </span><br><span class="line">		bool contain1 = data.contains(1); </span><br><span class="line">		data.flags[2] = <span class="literal">true</span>; </span><br><span class="line">		bool contain2 = data.contains(2); </span><br><span class="line">		<span class="built_in">return</span> (contain1, contain2); </span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的例子，我们将库Set附着到了库的数据结构Set.Data上，这样，这个数据结构的实例就有了对应函数。附着带来另一个好处是，能将调用对象自动做为第一个参数，比如data.contains(1);，会将data做为第一个参数，再拼上参数1作为第二个参数，一起传入contains()方法，这样写起来更自然和简捷。</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>使用库合约的合约，可以将库合约视为隐式的父合约(base contracts)，当然它们不会显式的出现在继承关系中。<br>但调用库函数的方式非常类似，如库L有函数f()，使用L.f()即可访问。此外，internal的库函数对所有合约可见，如果把库想像成一个父合约就能说得通了。当然调用内部函数使用的是internal的调用惯例，这意味着所有internal类型可以传进去，memory类型则通过引用传递，而不是拷贝的方式。为了在EVM中实现这一点，internal的库函数的代码和从其中调用的所有函数将被拉取(pull into)到调用合约中，然后执行一个普通的JUMP来代替DELEGATECALL。</p>
+
             </div>
             <hr/>
 
@@ -500,7 +496,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/42997.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/42997.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/17075.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/17075.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -538,8 +534,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/hexoT.github.io/tags/eth/">
-                                    <span class="chip bg-color">eth</span>
+                                <a href="/hexoT.github.io/tags/solidity/">
+                                    <span class="chip bg-color">solidity</span>
                                 </a>
                             
                         </div>
@@ -707,9 +703,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/hexoT.github.io/posts/17075.html">
                     <div class="card-image">
@@ -728,9 +725,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -739,6 +736,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -757,22 +755,20 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/15127.html">
+                <a href="/hexoT.github.io/posts/42997.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/6.jpg" class="responsive-img" alt="eth-sig-util验证签名地址">
+                        <img src="/hexoT.github.io/medias/featureimages/7.jpg" class="responsive-img" alt="ethereumjs-util">
                         
-                        <span class="card-title">eth-sig-util验证签名地址</span>
+                        <span class="card-title">ethereumjs-util</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            eth-sig-util，以太坊签名函数的小集合，就是一个函数库。
-安装切换到项目工程所在根目录，然后在终端中键入以下内容：
-1$ npm install eth-sig-util --save
-函数集合concatSig(v, r, s)
+                            ethereumjs-util，以太坊的实用函数集合。它可以在node.js使用，和在浏览器中使用browserify。Browserify：提供在浏览器环境下require()npm模块的支持。
+安装切换到项目工程所在根目录，然后在终端中
                         
                     </div>
                     <div class="publish-info">
