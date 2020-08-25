@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="DAPP运行后页面报错[WDS] Disconnected! app.js:15441:9, DAPPS">
+    <meta name="keywords" content="solidity语法之函数修改器Modifiers, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>DAPP运行后页面报错[WDS] Disconnected! app.js:15441:9 | DAPPS</title>
+    <title>solidity语法之函数修改器Modifiers | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">DAPP运行后页面报错[WDS] Disconnected! app.js:15441:9</h1>
+                    <h1 class="description center-align post-title">solidity语法之函数修改器Modifiers</h1>
                 </div>
             </div>
         </div>
@@ -430,23 +430,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/hexoT.github.io/tags/error/">
-                                <span class="chip bg-color">error</span>
+                            <a href="/hexoT.github.io/tags/solidity/">
+                                <span class="chip bg-color">solidity</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -455,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-07-27
+                    2020-08-25
                 </div>
                 
 
@@ -471,10 +462,13 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>DAPP成功编译部署后，一直没报错，打开浏览器的Console，出现：<br> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[WDS] Disconnected! app.js:15441:9</span><br><span class="line"> close http://localhost:8080/app.js:15441</span><br><span class="line"> onclose http://localhost:8080/app.js:43214</span><br><span class="line"> dispatchEvent http://localhost:8080/app.js:29342</span><br><span class="line"> _close http://localhost:8080/app.js:30141</span><br></pre></td></tr></table></figure><br>[WDS] Disconnected!</p>
-<h2 id="truffle-config-js"><a href="#truffle-config-js" class="headerlink" title="truffle-config.js"></a>truffle-config.js</h2><p>其中，truffle-config.js配置是：<br> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> module.exports = &#123;</span><br><span class="line">networks: &#123;</span><br><span class="line">  development: &#123;</span><br><span class="line">    host: 'localhost',</span><br><span class="line">    port: 8545,</span><br><span class="line">    gas: 6700000,</span><br><span class="line">    network_id: '*' // Match any network id</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="修改truffle-config-js"><a href="#修改truffle-config-js" class="headerlink" title="修改truffle-config.js"></a>修改truffle-config.js</h2><p>网上查说是主要因为项目使用了代理服务软件解析问题，将host: ‘localhost’改为host: ‘127.0.0.1’就可以解决此问题。<br>修改后直接刷新页面就不会再报[WDS] Disconnected!的错误了。</p>
-<p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/2c16c3a6073a1ac48d9de3e0b52d9b69/xmlnote/WEBRESOURCE144cfd2ca5170bc27cc833e7786a2f85/52" target="_blank" rel="noopener">知识星球</a>。</p>
+                <p>solidity中修改器(Modifiers)可以用来轻易的改变一个函数的行为。<br>比如用于在函数执行前检查某种前置条件。修改器是一种合约属性，可被继承，同时还可被派生的合约重写(override)。下面我们来看一段示例代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.0;</span><br><span class="line"></span><br><span class="line">contract owned &#123;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">owned</span></span>() &#123; owner = msg.sender; &#125;</span><br><span class="line">    address owner;</span><br><span class="line">    modifier onlyOwner &#123;</span><br><span class="line">        <span class="keyword">if</span> (msg.sender != owner)</span><br><span class="line">            throw;</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    //修改器可以被继承。</span><br><span class="line">contract mortal is owned &#123;</span><br><span class="line">    <span class="keyword">function</span> close() onlyOwner &#123;</span><br><span class="line">        selfdestruct(owner);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract priced &#123;</span><br><span class="line">    modifier costs(uint price) &#123;</span><br><span class="line">        <span class="keyword">if</span> (msg.value &gt;= price) &#123;</span><br><span class="line">            _;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract Register is priced, owned &#123;</span><br><span class="line">    mapping (address =&gt; bool) registeredAddresses;</span><br><span class="line">    uint price;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> Register(uint initialPrice) &#123; price = initialPrice; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> register() payable costs(price) &#123;</span><br><span class="line">        registeredAddresses[msg.sender] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> changePrice(uint _price) onlyOwner &#123;</span><br><span class="line">        price = _price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>修改器可以被继承。<br>特殊_表示使用修改符的函数体的替换位置。<br>从合约Register可以看出合约可以多继承，通过,号分隔两个被继承的对象。<br>修改器也是可以接收参数的，如priced的costs。</p>
+<p>另外，使用修改器可以实现防重复进入，例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.0;</span><br><span class="line">contract Mutex &#123;</span><br><span class="line">    bool locked;</span><br><span class="line">    modifier <span class="function"><span class="title">noReentrancy</span></span>() &#123;</span><br><span class="line">        <span class="keyword">if</span> (locked) throw;</span><br><span class="line">        locked = <span class="literal">true</span>;</span><br><span class="line">        _;</span><br><span class="line">        locked = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> f() noReentrancy returns (uint) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!msg.sender.call()) throw;</span><br><span class="line">        <span class="built_in">return</span> 7;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>例子中，由于call()方法有可能会调回当前方法，修改器实现了防重入的检查。</p>
+<p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
             <hr/>
@@ -500,7 +494,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/60572.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/60572.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/48254.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/48254.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -538,8 +532,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/hexoT.github.io/tags/error/">
-                                    <span class="chip bg-color">error</span>
+                                <a href="/hexoT.github.io/tags/solidity/">
+                                    <span class="chip bg-color">solidity</span>
                                 </a>
                             
                         </div>
@@ -707,46 +701,45 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/62905.html">
+                <a href="/hexoT.github.io/posts/48254.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/11.jpg" class="responsive-img" alt="MetaMask报错response has no error or result for request">
+                        <img src="/hexoT.github.io/medias/featureimages/2.jpg" class="responsive-img" alt="solidity语法之函数修改器Modifiers">
                         
-                        <span class="card-title">MetaMask报错response has no error or result for request</span>
+                        <span class="card-title">solidity语法之函数修改器Modifiers</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            部署合约后运行npm run dev，在浏览器控制台出现MetaMask - RPC Error: Error: JsonRpcEngine - response has no error or result for request，具体如
+                            solidity中修改器(Modifiers)可以用来轻易的改变一个函数的行为。比如用于在函数执行前检查某种前置条件。修改器是一种合约属性，可被继承，同时还可被派生的合约重写(override)。下面我们来看一段示例代码：
+12345678
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-25
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                    uncategorized
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            dexter
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/hexoT.github.io/tags/error/">
-                        <span class="chip bg-color">error</span>
+                    <a href="/hexoT.github.io/tags/solidity/">
+                        <span class="chip bg-color">solidity</span>
                     </a>
                     
                 </div>
@@ -760,24 +753,25 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/17760.html">
+                <a href="/hexoT.github.io/posts/39360.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/19.jpg" class="responsive-img" alt="truffle.js中使用babel-register">
+                        <img src="/hexoT.github.io/medias/featureimages/21.jpg" class="responsive-img" alt="以太坊JSON RPC的eth_signTypedData方法">
                         
-                        <span class="card-title">truffle.js中使用babel-register</span>
+                        <span class="card-title">以太坊JSON RPC的eth_signTypedData方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Babel 是什么?Babel 是一个 JavaScript 编译器,主要用于将 ECMAScript 2015+ 版本的代码转换为向后兼容的 JavaScript 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。下面列出的是 Bab
+                            eth_signTypedData方法已经添加进了Ethereum JSON-RPC中。这个方法与`eth_sign相似。
+eth_signTypedData这个签名方法用sign(keccak256(“\x19Ethereum Signe
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-25
                             </span>
                         <span class="publish-author">
                             
@@ -794,8 +788,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/hexoT.github.io/tags/truffle/">
-                        <span class="chip bg-color">truffle</span>
+                    <a href="/hexoT.github.io/tags/solidity/">
+                        <span class="chip bg-color">solidity</span>
                     </a>
                     
                 </div>
