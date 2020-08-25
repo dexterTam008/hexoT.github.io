@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="以太坊JSON RPC, DAPPS">
+    <meta name="keywords" content="以太坊JSON RPC的eth_signTypedData方法, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>以太坊JSON RPC | DAPPS</title>
+    <title>以太坊JSON RPC的eth_signTypedData方法 | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">以太坊JSON RPC</h1>
+                    <h1 class="description center-align post-title">以太坊JSON RPC的eth_signTypedData方法</h1>
                 </div>
             </div>
         </div>
@@ -439,15 +439,6 @@
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
-                            </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
@@ -471,24 +462,20 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>JSON是一种轻量级数据交换格式。它可以表示数值、字符串、序列及名/值对集合。</p>
-<p>JSON-RPC是一种无状态轻量级远程过程调用（RPC）协议。本规范定义了数据结构及 相应的处理规则。规范本身是传输无关的，可以用于进程内通信、socket套接字、HTTP 或各种消息通信环境。规范使用JSON（RFC 4627）数据格式。</p>
-<h2 id="Go"><a href="#Go" class="headerlink" title="Go"></a>Go</h2><p>可以使用–rpc选项启动HTTP JSON-RPC。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geth --rpc</span><br></pre></td></tr></table></figure>
-<p>使用–rpcaddr和–rpcport选项修改默认的监听端口(8545)和监听地址(localhost)：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geth --rpc --rpcaddr &lt;ip&gt; --rpcport &lt;portnumber&gt;</span><br></pre></td></tr></table></figure>
-<p>如果从浏览器中访问RPC，需要正确设置CORS，否则由于同源策略的限制，javascript调用将失败：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geth --rpc --rpccorsdomain <span class="string">"http://localhost:3000"</span></span><br></pre></td></tr></table></figure>
-<p>也可以在geth控制台使用admin.startRPC(addr,port)命令来启动JSON RPC。</p>
-<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><p>可以使用-j选项启动RPC：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./eth -j</span><br></pre></td></tr></table></figure>
-<p>同样，可以使用–json-rpc-port选项指定监听端口，默认值为8545:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./eth -j --json-rpc-port 8079</span><br></pre></td></tr></table></figure>
+                <p>eth_signTypedData方法已经添加进了Ethereum JSON-RPC中。这个方法与`eth_sign相似。</p>
+<h2 id="eth-signTypedData"><a href="#eth-signTypedData" class="headerlink" title="eth_signTypedData"></a>eth_signTypedData</h2><p>这个签名方法用sign(keccak256(“\x19Ethereum Signed Message:\n” + len(message) + message))计算一个以太坊特定的签名。</p>
+<p>通过给消息加上前缀，可以将计算出的签名识别为以太坊特定的签名。这可以防止恶意DApp签署任意数据（例如交易），并使用签名来冒充受害者的情况。</p>
+<p>注意：用来签名的地址必须解锁。</p>
+<h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1，Address - 20字节 - 对消息签名的账户地址</span><br><span class="line">2，TypedData - 需要被签名的类型化的结构数据。</span><br></pre></td></tr></table></figure>
+<p>类型化的数据是一个JSON对象，它包含类型信息，域名分割参数和消息对象。以下是一个TypedData参数的JSON-schema定义：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="built_in">type</span>: <span class="string">'object'</span>,</span><br><span class="line">  properties: &#123;</span><br><span class="line">    types: &#123;</span><br><span class="line">      <span class="built_in">type</span>: <span class="string">'object'</span>,</span><br><span class="line">      additionalProperties: &#123;</span><br><span class="line">        <span class="built_in">type</span>: <span class="string">'array'</span>,</span><br><span class="line">        items: &#123;</span><br><span class="line">          <span class="built_in">type</span>: <span class="string">'object'</span>,</span><br><span class="line">          properties: &#123;</span><br><span class="line">            name: &#123;<span class="built_in">type</span>: <span class="string">'string'</span>&#125;,</span><br><span class="line">            <span class="built_in">type</span>: &#123;<span class="built_in">type</span>: <span class="string">'string'</span>&#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          required: [<span class="string">'name'</span>, <span class="string">'type'</span>]</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    primaryType: &#123;<span class="built_in">type</span>: <span class="string">'string'</span>&#125;,</span><br><span class="line">    domain: &#123;<span class="built_in">type</span>: <span class="string">'object'</span>&#125;,</span><br><span class="line">    message: &#123;<span class="built_in">type</span>: <span class="string">'object'</span>&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>在Python实现中，默认会启动JSONRPC服务，监听地址和端口为127.0.0.1:4000。</p>
-<p>可以使用-c选项设置监听地址和监听端口：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyethapp -c jsonrpc.listen_port=4002 -c jsonrpc.listen_host=127.0.0.2 run</span><br></pre></td></tr></table></figure>
-
+<h2 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h2><p>DATA：签名。<br>就像在eth_sign里一样，它是一个以0x开头的16进制的129字节数组。<br>它以大端模式编码了r，s，v参数（黄皮书附录F）。<br>字节0-64字节包含了参数r，字节64-128字节是参数s，最后一个字节是参数v。注意到参数v包含了链id，这在EIP-155有详细说明。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>###请求</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST --data <span class="string">'&#123;"jsonrpc":"2.0","method":"eth_signTypedData","params":["0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826", &#123;"types":&#123;"EIP712Domain":[&#123;"name":"name","type":"string"&#125;,&#123;"name":"version","type":"string"&#125;,&#123;"name":"chainId","type":"uint256"&#125;,&#123;"name":"verifyingContract","type":"address"&#125;],"Person":[&#123;"name":"name","type":"string"&#125;,&#123;"name":"wallet","type":"address"&#125;],"Mail":[&#123;"name":"from","type":"Person"&#125;,&#123;"name":"to","type":"Person"&#125;,&#123;"name":"contents","type":"string"&#125;]&#125;,"primaryType":"Mail","domain":&#123;"name":"Ether Mail","version":"1","chainId":1,"verifyingContract":"0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC"&#125;,"message":&#123;"from":&#123;"name":"Cow","wallet":"0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826"&#125;,"to":&#123;"name":"Bob","wallet":"0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB"&#125;,"contents":"Hello, Bob!"&#125;&#125;],"id":1&#125;'</span></span><br></pre></td></tr></table></figure>
+<p>###返回值</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"id"</span>:1,</span><br><span class="line">  <span class="string">"jsonrpc"</span>: <span class="string">"2.0"</span>,</span><br><span class="line">  <span class="string">"result"</span>: <span class="string">"0x4355c47d63924e8a72e509b65029052eb6c299d53a04e167c5775fd466751c9d07299936d304c153f6443dfa05f40ff007d72911b6f72307f996231605b915621c"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，返回值”result”是一个以0x开头的16进制的129字节数组。</p>
 <p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/2c16c3a6073a1ac48d9de3e0b52d9b69/xmlnote/WEBRESOURCE144cfd2ca5170bc27cc833e7786a2f85/52" target="_blank" rel="noopener">知识星球</a>。</p>
 
             </div>
@@ -515,7 +502,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/25397.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/25397.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/39360.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/39360.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -722,9 +709,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/hexoT.github.io/posts/39360.html">
                     <div class="card-image">
@@ -743,9 +731,9 @@ eth_signTypedData这个签名方法用sign(keccak256(“\x19Ethereum Signe
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -754,6 +742,7 @@ eth_signTypedData这个签名方法用sign(keccak256(“\x19Ethereum Signe
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -772,25 +761,25 @@ eth_signTypedData这个签名方法用sign(keccak256(“\x19Ethereum Signe
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/22727.html">
+                <a href="/hexoT.github.io/posts/25397.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/0.jpg" class="responsive-img" alt="ECRecovery.sol简介">
+                        <img src="/hexoT.github.io/medias/featureimages/2.jpg" class="responsive-img" alt="以太坊JSON RPC">
                         
-                        <span class="card-title">ECRecovery.sol简介</span>
+                        <span class="card-title">以太坊JSON RPC</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            首先来看一下ECRecovery.sol代码：
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525
+                            JSON是一种轻量级数据交换格式。它可以表示数值、字符串、序列及名/值对集合。
+JSON-RPC是一种无状态轻量级远程过程调用（RPC）协议。本规范定义了数据结构及 相应的处理规则。规范本身是传输无关的，可以用于进程内通信、socket套接
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-25
                             </span>
                         <span class="publish-author">
                             
@@ -803,6 +792,14 @@ eth_signTypedData这个签名方法用sign(keccak256(“\x19Ethereum Signe
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/hexoT.github.io/tags/solidity/">
+                        <span class="chip bg-color">solidity</span>
+                    </a>
+                    
                 </div>
                 
             </div>
