@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="solidity语法之函数修改器Modifiers, DAPPS">
+    <meta name="keywords" content="HQ20简介, DAPPS">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>solidity语法之函数修改器Modifiers | DAPPS</title>
+    <title>HQ20简介 | DAPPS</title>
     <link rel="icon" type="image/png" href="/hexoT.github.io/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/hexoT.github.io/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/hexoT.github.io/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">solidity语法之函数修改器Modifiers</h1>
+                    <h1 class="description center-align post-title">HQ20简介</h1>
                 </div>
             </div>
         </div>
@@ -439,15 +439,6 @@
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                uncategorized
-                            </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
@@ -455,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-25
+                    2020-10-19
                 </div>
                 
 
@@ -471,14 +462,9 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>solidity中修改器(Modifiers)可以用来轻易的改变一个函数的行为。<br>比如用于在函数执行前检查某种前置条件。修改器是一种合约属性，可被继承，同时还可被派生的合约重写(override)。下面我们来看一段示例代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.0;</span><br><span class="line"></span><br><span class="line">contract owned &#123;</span><br><span class="line">    <span class="keyword">function</span> <span class="function"><span class="title">owned</span></span>() &#123; owner = msg.sender; &#125;</span><br><span class="line">    address owner;</span><br><span class="line">    modifier onlyOwner &#123;</span><br><span class="line">        <span class="keyword">if</span> (msg.sender != owner)</span><br><span class="line">            throw;</span><br><span class="line">        _;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    //修改器可以被继承。</span><br><span class="line">contract mortal is owned &#123;</span><br><span class="line">    <span class="keyword">function</span> close() onlyOwner &#123;</span><br><span class="line">        selfdestruct(owner);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract priced &#123;</span><br><span class="line">    modifier costs(uint price) &#123;</span><br><span class="line">        <span class="keyword">if</span> (msg.value &gt;= price) &#123;</span><br><span class="line">            _;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">contract Register is priced, owned &#123;</span><br><span class="line">    mapping (address =&gt; bool) registeredAddresses;</span><br><span class="line">    uint price;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> Register(uint initialPrice) &#123; price = initialPrice; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> register() payable costs(price) &#123;</span><br><span class="line">        registeredAddresses[msg.sender] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> changePrice(uint _price) onlyOwner &#123;</span><br><span class="line">        price = _price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>修改器可以被继承。<br>特殊_表示使用修改符的函数体的替换位置。<br>从合约Register可以看出合约可以多继承，通过,号分隔两个被继承的对象。<br>修改器也是可以接收参数的，如priced的costs。</p>
-<p>另外，使用修改器可以实现防重复进入，例子：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">pragma solidity ^0.4.0;</span><br><span class="line">contract Mutex &#123;</span><br><span class="line">    bool locked;</span><br><span class="line">    modifier <span class="function"><span class="title">noReentrancy</span></span>() &#123;</span><br><span class="line">        <span class="keyword">if</span> (locked) throw;</span><br><span class="line">        locked = <span class="literal">true</span>;</span><br><span class="line">        _;</span><br><span class="line">        locked = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">function</span> f() noReentrancy returns (uint) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!msg.sender.call()) throw;</span><br><span class="line">        <span class="built_in">return</span> 7;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>例子中，由于call()方法有可能会调回当前方法，修改器实现了防重入的检查。</p>
-<p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>
-
+                <p>HQ20是一个包含契约、库和示例的Solidity项目，可帮助您为真实世界构建功能齐全的分布式应用程序。<br>合同将被用作智能合同模式，供您从中汲取灵感，并使其易于理解，它们一直刻意保持简单。如果您决定重用合同，或者复制并粘贴其中的代码，请确保查找并关闭这些漏洞。如果你打算去主网，请进行第三方审核。</p>
+<h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p><a href="https://github.com/HQ20/contracts" target="_blank" rel="noopener">https://github.com/HQ20/contracts</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kk</span><br></pre></td></tr></table></figure>
             </div>
             <hr/>
 
@@ -503,7 +489,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/48254.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/48254.html</a>
+                    <a href="https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/3173.html">https://dextertam008.github.io/hexoT.github.io/hexoT.github.io/posts/3173.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -710,42 +696,39 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/10422.html">
+                <a href="/hexoT.github.io/posts/3173.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/23.jpg" class="responsive-img" alt="ethereum.sendAsync() - 异步发送交易">
+                        <img src="/hexoT.github.io/medias/featureimages/18.jpg" class="responsive-img" alt="HQ20简介">
                         
-                        <span class="card-title">ethereum.sendAsync() - 异步发送交易</span>
+                        <span class="card-title">HQ20简介</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            ethereum.sendAsync()方法采用异步形式向web3浏览器发送消息。 消息格式与以太坊JSON-RPC API的格式向对应，RPC API的响应结果在回调函数 中获得。
-示例代码下面的示例展示了如何使用ethereum.sen
+                            HQ20是一个包含契约、库和示例的Solidity项目，可帮助您为真实世界构建功能齐全的分布式应用程序。合同将被用作智能合同模式，供您从中汲取灵感，并使其易于理解，它们一直刻意保持简单。如果您决定重用合同，或者复制并粘贴其中的代码，请确保查
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-19
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                    uncategorized
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            dexter
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -764,34 +747,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hexoT.github.io/posts/39360.html">
+                <a href="/hexoT.github.io/posts/18744.html">
                     <div class="card-image">
                         
                         
-                        <img src="/hexoT.github.io/medias/featureimages/21.jpg" class="responsive-img" alt="以太坊JSON RPC的eth_signTypedData方法">
+                        <img src="/hexoT.github.io/medias/featureimages/12.jpg" class="responsive-img" alt="OpenZeppelin简介">
                         
-                        <span class="card-title">以太坊JSON RPC的eth_signTypedData方法</span>
+                        <span class="card-title">OpenZeppelin简介</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            eth_signTypedData方法已经添加进了Ethereum JSON-RPC中。这个方法与`eth_sign相似。
-eth_signTypedData这个签名方法用sign(keccak256(“\x19Ethereum Signe
+                            OpenZeppelin合同通过使用以太坊和其他区块链的智能合约库帮助您将风险降至最低。它包括最常用的ERC标准实现。
+GitHubhttps://github.com/OpenZeppelin/openzeppelin-contracts
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-19
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/hexoT.github.io/categories/uncategorized/" class="post-category">
-                                    uncategorized
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            dexter
                             
                         </span>
                     </div>

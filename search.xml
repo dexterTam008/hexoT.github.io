@@ -4,12 +4,56 @@
   
     
     <entry>
+      <title>HQ20简介</title>
+      <link href="/hexoT.github.io/posts/3173.html"/>
+      <url>/hexoT.github.io/posts/3173.html</url>
+      
+        <content type="html"><![CDATA[<p>HQ20是一个包含契约、库和示例的Solidity项目，可帮助您为真实世界构建功能齐全的分布式应用程序。<br>合同将被用作智能合同模式，供您从中汲取灵感，并使其易于理解，它们一直刻意保持简单。如果您决定重用合同，或者复制并粘贴其中的代码，请确保查找并关闭这些漏洞。如果你打算去主网，请进行第三方审核。</p><h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p><a href="https://github.com/HQ20/contracts" target="_blank" rel="noopener">https://github.com/HQ20/contracts</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kk</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> solidity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>OpenZeppelin简介</title>
+      <link href="/hexoT.github.io/posts/18744.html"/>
+      <url>/hexoT.github.io/posts/18744.html</url>
+      
+        <content type="html"><![CDATA[<p>OpenZeppelin合同通过使用以太坊和其他区块链的智能合约库帮助您将风险降至最低。<br>它包括最常用的ERC标准实现。</p><h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p><a href="https://github.com/OpenZeppelin/openzeppelin-contracts" target="_blank" rel="noopener">https://github.com/OpenZeppelin/openzeppelin-contracts</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kk</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> solidity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ethereum.sendAsync() - 异步发送交易</title>
       <link href="/hexoT.github.io/posts/10422.html"/>
       <url>/hexoT.github.io/posts/10422.html</url>
       
         <content type="html"><![CDATA[<p>ethereum.sendAsync()方法采用异步形式向web3浏览器发送消息。 消息格式与以太坊JSON-RPC API的格式向对应，RPC API的响应结果在回调函数 中获得。</p><h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><p>下面的示例展示了如何使用ethereum.send()方法来发送以太币、调用智能合约：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ethereum.sendAsync(&#123;</span><br><span class="line">    method,</span><br><span class="line">    params,</span><br><span class="line">    from,</span><br><span class="line">  &#125;, <span class="keyword">function</span> (err, result) &#123;</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="built_in">return</span> console.dir(err)</span><br><span class="line">    <span class="keyword">if</span> (result.error) &#123;</span><br><span class="line">      alert(result.error.message)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (result.error) <span class="built_in">return</span> console.error(result)</span><br><span class="line">    $(<span class="string">"#msg"</span>).html(<span class="string">"User wants to vote for "</span> + candidateName + <span class="string">". Any one can now submit the vote to the blockchain on behalf of this user. Use the below values to submit the vote to the blockchain"</span>);</span><br><span class="line">    $(<span class="string">"#vote-for"</span>).html(<span class="string">"Candidate: "</span> + candidateName);</span><br><span class="line">    $(<span class="string">"#addr"</span>).html(<span class="string">"Address: "</span> + from);</span><br><span class="line">    $(<span class="string">"#signature"</span>).html(<span class="string">"Signature: "</span> + result.result);</span><br><span class="line">    console.log(<span class="string">'PERSONAL SIGNED:'</span> + JSON.stringify(result.result))</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如有问题可以加微信dexter8(烦请备注：DAPP)，或者！<a href="https://note.youdao.com/yws/public/resource/be8fef50fbc9563b8db8c83b97fec7af/xmlnote/WEBRESOURCEf91ac400d752cf9334486c4500242eca/130" target="_blank" rel="noopener">知识星球</a>。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> uncategorized </category>
+          
+      </categories>
       
       
         <tags>
