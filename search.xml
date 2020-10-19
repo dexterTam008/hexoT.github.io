@@ -4,12 +4,37 @@
   
     
     <entry>
+      <title>HQ20合约中完整民主系统的基础</title>
+      <link href="/hexoT.github.io/posts/21247.html"/>
+      <url>/hexoT.github.io/posts/21247.html</url>
+      
+        <content type="html"><![CDATA[<p>可以使用 Democratic.sol 和 OneTokenOneVote.sol 作为[完整民主系统的基础]。</p><h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p><a href="https://github.com/OpenZeppelin/openzeppelin-contracts" target="_blank" rel="noopener">https://github.com/OpenZeppelin/openzeppelin-contracts</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kk</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> solidity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HQ20简介</title>
       <link href="/hexoT.github.io/posts/3173.html"/>
       <url>/hexoT.github.io/posts/3173.html</url>
       
         <content type="html"><![CDATA[<p>HQ20是一个包含契约、库和示例的Solidity项目，可帮助您为真实世界构建功能齐全的分布式应用程序。<br>合同将被用作智能合同模式，供您从中汲取灵感，并使其易于理解，它们一直刻意保持简单。如果您决定重用合同，或者复制并粘贴其中的代码，请确保查找并关闭这些漏洞。如果你打算去主网，请进行第三方审核。</p><h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p><a href="https://github.com/HQ20/contracts" target="_blank" rel="noopener">https://github.com/HQ20/contracts</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kk</span><br></pre></td></tr></table></figure>]]></content>
       
+      
+      <categories>
+          
+          <category> uncategorized </category>
+          
+      </categories>
       
       
         <tags>
@@ -29,6 +54,12 @@
       
         <content type="html"><![CDATA[<p>OpenZeppelin合同通过使用以太坊和其他区块链的智能合约库帮助您将风险降至最低。<br>它包括最常用的ERC标准实现。</p><h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p><a href="https://github.com/OpenZeppelin/openzeppelin-contracts" target="_blank" rel="noopener">https://github.com/OpenZeppelin/openzeppelin-contracts</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kk</span><br></pre></td></tr></table></figure>]]></content>
       
+      
+      <categories>
+          
+          <category> uncategorized </category>
+          
+      </categories>
       
       
         <tags>
