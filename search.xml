@@ -4,12 +4,37 @@
   
     
     <entry>
+      <title>solidity函数修改器Modifiers本质</title>
+      <link href="/hexoT.github.io/posts/53900.html"/>
+      <url>/hexoT.github.io/posts/53900.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="Modifiers"><a href="#Modifiers" class="headerlink" title="Modifiers"></a>Modifiers</h2><p>solidity中函数修改器Modifiers，其语法如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">modifier <span class="function"><span class="title">theOwner</span></span>() &#123;</span><br><span class="line">  require(msg.sender == owner);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>函数修饰符看起来跟函数没什么不同，不过关键字modifier 告诉编译器，这是个modifier(修饰符)，而不是个function(函数)。它在实际执行中并不能像函数那样被直接调用，只能被添加到函数定义的末尾，用以改变函数的行为。</p><h2 id="用法本质"><a href="#用法本质" class="headerlink" title="用法本质"></a>用法本质</h2><p>使用函数修改器Modifiers代码如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">contract Contract is Ownable &#123;</span><br><span class="line">  event DAOcall(string laughter);</span><br><span class="line">  //注意 `theOwner`用上场 :</span><br><span class="line">  <span class="keyword">function</span> isDAO() external theOwner &#123;</span><br><span class="line">    DAOcall(<span class="string">"kk"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注意 isDAO 函数上的 theOwner 修饰符。 当你调用 isDAO 时，首先执行 theOwner 中的代码， 执行到 theOwner 中的 (msg.sender == owner); 语句时，程序再返回并执行 isDAO  中的代码。</p><p>可见，尽管函数修饰符也可以应用到各种场合，但最常见的还是放在函数执行之前添加快速的 require检查。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> solidity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HQ20合约中完整民主系统的基础</title>
       <link href="/hexoT.github.io/posts/21247.html"/>
       <url>/hexoT.github.io/posts/21247.html</url>
       
         <content type="html"><![CDATA[<p>可以使用 Democratic.sol 和 OneTokenOneVote.sol 作为[完整民主系统的基础]。</p><h2 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h2><p><a href="https://github.com/OpenZeppelin/openzeppelin-contracts" target="_blank" rel="noopener">https://github.com/OpenZeppelin/openzeppelin-contracts</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kk</span><br></pre></td></tr></table></figure>]]></content>
       
+      
+      <categories>
+          
+          <category> uncategorized </category>
+          
+      </categories>
       
       
         <tags>
