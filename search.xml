@@ -4,12 +4,37 @@
   
     
     <entry>
+      <title>solidity结构封装--存储空间最小化</title>
+      <link href="/hexoT.github.io/posts/1693.html"/>
+      <url>/hexoT.github.io/posts/1693.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="solidity中的uint"><a href="#solidity中的uint" class="headerlink" title="solidity中的uint"></a>solidity中的uint</h2><p>solidity中除了基本版的 uint 外，还有其他变种 uint：uint8，uint16，uint32等。</p><p>通常情况下我们不会考虑使用 uint 变种，因为无论如何定义 uint的大小，Solidity 为它保留256位的存储空间。例如，使用 uint8 而不是uint（uint256）不会为你节省任何 gas。</p><p>除非，把 uint 绑定到 struct 里面。</p><h2 id="solidity中的struct"><a href="#solidity中的struct" class="headerlink" title="solidity中的struct"></a>solidity中的struct</h2><p>solidity中的struct示例代码：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">struct NormalStruct &#123;</span><br><span class="line">  uint a;</span><br><span class="line">  uint b;</span><br><span class="line">  uint c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct MiniStruct &#123;</span><br><span class="line">  uint32 a;</span><br><span class="line">  uint32 b;</span><br><span class="line">  uint c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 因为使用了结构打包，`MiniStruct`（unit32，最小为32位存储空间） 比 `NormalStruct`（unit，最小为256位存储空间） 占用的空间更少</span><br><span class="line">NormalStruct normal = NormalStruct(8, 8, 10);</span><br><span class="line">MiniMe mini = MiniStruct(3, 3, 10);</span><br></pre></td></tr></table></figure><p>如果一个 struct 中有多个 uint，则尽可能使用较小的 uint, Solidity 会将这些 uint 打包在一起，从而占用较少的存储空间。</p><p>所以，当 uint 定义在一个 struct 中的时候，尽量使用最小的整数子类型以节约空间，这样 Solidity 可以将存储空间最小化。 </p><p>另外：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">struct NormalStruct &#123;</span><br><span class="line">  uint a;</span><br><span class="line">  uint32 b;</span><br><span class="line">  uint32 c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">struct MiniStruct &#123;</span><br><span class="line">  uint32 a;</span><br><span class="line">  uint b;</span><br><span class="line">  uint32 c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>我们把同样类型的变量放一起（即在 struct 中将把变量按照类型依次放置），NormalStruct比MiniStruct占用的存储空间更小。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> solidity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>solidity函数修改器Modifiers本质</title>
       <link href="/hexoT.github.io/posts/53900.html"/>
       <url>/hexoT.github.io/posts/53900.html</url>
       
         <content type="html"><![CDATA[<h2 id="Modifiers"><a href="#Modifiers" class="headerlink" title="Modifiers"></a>Modifiers</h2><p>solidity中函数修改器Modifiers，其语法如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">modifier <span class="function"><span class="title">theOwner</span></span>() &#123;</span><br><span class="line">  require(msg.sender == owner);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>函数修饰符看起来跟函数没什么不同，不过关键字modifier 告诉编译器，这是个modifier(修饰符)，而不是个function(函数)。它在实际执行中并不能像函数那样被直接调用，只能被添加到函数定义的末尾，用以改变函数的行为。</p><h2 id="用法本质"><a href="#用法本质" class="headerlink" title="用法本质"></a>用法本质</h2><p>使用函数修改器Modifiers代码如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">contract Contract is Ownable &#123;</span><br><span class="line">  event DAOcall(string laughter);</span><br><span class="line">  //注意 `theOwner`用上场 :</span><br><span class="line">  <span class="keyword">function</span> isDAO() external theOwner &#123;</span><br><span class="line">    DAOcall(<span class="string">"kk"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注意 isDAO 函数上的 theOwner 修饰符。 当你调用 isDAO 时，首先执行 theOwner 中的代码， 执行到 theOwner 中的 (msg.sender == owner); 语句时，程序再返回并执行 isDAO  中的代码。</p><p>可见，尽管函数修饰符也可以应用到各种场合，但最常见的还是放在函数执行之前添加快速的 require检查。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> uncategorized </category>
+          
+      </categories>
       
       
         <tags>
