@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>ERC20-721-223 的区别</title>
+      <link href="/hexoT.github.io/posts/253.html"/>
+      <url>/hexoT.github.io/posts/253.html</url>
+      
+        <content type="html"><![CDATA[<p>首先，ERC是Ethereum Request for Comments的缩写，代表以太坊开发者提交的协议提案。</p><h2 id="ERC20"><a href="#ERC20" class="headerlink" title="ERC20"></a>ERC20</h2><p>ERC20可能是其中最广为人知的标准了。它诞生于2015年，到2017年9月被正式标准化。协议规定了具有可互换性（fungible）代币的一组基本接口，包括代币符号、发行量、转账、授权等。所谓可互换性（fungibility）指代币之间无差异，同等数量的两笔代币价值相等。交易所里流通的绝大部分代币都是可互换的，一单位的币无论在哪儿都价值一单位。</p><h2 id="ERC721"><a href="#ERC721" class="headerlink" title="ERC721"></a>ERC721</h2><p>与ERC20可互换性（fungible）资产相对的则是非互换性（non-fungible）资产。ERC721与ERC20有些相似，但由于它管理的是非互换性资产（non-fungible token，简称NFT），所以函数语义并不一样。合约下每份ERC721资产都拥有一个uint256类型的独立编号（以下代码中的_tokenId）。</p><h2 id="ERC223"><a href="#ERC223" class="headerlink" title="ERC223"></a>ERC223</h2><p>ERC223是继ERC20后推出的新标准，增加了tokenFallback函数，更好地处理错误情况。<br>ERC223解决了ERC20的下面问题:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.无法处理接收合同中的进账交易。 </span><br><span class="line">2.令牌可以发送到合同中没有设计不处理与标记工作，并可能会丢失。目前至少有四十万美元的损失。 </span><br><span class="line">3.令牌交易应与Ethereum意识形态一致。当一个用户转账的时候，必须自己执行transfer.用户存入合同或发送到外部拥有的账户无关紧要。</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> solidity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>solidity结构封装--存储空间最小化</title>
       <link href="/hexoT.github.io/posts/1693.html"/>
       <url>/hexoT.github.io/posts/1693.html</url>
